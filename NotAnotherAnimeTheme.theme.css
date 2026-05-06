@@ -84,8 +84,18 @@
   transition: color 0.15s ease;
 }
 
-[class*="channelName"]:hover {
-  color: #dcddde;
+[class*="wrapper_"][class*="clickable"]:hover [class*="channelName"],
+[class*="link_"][class*="channel"]:hover [class*="channelName"],
+[class*="containerDefault"]:hover [class*="channelName"],
+[class*="link_"]:hover [class*="name_"] {
+  color: #d39052 !important;
+}
+
+[class*="wrapper_"][class*="clickable"]:hover [class*="icon_"],
+[class*="link_"][class*="channel"]:hover [class*="icon_"],
+[class*="containerDefault"]:hover [class*="icon_"],
+[class*="link_"]:hover [class*="icon_"] {
+  color: #d39052 !important;
 }
 
 [class*="modeUnread"] [class*="name_"] {
@@ -152,16 +162,16 @@ code.inline {
   border-top-color: rgba(15, 15, 15, 0.9) !important;
 }
 
-/* ===== BUTTON HOVER ===== */
+/* ===== BUTTON / ICON HOVER ===== */
 
-button:hover,
-[class*="button_"]:hover,
-[class*="lookFilled"]:hover,
-[class*="lookOutlined"]:hover,
-[class*="iconButton"]:hover,
-[class*="closeButton"]:hover {
-  background-color: rgba(211, 144, 82, 0.2) !important;
-  transition: background-color 0.15s ease;
+button:hover svg,
+[class*="button_"]:hover svg,
+[class*="iconButton"]:hover svg,
+[class*="closeButton"]:hover svg,
+[class*="actionButton"]:hover svg,
+[class*="toolbar_"] [class*="iconWrapper"]:hover svg {
+  color: #d39052 !important;
+  transition: color 0.15s ease;
 }
 
 [class*="lookFilled"][class*="colorBrand"]:hover,
