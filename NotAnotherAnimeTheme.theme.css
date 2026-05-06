@@ -152,6 +152,23 @@ code.inline {
   border-top-color: rgba(15, 15, 15, 0.9) !important;
 }
 
+/* ===== BUTTON HOVER ===== */
+
+button:hover,
+[class*="button_"]:hover,
+[class*="lookFilled"]:hover,
+[class*="lookOutlined"]:hover,
+[class*="iconButton"]:hover,
+[class*="closeButton"]:hover {
+  background-color: rgba(211, 144, 82, 0.2) !important;
+  transition: background-color 0.15s ease;
+}
+
+[class*="lookFilled"][class*="colorBrand"]:hover,
+[class*="lookFilled"][class*="colorGreen"]:hover {
+  background-color: #d39052 !important;
+}
+
 /* ===== TEXT SELECTION ===== */
 
 ::selection {
