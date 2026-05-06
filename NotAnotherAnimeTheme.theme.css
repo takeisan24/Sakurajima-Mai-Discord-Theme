@@ -10,194 +10,289 @@
 
 @import url(https://puckzxz.github.io/NotAnotherAnimeTheme/build/v3/naat.v3.css);
 
-/*
-  To make editing this theme easier I recommend using Notepad++
-  you can download it for free here https://notepad-plus-plus.org/download/
-*/
-
-/* Any images you use MUST end with .jpg or .png or any other image extension */
-
 :root {
-  /*
-    Theme Background
-  */
+  /* ===== UPSTREAM VARIABLES (used by naat.v3.css) ===== */
+
   --theme-background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1fe56053-597e-45b3-a3b1-f26197574147/deb1dq7-6605a031-5944-49cc-8beb-dba5e8284c4a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFmZTU2MDUzLTU5N2UtNDViMy1hM2IxLWYyNjE5NzU3NDE0N1wvZGViMWRxNy02NjA1YTAzMS01OTQ0LTQ5Y2MtOGJlYi1kYmE1ZTgyODRjNGEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wlnyOFSwLNFXG8jzv1GRMXXTX_igwGz-1HkgzN0Fatw);
-  /*
-    Main Theme Color
-  */
-  --main-theme-color: #d39052;
-
-  /*
-    Main Theme Transparency
-  */
-  --theme-transparency: rgba(0, 0, 0, 0.8);
-
-  /*
-    Home Icon Image
-  */
+  --main-theme-color: #d4b896;
+  --theme-transparency: rgba(35, 33, 32, 0.85);
   --home-icon-image: url(https://i.pinimg.com/originals/32/71/c8/3271c8ed39d0af0dfb76a4f194d6ecc0.gif);
-
-  /*
-    Change your friends icon image position
-  */
   --home-icon-image-position: center center;
-
-  /*
-    Change your friends icon image zoom
-  */
   --home-icon-image-zoom: 100%;
-
-  /*
-    Server Listing Width
-    Single Column:  72px
-    Double Column:  126px
-    Triple Column:  184px
-    Quad Column:    242px
-  */
   --server-listing-width: 72px;
-
-  /*
-    Font Size
-  */
-  --font-size: 92%;
-
-  /*
-    Mention colors
-  */
-  --mention-color: rgba(207, 132, 63, 0.5);
-  --mention-sider: rgba(207,132,63,1);
-  --mention-hover-color: rgba(250, 166, 26, 0.08);
-
-  /*
-    Server category hover color
-  */
-  --category-hover-color: #ebcdb2;
-
-  /*
-    Change the unread server animation.
-    Replace it with "none" in order to remove any animations and use the main color instead
-  */
+  --message-box-transparency: rgba(40, 38, 36, 0.7);
   --unread-server-animation: none;
 
-  /*
-    Video / Screen share buttons
-  */
-  --video-screen-button-background-color: #d39052;
-  --video-screen-button-foreground-color: #f5e6d8;
-  --video-screen-button-background-hovor-color: rgba(200, 200, 200, 0.4);
-  --video-screen-button-foreground-hovor-color: white;
+  /* ===== CUSTOM VARIABLES — palette from maisan.gif ===== */
+  /* Skin tones: #f0d4b6 → #e0c0a0 | Hair: #4b4b4f → #8a8a8e | BG: #3c3c3e */
 
-  /*
-    Role Title Color
-  */
-  --member-listing-role-color: #d39052;
-
-  /*
-    Small User Popout
-  */
+  --font-size: 92%;
+  --mention-color: rgba(212, 184, 150, 0.3);
+  --mention-sider: rgba(212, 184, 150, 0.85);
+  --mention-hover-color: rgba(212, 184, 150, 0.08);
+  --category-hover-color: #e8d8c8;
+  --member-listing-role-color: #d4b896;
+  --embed-background-transparency: rgba(45, 42, 40, 0.7);
+  --context-menu-transparency: rgba(40, 38, 36, 0.9);
+  --scrollbar-color: #c4a882;
+  --code-markup-background-color: rgba(160, 138, 112, 0.4);
+  --code-markup-border: 1px solid rgba(212, 184, 150, 0.15);
+  --message-hover-buttons-background: rgba(212, 184, 150, 0.06);
   --small-user-popout-background-image: url(https://i.pinimg.com/originals/e3/5e/26/e35e26cb8c1ccb166a4a18b19ab749e7.gif);
-  --small-user-popout-background-transparency: rgba(0, 0, 0, 0.6);
+  --small-user-popout-background-transparency: rgba(35, 33, 32, 0.65);
   --small-user-popout-background-image-position: center;
-
-  /*
-    Big User Popout
-  */
   --big-user-popout-background-image: url(https://i.pinimg.com/originals/23/11/7d/23117d97371efa0aaa0effad2beed5bf.gif);
-  --big-user-popout-background-transparency: rgba(0, 0, 0, 0.6);
+  --big-user-popout-background-transparency: rgba(35, 33, 32, 0.65);
   --big-user-popout-background-image-position: center;
-
-  /*
-    Code Markup
-  */
-  --code-markup-background-color: #cf843f;
-  --code-markup-border: 1px solid transparent;
-
-  /*
-    Message Box Transparency
-  */
-  --message-box-transparency: rgba(0, 0, 0, 0.6);
-
-  /*
-    Embed Background Transparency
-  */
-  --embed-background-transparency: rgba(0, 0, 0, 0.6);
-
-  /*
-    Message Hover Buttons
-  */
-  --message-hover-buttons-background: rgba(200, 200, 200, 0.1);
-
-  /*
-    Context Menu Transparency
-  */
-  --context-menu-transparency: rgba(15, 15, 15, 0.8);
-
-  /*
-    Add Server / Discovery Icon
-  */
-  --add-discover-icon-transparency: rgba(200, 200, 200, 0.15);
-  --add-discover-icon-color: #f5e6d8;
-
-  /*
-    Channel Limit Number Color
-  */
-  --channel-limit-count-color: white;
-  --channel-limit-background-left: #d89c65;
-  --channel-limit-background-right: #cf843f;
-
-  /*
-    Scrollbar Colors
-  */
-  --scrollbar-color: #d89c65;
-
-  /*
-    Unread Message Divider
-  */
-  --unread-message-divider-color: #f04747;
-  --unread-message-divider-font-color: #fff;
-
-  /*
-    New Messages Bar Color
-  */
-  --new-messages-bar-background-color: #fff;
-  --new-messages-bar-font-color: #aaa;
-
-  /*
-    Emoji Menu
-  */
-  --emoji-menu-background-color: #cf843f;
-  --emoji-menu-sider-background-color: rgba(0, 0, 0, 0);
-  --emoji-menu-server-header-background-color: rgba(0, 0, 0, 0.8);
-  --emoji-menu-bottom-bar-background-color: black;
-  --emoji-menu-search-bar-background-color: rgba(0,0,0,0.8);
-
-  /*
-    Message Search
-  */
-  --message-search-menu-background-color: #cf843f;
-  --message-search-container-background-color: rgba(0, 0, 0, 0.6);
-  --message-search-result-background-color: #d39052;
-
-  /*
-    Channel colors
-  */
-  --text-voice-channel-color: #dda878 ;
-  --text-voice-channel-hover-color: #dcddde;
-  --text-voice-channel-selected-text-color: #fff;
-  --unread-text-channel-color: #fff;
-  --unread-text-channel-bubble-color: var(--main-theme-color);
-
-  /*
-    Folders
-  */
-  --folder-background-color: #dda878;
+  --reaction-emoji-background-color: rgba(160, 138, 112, 0.3);
+  --reaction-emoji-hover-background-color: rgba(212, 184, 150, 0.15);
+  --reaction-emoji-hover-border-color: rgba(212, 184, 150, 0.25);
+  --text-voice-channel-color: #b0a090;
+  --text-voice-channel-hover-color: #e0d8d0;
+  --unread-text-channel-color: #f0e8e0;
+  --folder-background-color: #a08a70;
   --expanded-folder-background-color: transparent;
 
-  /*
-    Reactions
-  */
-  --reaction-emoji-background-color: #cf843f;
-  --reaction-emoji-border-color: 1px solid transparent;
-  --reaction-emoji-hover-background-color: rgba(255, 255, 255, 0.1);
-  --reaction-emoji-hover-border-color: rgba(255, 255, 255, 0.2);
+  /* ===== EXTRA POLISH ===== */
+  --hair-steel: #6b6b70;
+  --skin-light: #f0d4b6;
+  --skin-mid: #d4b896;
+}
+
+/* ===== FONT SIZE ===== */
+
+body {
+  font-size: var(--font-size);
+}
+
+/* ===== TEXT SELECTION ===== */
+
+::selection {
+  background-color: rgba(212, 184, 150, 0.3) !important;
+  color: #f0e8e0 !important;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color) !important;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--skin-light) !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+
+/* ===== EMBEDS ===== */
+
+[class*="embedFull"] {
+  border-left: 3px solid var(--main-theme-color) !important;
+  background: var(--embed-background-transparency) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 4px;
+}
+
+/* ===== MENTIONS ===== */
+
+[class*="mentioned"] {
+  background-color: var(--mention-color) !important;
+}
+
+[class*="mentioned"]:hover {
+  background-color: var(--mention-hover-color) !important;
+}
+
+[class*="mentioned"]:before {
+  background-color: var(--mention-sider) !important;
+}
+
+/* ===== CONTEXT MENU ===== */
+
+[class*="menu_"][role="menu"],
+[class*="menu_"][role="listbox"] {
+  background: var(--context-menu-transparency) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 184, 150, 0.08);
+}
+
+/* ===== CODE MARKUP ===== */
+
+code.inline {
+  background-color: var(--code-markup-background-color) !important;
+  border: var(--code-markup-border) !important;
+  border-radius: 3px;
+}
+
+/* ===== MESSAGE HOVER BUTTONS ===== */
+
+[class*="buttons_"][class*="container"] {
+  background: var(--message-hover-buttons-background) !important;
+  border: 1px solid rgba(212, 184, 150, 0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 4px;
+}
+
+/* ===== USER POPOUT (Small) ===== */
+
+[class*="userProfileOuter"] {
+  background-image: var(--small-user-popout-background-image) !important;
+  background-size: cover !important;
+  background-position: var(--small-user-popout-background-image-position) !important;
+  background-repeat: no-repeat !important;
+}
+
+[class*="userProfileOuter"] > [class*="userProfileInner"] {
+  background-color: var(--small-user-popout-background-transparency) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== USER POPOUT (Big / Full Profile) ===== */
+
+[class*="userProfileModal"],
+[class*="fullProfile"] {
+  background-image: var(--big-user-popout-background-image) !important;
+  background-size: cover !important;
+  background-position: var(--big-user-popout-background-image-position) !important;
+  background-repeat: no-repeat !important;
+}
+
+[class*="userProfileModal"] > div,
+[class*="fullProfile"] > div {
+  background-color: var(--big-user-popout-background-transparency) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== MEMBER LIST ROLE COLOR ===== */
+
+[class*="membersGroup"] {
+  color: var(--member-listing-role-color) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== CHANNEL COLORS ===== */
+
+[class*="channelName"] {
+  color: var(--text-voice-channel-color);
+  transition: color 0.15s ease;
+}
+
+[class*="channelName"]:hover {
+  color: var(--text-voice-channel-hover-color);
+}
+
+[class*="unread_"][class*="channel"] [class*="channelName"],
+[class*="modeUnread"] [class*="name_"] {
+  color: var(--unread-text-channel-color) !important;
+}
+
+/* ===== CATEGORY HOVER ===== */
+
+[class*="categoryName"]:hover,
+[class*="wrapper_"][class*="clickable"]:hover [class*="categoryName"] {
+  color: var(--category-hover-color) !important;
+}
+
+/* ===== REACTIONS ===== */
+
+[class*="reaction_"]:not([class*="reactionBtn"]) {
+  background-color: var(--reaction-emoji-background-color) !important;
+  border: 1px solid rgba(212, 184, 150, 0.1) !important;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+[class*="reaction_"]:not([class*="reactionBtn"]):hover {
+  background-color: var(--reaction-emoji-hover-background-color) !important;
+  border-color: var(--reaction-emoji-hover-border-color) !important;
+}
+
+/* ===== FOLDERS ===== */
+
+[class*="expandedFolderBackground"] {
+  background-color: var(--expanded-folder-background-color) !important;
+}
+
+[class*="folderGroupBackground"],
+[class*="folderIconWrapper"] {
+  background-color: var(--folder-background-color) !important;
+  border-radius: 12px;
+}
+
+/* ===== DAY DIVIDER ===== */
+
+[class*="divider_"][class*="hasContent"] [class*="content_"] {
+  color: var(--main-theme-color);
+  background: transparent;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+[class*="divider_"][class*="hasContent"] span[class*="line"] {
+  border-color: rgba(212, 184, 150, 0.12) !important;
+}
+
+/* ===== LINKS ===== */
+
+[class*="anchor_"],
+[class*="messageContent"] a {
+  color: var(--skin-light) !important;
+  transition: color 0.15s ease;
+}
+
+[class*="anchor_"]:hover,
+[class*="messageContent"] a:hover {
+  color: #fff !important;
+}
+
+/* ===== TOOLTIP ===== */
+
+[class*="tooltip_"][class*="tooltipTop"],
+[class*="tooltip_"][class*="tooltipBottom"],
+[class*="tooltip_"][class*="tooltipRight"],
+[class*="tooltip_"][class*="tooltipLeft"] {
+  background-color: rgba(40, 38, 36, 0.95) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 184, 150, 0.1);
+}
+
+[class*="tooltipPointer"] {
+  border-top-color: rgba(40, 38, 36, 0.95) !important;
+}
+
+/* ===== MODAL / DIALOG BACKDROP ===== */
+
+[class*="backdrop_"] {
+  background-color: rgba(25, 23, 22, 0.7) !important;
+}
+
+/* ===== SEARCH BAR ===== */
+
+[class*="searchBar_"] [class*="searchBarComponent"] {
+  background-color: rgba(40, 38, 36, 0.5) !important;
+  border: 1px solid rgba(212, 184, 150, 0.08);
+  backdrop-filter: blur(5px);
+}
+
+/* ===== TYPING INDICATOR ===== */
+
+[class*="typing_"] {
+  background: transparent !important;
+}
+
+/* ===== SUBTLE GLOW ON ACTIVE SERVER ===== */
+
+[class*="pill_"][class*="wrapper_"] [class*="item_"][style*="height: 40px"],
+[class*="pill_"][class*="wrapper_"] [class*="item_"][style*="height: 20px"] {
+  background-color: var(--main-theme-color) !important;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 6px rgba(212, 184, 150, 0.3);
 }
