@@ -77,34 +77,6 @@
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* ===== USER POPOUT (Small) ===== */
-
-[class*="userProfileOuter"] {
-  background-image: url(https://i.pinimg.com/webp85/1200x/4e/48/8a/4e488ae1087afcbfe00f8320dc450c08.webp) !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-[class*="userProfileOuter"] > [class*="userProfileInner"] {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
-/* ===== USER POPOUT (Big / Full Profile) ===== */
-
-[class*="userProfileModal"],
-[class*="fullProfile"] {
-  background-image: url(https://i.pinimg.com/originals/c1/d1/22/c1d122c91ac1a85f475641a9ddd524c3.gif) !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-[class*="userProfileModal"] > div,
-[class*="fullProfile"] > div {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
 /* ===== CHANNEL TEXT ===== */
 
 [class*="channelName"] {
