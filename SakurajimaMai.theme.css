@@ -47,8 +47,8 @@
 .theme-amoled,
 [class*="theme-"],
 [data-theme],
-[class*="custom-theme-background"],
-[class*="client-themes-"] {
+#app-mount[class*="custom-theme-background"],
+#app-mount [class*="client-themes-"] {
   /* Discord Default & Visual Refresh Background Variables */
   --background-primary: transparent !important;
   --background-secondary: transparent !important;
@@ -118,11 +118,14 @@
   background-image: none !important;
 }
 
-/* Neutralize Nitro Theme Gradients layered on root containers */
-[class*="custom-theme-background"],
-[class*="client-themes-"],
-[style*="--custom-theme-background"],
-[style*="--client-themes-"] {
+/* Neutralize Nitro Theme Gradients layered on root client containers only (Never touch user popouts/modals) */
+#app-mount [class*="client-themes-"]:not([class*="user-profile"]):not([class*="userPopout"]):not([class*="outer_"]):not([class*="modal"]):not([class*="menu"]),
+#app-mount > [class*="custom-theme-background"],
+body[class*="custom-theme-background"],
+[class*="appMount_"][class*="custom-theme-background"],
+[class*="app_"][class*="custom-theme-background"]:not([class*="user-profile"]):not([class*="outer_"]),
+[class*="bg_"][class*="custom-theme-background"],
+[class*="layers_"][class*="custom-theme-background"] {
   background: transparent !important;
   background-image: none !important;
 }
@@ -294,12 +297,18 @@ div[class*="layer"] > [class*="menu"] {
 
 /* 2. Small User Account Popout & Profile Cards - 100% Solid Opaque (No Bleed, No Transparent Glass) */
 /* Reset outer positioning/animator containers to prevent black square wrapper */
+[class*="layerContainer_"],
 [class*="layerContainer"],
 [class*="layerContainer"] > [class*="layer"],
-[class*="layerContainer"] [class*="animatorTop"],
-[class*="layerContainer"] [class*="animatorBottom"],
-[class*="layerContainer"] [class*="animatorLeft"],
-[class*="layerContainer"] [class*="animatorRight"] {
+[class*="layer_"] > [class*="animatorTop"],
+[class*="layer_"] > [class*="animatorBottom"],
+[class*="layer_"] > [class*="animatorLeft"],
+[class*="layer_"] > [class*="animatorRight"],
+[class*="animatorTop_"],
+[class*="animatorBottom_"],
+[class*="animatorLeft_"],
+[class*="animatorRight_"],
+[class*="accountProfilePopoutWrapper"] {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
@@ -307,7 +316,11 @@ div[class*="layer"] > [class*="menu"] {
 }
 
 /* The actual User Profile Popout Card (Account, BiteSize, UserPopout, Profiles) */
-[class*="accountProfilePopoutWrapper"],
+.user-profile-popout,
+[class*="user-profile-popout"],
+div[class*="outer_"][class*="user-profile-popout"],
+div[class*="outer_"][class*="custom-user-profile-theme"],
+div[class*="themeContainer_"][class*="user-profile-popout"],
 [class*="accountProfilePopoutWrapper"] > div,
 [class*="accountProfileCard"],
 [class*="accountProfilePopout"],
@@ -318,10 +331,19 @@ div[class*="layer"] > [class*="menu"] {
 div[class*="userProfileModalOuter"] {
   --profile-gradient-primary-color: #141218 !important;
   --profile-gradient-secondary-color: #141218 !important;
+  --profile-gradient-overlay-color: transparent !important;
+  --profile-gradient-button-color: #201e2a !important;
+  --profile-gradient-modal-background-color: #181622 !important;
   --profile-body-background-color: #181622 !important;
   --profile-body-background-hover: #221f2c !important;
   --profile-avatar-border-color: #141218 !important;
+  --custom-theme-base-color-light: #181622 !important;
+  --custom-theme-text-color-light: #f4f2f6 !important;
+  --custom-theme-base-color-dark: #141218 !important;
+  --custom-theme-text-color-dark: #f4f2f6 !important;
   --background-floating: #141218 !important;
+  --background-primary: #141218 !important;
+  --background-secondary: #181622 !important;
   --background-secondary-alt: #181622 !important;
   --background-tertiary: #141218 !important;
   --text-normal: #f4f2f6 !important;
@@ -333,6 +355,7 @@ div[class*="userProfileModalOuter"] {
   --interactive-active: #ffffff !important;
   background-color: #141218 !important;
   background: #141218 !important;
+  background-image: none !important;
   opacity: 1 !important;
   border: 1px solid rgba(168, 149, 214, 0.28) !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
@@ -341,7 +364,23 @@ div[class*="userProfileModalOuter"] {
   backdrop-filter: none !important;
 }
 
+/* Eliminate milky-white / gradient overlay pseudo-elements */
+.user-profile-popout::before,
+[class*="user-profile-popout"]::before,
+div[class*="outer_"][class*="user-profile-popout"]::before,
+div[class*="outer_"][class*="custom-user-profile-theme"]::before,
+[class*="user-profile-popout"] [class*="inner_"]::before,
+[class*="user-profile-popout"] [class*="overlay_"]::before,
+[class*="custom-user-profile-theme"]::before {
+  background: none !important;
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+}
+
 /* User Popout Inner Box & Overlay Background - 100% Solid Dark Surface */
+.user-profile-popout [class*="inner_"],
+[class*="user-profile-popout"] [class*="inner_"],
 [class*="userProfileInner"],
 [class*="userPopoutInner"],
 [class*="biteSizeInner"],
@@ -350,7 +389,9 @@ div[class*="userProfileModalOuter"] {
 [class*="profileBody"],
 [class*="biteSizeOverlayBackground"],
 [class*="userPopoutOverlayBackground"],
-[class*="body"][class*="userProfile"] {
+[class*="body"][class*="userProfile"],
+.user-profile-popout [class*="body_"],
+[class*="user-profile-popout"] [class*="body_"] {
   --profile-gradient-primary-color: #141218 !important;
   --profile-gradient-secondary-color: #141218 !important;
   --profile-body-background-color: #181622 !important;
@@ -366,11 +407,17 @@ div[class*="userProfileModalOuter"] {
 /* Preserve user custom photo banner */
 [class*="banner"][style*="background-image"],
 [class*="biteSizeBanner"][style*="background-image"],
-[class*="popoutBanner"][style*="background-image"] {
+[class*="popoutBanner"][style*="background-image"],
+.user-profile-popout [class*="banner_"],
+[class*="user-profile-popout"] [class*="banner_"] {
   background-color: transparent !important;
 }
 
 /* Custom Status Bubble inside User Popout */
+.user-profile-popout [class*="statusBubble"],
+.user-profile-popout [class*="statusBubbleOuter"],
+[class*="user-profile-popout"] [class*="statusBubble"],
+[class*="user-profile-popout"] [class*="statusBubbleOuter"],
 [class*="statusBubbleOuter"],
 [class*="statusBubble"] {
   background-color: #201e28 !important;
@@ -380,13 +427,20 @@ div[class*="userProfileModalOuter"] {
   border-radius: 10px !important;
 }
 
+.user-profile-popout [class*="statusBubble"] *,
+[class*="user-profile-popout"] [class*="statusBubble"] *,
+[class*="statusBubbleOuter"] *,
+[class*="statusBubble"] *,
 [class*="statusBubble"] [class*="statusText"],
 [class*="statusBubble"] span,
-[class*="statusBubble"] div {
+[class*="statusBubble"] div,
+[class*="statusBubble"] p {
   color: #f4f2f6 !important;
 }
 
 /* Action Button rows inside Small Popout (Edit Profile, DND, Switch Accounts, Clips...) */
+.user-profile-popout [class*="menu"],
+[class*="user-profile-popout"] [class*="menu"],
 [class*="accountProfileCard"] [class*="menu"],
 [class*="userPopout"] [class*="menu"],
 [class*="biteSize"] [class*="menu"],
@@ -397,6 +451,12 @@ div[class*="userProfileModalOuter"] {
   box-shadow: none !important;
 }
 
+.user-profile-popout [class*="item"],
+.user-profile-popout [role="menuitem"],
+.user-profile-popout [class*="item_"],
+[class*="user-profile-popout"] [class*="item"],
+[class*="user-profile-popout"] [role="menuitem"],
+[class*="user-profile-popout"] [class*="item_"],
 [class*="accountProfileCard"] [class*="item"],
 [class*="accountProfileCard"] [role="menuitem"],
 [class*="userPopout"] [class*="item"],
@@ -414,6 +474,12 @@ div[class*="userProfileModalOuter"] {
   transition: all 0.15s ease !important;
 }
 
+.user-profile-popout [class*="item"]:hover,
+.user-profile-popout [role="menuitem"]:hover,
+.user-profile-popout [class*="item_"]:hover,
+[class*="user-profile-popout"] [class*="item"]:hover,
+[class*="user-profile-popout"] [role="menuitem"]:hover,
+[class*="user-profile-popout"] [class*="item_"]:hover,
 [class*="accountProfileCard"] [class*="item"]:hover,
 [class*="accountProfileCard"] [role="menuitem"]:hover,
 [class*="userPopout"] [class*="item"]:hover,
@@ -426,6 +492,14 @@ div[class*="userProfileModalOuter"] {
   border-color: rgba(168, 149, 214, 0.35) !important;
 }
 
+.user-profile-popout [class*="label"],
+.user-profile-popout [role="menuitem"] span,
+.user-profile-popout [role="menuitem"] div,
+.user-profile-popout [class*="label_"],
+[class*="user-profile-popout"] [class*="label"],
+[class*="user-profile-popout"] [role="menuitem"] span,
+[class*="user-profile-popout"] [role="menuitem"] div,
+[class*="user-profile-popout"] [class*="label_"],
 [class*="accountProfileCard"] [class*="label"],
 [class*="accountProfileCard"] [role="menuitem"] span,
 [class*="accountProfileCard"] [role="menuitem"] div,
@@ -441,6 +515,10 @@ div[class*="userProfileModalOuter"] {
   font-weight: 500 !important;
 }
 
+.user-profile-popout [class*="item"]:hover [class*="label"],
+.user-profile-popout [role="menuitem"]:hover span,
+[class*="user-profile-popout"] [class*="item"]:hover [class*="label"],
+[class*="user-profile-popout"] [role="menuitem"]:hover span,
 [class*="accountProfileCard"] [class*="item"]:hover [class*="label"],
 [class*="userPopout"] [class*="item"]:hover [class*="label"],
 [class*="biteSize"] [class*="item"]:hover [class*="label"],
@@ -448,6 +526,10 @@ div[class*="userProfileModalOuter"] {
   color: #ffffff !important;
 }
 
+.user-profile-popout [class*="item"] svg,
+.user-profile-popout [role="menuitem"] svg,
+[class*="user-profile-popout"] [class*="item"] svg,
+[class*="user-profile-popout"] [role="menuitem"] svg,
 [class*="accountProfileCard"] [class*="item"] svg,
 [class*="userPopout"] [class*="item"] svg,
 [class*="biteSize"] [class*="item"] svg,
@@ -456,6 +538,17 @@ div[class*="userProfileModalOuter"] {
 }
 
 /* Username, Display Name, Discriminator, Badges & Bio text */
+.user-profile-popout [class*="userTag"],
+.user-profile-popout [class*="nickname"],
+.user-profile-popout [class*="username"],
+.user-profile-popout [class*="headerTag"],
+.user-profile-popout [class*="userTag_"],
+.user-profile-popout [class*="nickname_"],
+.user-profile-popout [class*="username_"],
+[class*="user-profile-popout"] [class*="userTag"],
+[class*="user-profile-popout"] [class*="nickname"],
+[class*="user-profile-popout"] [class*="username"],
+[class*="user-profile-popout"] [class*="headerTag"],
 [class*="accountProfileCard"] [class*="userTag"],
 [class*="accountProfileCard"] [class*="nickname"],
 [class*="accountProfileCard"] [class*="username"],
@@ -473,6 +566,10 @@ div[class*="userProfileModalOuter"] {
   font-weight: 600 !important;
 }
 
+.user-profile-popout [class*="discriminator"],
+.user-profile-popout [class*="userTagDiscriminator"],
+[class*="user-profile-popout"] [class*="discriminator"],
+[class*="user-profile-popout"] [class*="userTagDiscriminator"],
 [class*="accountProfileCard"] [class*="discriminator"],
 [class*="accountProfileCard"] [class*="userTagDiscriminator"],
 [class*="userPopout"] [class*="discriminator"],
@@ -483,6 +580,26 @@ div[class*="userProfileModalOuter"] {
   color: #a895d6 !important;
 }
 
+.user-profile-popout [class*="descriptionClamp"],
+.user-profile-popout [class*="bio"],
+.user-profile-popout [class*="customStatus"],
+.user-profile-popout [class*="eyebrow"],
+.user-profile-popout h1,
+.user-profile-popout h2,
+.user-profile-popout h3,
+.user-profile-popout h4,
+.user-profile-popout h5,
+.user-profile-popout p,
+[class*="user-profile-popout"] [class*="descriptionClamp"],
+[class*="user-profile-popout"] [class*="bio"],
+[class*="user-profile-popout"] [class*="customStatus"],
+[class*="user-profile-popout"] [class*="eyebrow"],
+[class*="user-profile-popout"] h1,
+[class*="user-profile-popout"] h2,
+[class*="user-profile-popout"] h3,
+[class*="user-profile-popout"] h4,
+[class*="user-profile-popout"] h5,
+[class*="user-profile-popout"] p,
 [class*="accountProfileCard"] [class*="descriptionClamp"],
 [class*="accountProfileCard"] [class*="bio"],
 [class*="accountProfileCard"] [class*="customStatus"],
@@ -502,6 +619,8 @@ div[class*="userProfileModalOuter"] {
   color: #e0dce8 !important;
 }
 
+.user-profile-popout a,
+[class*="user-profile-popout"] a,
 [class*="accountProfileCard"] a,
 [class*="userPopout"] a,
 [class*="biteSize"] a {
@@ -509,6 +628,8 @@ div[class*="userProfileModalOuter"] {
 }
 
 /* Activity & Game Collection section inside Popout */
+.user-profile-popout [class*="activity"],
+[class*="user-profile-popout"] [class*="activity"],
 [class*="accountProfileCard"] [class*="activity"],
 [class*="userPopout"] [class*="activity"],
 [class*="biteSize"] [class*="activity"],
@@ -519,13 +640,26 @@ div[class*="userProfileModalOuter"] {
 }
 
 /* 3. Large User Profile Modal (Full Profile Modal) - 100% Solid Opaque */
+.user-profile-modal,
+[class*="user-profile-modal"],
+div[class*="outer_"][class*="user-profile-modal"],
+div[class*="themeContainer_"][class*="user-profile-modal"],
 [class*="userProfileModal"],
 [class*="root"][class*="userProfileModal"] {
   --profile-gradient-primary-color: #141218 !important;
   --profile-gradient-secondary-color: #141218 !important;
+  --profile-gradient-overlay-color: transparent !important;
+  --profile-gradient-button-color: #201e2a !important;
+  --profile-gradient-modal-background-color: #181622 !important;
   --profile-body-background-color: #181622 !important;
+  --profile-body-background-hover: #221f2c !important;
+  --custom-theme-base-color-light: #181622 !important;
+  --custom-theme-text-color-light: #f4f2f6 !important;
+  --custom-theme-base-color-dark: #141218 !important;
+  --custom-theme-text-color-dark: #f4f2f6 !important;
   background-color: #141218 !important;
   background: #141218 !important;
+  background-image: none !important;
   opacity: 1 !important;
   border: 1px solid rgba(168, 149, 214, 0.28) !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95) !important;
@@ -533,6 +667,18 @@ div[class*="userProfileModalOuter"] {
   backdrop-filter: none !important;
 }
 
+.user-profile-modal::before,
+[class*="user-profile-modal"]::before {
+  background: none !important;
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+}
+
+.user-profile-modal [class*="inner_"],
+[class*="user-profile-modal"] [class*="inner_"],
+.user-profile-modal [class*="body_"],
+[class*="user-profile-modal"] [class*="body_"],
 [class*="userProfileModal"] [class*="overlayBackground"] {
   background-color: #181620 !important;
   background: #181620 !important;
@@ -681,7 +827,9 @@ code.inline {
 
 /* ===== TOOLTIPS ===== */
 
+[class*="tooltip"],
 [class*="tooltip_"],
+[class*="tooltipPrimary"],
 [class*="tooltipPrimary_"] {
   --tooltip-text-color: #f4f2f6 !important;
   --text-normal: #f4f2f6 !important;
@@ -695,6 +843,8 @@ code.inline {
   color: #f4f2f6 !important;
 }
 
+[class*="tooltip"] *,
+[class*="tooltipContent"],
 [class*="tooltipContent_"],
 [class*="tooltip_"] [class*="tooltipContent_"],
 [class*="tooltip_"] [class*="text-"],
