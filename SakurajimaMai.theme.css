@@ -71,6 +71,23 @@
   --bg-mod-subtle: rgba(168, 149, 214, 0.14) !important;
   --bg-backdrop: rgba(12, 10, 16, 0.75) !important;
 
+  /* High-Contrast Text & Icon Tokens (Immune to Light Mode black text) */
+  --text-normal: #f4f2f6 !important;
+  --text-muted: #a8a8b4 !important;
+  --header-primary: #ffffff !important;
+  --header-secondary: #d8d4e2 !important;
+  --interactive-normal: #d0cce0 !important;
+  --interactive-hover: #ffffff !important;
+  --interactive-active: #ffffff !important;
+  --interactive-muted: #6e6b7b !important;
+  --channels-default: #a8a8b4 !important;
+
+  /* Interaction Hover Modifiers (No white flash/box in Light mode) */
+  --background-modifier-hover: rgba(168, 149, 214, 0.12) !important;
+  --background-modifier-active: rgba(168, 149, 214, 0.2) !important;
+  --background-modifier-selected: rgba(168, 149, 214, 0.22) !important;
+  --background-modifier-accent: rgba(168, 149, 214, 0.2) !important;
+
   /* Discord Nitro Client Themes Gradient Neutralization */
   --custom-theme-background: transparent !important;
   --client-themes-background: transparent !important;
