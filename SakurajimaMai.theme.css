@@ -233,11 +233,10 @@ nav[class*="sidebar_"] {
    ========================================================================== */
 
 /* 1. Context Menus, Submenus, & Switch Accounts Flyout - 100% Solid Opaque */
-[class*="menu_"][role="menu"],
-[class*="menu_"][role="listbox"],
-[class*="submenu_"][role="menu"],
-[class*="accountProfilePopout_"],
-div[class*="layer_"] > [class*="menu_"] {
+[class*="menu"][role="menu"],
+[class*="menu"][role="listbox"],
+[class*="submenu"][role="menu"],
+div[class*="layer"] > [class*="menu"] {
   background-color: #141218 !important;
   background: #141218 !important;
   opacity: 1 !important;
@@ -248,88 +247,129 @@ div[class*="layer_"] > [class*="menu_"] {
 }
 
 /* Force ALL text in menus & submenus to be bright, crisp, and high-contrast */
-[class*="menu_"] [class*="label_"],
-[class*="menu_"] [class*="accountRowLabel_"],
-[class*="menu_"] [class*="username_"],
-[class*="menu_"] [class*="text-"],
-[class*="menu_"] [class*="item_"] [class*="labelContainer_"],
-[class*="menu_"] [role="menuitem"] span,
-[class*="menu_"] [role="menuitem"] div {
+[class*="menu"] [class*="label"],
+[class*="menu"] [class*="accountRowLabel"],
+[class*="menu"] [class*="username"],
+[class*="menu"] [class*="text-"],
+[class*="menu"] [class*="item"] [class*="labelContainer"],
+[class*="menu"] [role="menuitem"] span,
+[class*="menu"] [role="menuitem"] div {
   color: #f4f2f6 !important;
   font-weight: 500 !important;
 }
 
-/* Subtext / Muted text inside menus (e.g. secondary account handle) */
-[class*="menu_"] [class*="subtext_"],
-[class*="menu_"] [class*="hint_"] {
+/* Subtext / Muted text inside menus */
+[class*="menu"] [class*="subtext"],
+[class*="menu"] [class*="hint"] {
   color: #a8a8b4 !important;
 }
 
 /* Menu Items Hover / Focused State */
-[class*="menu_"] [class*="item_"]:hover,
-[class*="menu_"] [class*="item_"][class*="focused_"],
-[class*="menu_"] [class*="accountRow_"]:hover {
+[class*="menu"] [class*="item"]:hover,
+[class*="menu"] [class*="item"][class*="focused"],
+[class*="menu"] [class*="accountRow"]:hover {
   background-color: rgba(168, 149, 214, 0.24) !important;
   border-radius: 8px;
 }
 
-[class*="menu_"] [class*="item_"]:hover [class*="label_"],
-[class*="menu_"] [class*="item_"][class*="focused_"] [class*="label_"],
-[class*="menu_"] [class*="accountRow_"]:hover [class*="accountRowLabel_"] {
+[class*="menu"] [class*="item"]:hover [class*="label"],
+[class*="menu"] [class*="item"][class*="focused"] [class*="label"],
+[class*="menu"] [class*="accountRow"]:hover [class*="accountRowLabel"] {
   color: #ffffff !important;
   text-shadow: 0 0 8px rgba(168, 149, 214, 0.6);
 }
 
 /* Icons inside menus */
-[class*="menu_"] [class*="icon_"],
-[class*="menu_"] svg {
+[class*="menu"] [class*="icon"],
+[class*="menu"] svg {
   color: #a895d6 !important;
 }
 
 /* Menu separators & dividers */
-[class*="menu_"] [class*="separator_"],
-[class*="menu_"] [class*="divider_"] {
+[class*="menu"] [class*="separator"],
+[class*="menu"] [class*="divider"] {
   border-bottom: 1px solid rgba(168, 149, 214, 0.18) !important;
   margin: 6px 8px;
 }
 
-/* 2. Small User Account Popout (Bottom-Left Avatar Click) - Clean Rounded Card (No Outer Black Box) */
-/* Reset outer layer animator containers to prevent any black square wrapper box */
-[class*="layerContainer_"],
-[class*="layerContainer_"] [class*="layer_"],
-[class*="layerContainer_"] [class*="animatorTop_"],
-[class*="layerContainer_"] [class*="animatorBottom_"] {
+/* 2. Small User Account Popout & Profile Cards - 100% Solid Opaque (No Bleed, No Transparent Glass) */
+/* Reset outer positioning/animator containers to prevent black square wrapper */
+[class*="layerContainer"],
+[class*="layerContainer"] > [class*="layer"],
+[class*="layerContainer"] [class*="animatorTop"],
+[class*="layerContainer"] [class*="animatorBottom"],
+[class*="accountProfilePopoutWrapper"] {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* The actual User Profile Popout Card */
+/* The actual User Profile Popout Card (Account, BiteSize, UserPopout, Profiles) */
+[class*="accountProfileCard"],
+[class*="accountProfilePopout"],
+[class*="userPopout"],
+[class*="biteSizeOuter"],
+[class*="biteSize"]:not([class*="biteSizeInner"]),
 [class*="userProfileOuter"],
-[class*="userPopoutOuter_"],
-[class*="biteSize_"][class*="userProfile_"],
-[class*="userProfileOuterThemed_"],
-[class*="userProfileOuterUnthemed_"],
-[class*="accountProfilePopout_"],
-[class*="accountProfileCard_"] {
+div[class*="userProfileModalOuter"] {
   --profile-gradient-primary-color: #141218 !important;
   --profile-gradient-secondary-color: #141218 !important;
   --profile-body-background-color: #181622 !important;
   --profile-body-background-hover: #221f2c !important;
+  --profile-avatar-border-color: #141218 !important;
+  --background-floating: #141218 !important;
+  --background-secondary-alt: #181622 !important;
+  --background-tertiary: #141218 !important;
+  --text-normal: #f4f2f6 !important;
+  --text-muted: #a8a8b4 !important;
+  --header-primary: #ffffff !important;
+  --header-secondary: #d0cce0 !important;
+  --interactive-normal: #d0cce0 !important;
+  --interactive-hover: #ffffff !important;
+  --interactive-active: #ffffff !important;
   background-color: #141218 !important;
   background: #141218 !important;
   opacity: 1 !important;
   border: 1px solid rgba(168, 149, 214, 0.28) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
   border-radius: 16px !important;
-  overflow: hidden !important; /* Clips all corners cleanly so no box bleeds outside */
+  overflow: hidden !important;
   backdrop-filter: none !important;
 }
 
+/* User Popout Inner Box & Overlay Background - 100% Solid Dark Surface */
+[class*="userProfileInner"],
+[class*="userPopoutInner"],
+[class*="biteSizeInner"],
+[class*="userProfileThemeContainer"],
+[class*="overlayBackground"],
+[class*="profileBody"],
+[class*="biteSizeOverlayBackground"],
+[class*="userPopoutOverlayBackground"],
+[class*="body"][class*="userProfile"] {
+  --profile-gradient-primary-color: #141218 !important;
+  --profile-gradient-secondary-color: #141218 !important;
+  --profile-body-background-color: #181622 !important;
+  --profile-body-background-hover: #221f2c !important;
+  background-color: #181622 !important;
+  background: #181622 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.14) !important;
+  border-radius: 12px !important;
+  backdrop-filter: none !important;
+}
+
+/* Preserve user custom photo banner */
+[class*="banner"][style*="background-image"],
+[class*="biteSizeBanner"][style*="background-image"],
+[class*="popoutBanner"][style*="background-image"] {
+  background-color: transparent !important;
+}
+
 /* Custom Status Bubble inside User Popout */
-[class*="statusBubbleOuter_"],
-[class*="statusBubble_"] {
+[class*="statusBubbleOuter"],
+[class*="statusBubble"] {
   background-color: #201e28 !important;
   background: #201e28 !important;
   opacity: 1 !important;
@@ -337,96 +377,150 @@ div[class*="layer_"] > [class*="menu_"] {
   border-radius: 10px !important;
 }
 
-[class*="statusBubble_"] [class*="statusText_"],
-[class*="statusBubble_"] span {
+[class*="statusBubble"] [class*="statusText"],
+[class*="statusBubble"] span,
+[class*="statusBubble"] div {
   color: #f4f2f6 !important;
 }
 
-/* User Popout Inner Box (Bio, Badges, Roles) - Solid Dark Surface */
-[class*="userProfileInner"],
-[class*="userPopoutInner_"],
-[class*="biteSizeInner_"],
-[class*="biteSizeInnerThemed_"],
-[class*="overlayBackground_"],
-[class*="profileBody_"],
-[class*="body_"][class*="userProfile_"] {
-  background-color: #181622 !important;
-  background: #181622 !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.15) !important;
-  border-radius: 12px !important;
-}
-
 /* Action Button rows inside Small Popout (Edit Profile, DND, Switch Accounts, Clips...) */
-[class*="biteSize_"] [class*="menu_"],
-[class*="userProfileOuter"] [class*="menu_"],
-[class*="userPopoutOuter_"] [class*="menu_"],
-[class*="accountProfilePopout_"] [class*="menu_"] {
+[class*="accountProfileCard"] [class*="menu"],
+[class*="userPopout"] [class*="menu"],
+[class*="biteSize"] [class*="menu"],
+[class*="userProfileOuter"] [class*="menu"] {
   background-color: transparent !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-[class*="biteSize_"] [class*="menu_"] [class*="item_"],
-[class*="userProfileOuter"] [class*="menu_"] [class*="item_"],
-[class*="userPopoutOuter_"] [class*="menu_"] [class*="item_"],
-[class*="accountProfilePopout_"] [class*="menu_"] [class*="item_"],
-[class*="biteSize_"] [class*="item_"],
-[class*="userProfileOuter"] [class*="item_"] {
+[class*="accountProfileCard"] [class*="item"],
+[class*="accountProfileCard"] [role="menuitem"],
+[class*="userPopout"] [class*="item"],
+[class*="userPopout"] [role="menuitem"],
+[class*="biteSize"] [class*="item"],
+[class*="biteSize"] [role="menuitem"],
+[class*="userProfileOuter"] [class*="item"],
+[class*="userProfileOuter"] [role="menuitem"] {
   background-color: #201e2a !important;
   background: #201e2a !important;
   opacity: 1 !important;
   margin: 3px 6px !important;
-  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  border: 1px solid rgba(168, 149, 214, 0.14) !important;
   border-radius: 8px !important;
+  transition: all 0.15s ease !important;
 }
 
-[class*="biteSize_"] [class*="menu_"] [class*="item_"]:hover,
-[class*="userProfileOuter"] [class*="menu_"] [class*="item_"]:hover,
-[class*="userPopoutOuter_"] [class*="menu_"] [class*="item_"]:hover,
-[class*="accountProfilePopout_"] [class*="menu_"] [class*="item_"]:hover,
-[class*="biteSize_"] [class*="item_"]:hover,
-[class*="userProfileOuter"] [class*="item_"]:hover {
+[class*="accountProfileCard"] [class*="item"]:hover,
+[class*="accountProfileCard"] [role="menuitem"]:hover,
+[class*="userPopout"] [class*="item"]:hover,
+[class*="userPopout"] [role="menuitem"]:hover,
+[class*="biteSize"] [class*="item"]:hover,
+[class*="biteSize"] [role="menuitem"]:hover,
+[class*="userProfileOuter"] [class*="item"]:hover {
   background-color: rgba(168, 149, 214, 0.22) !important;
   background: rgba(168, 149, 214, 0.22) !important;
   border-color: rgba(168, 149, 214, 0.35) !important;
 }
 
-[class*="biteSize_"] [class*="menu_"] [class*="label_"],
-[class*="userProfileOuter"] [class*="menu_"] [class*="label_"],
-[class*="userPopoutOuter_"] [class*="menu_"] [class*="label_"],
-[class*="accountProfilePopout_"] [class*="menu_"] [class*="label_"],
-[class*="biteSize_"] [class*="label_"],
-[class*="userProfileOuter"] [class*="label_"],
-[class*="biteSize_"] [class*="menu_"] svg,
-[class*="userProfileOuter"] [class*="menu_"] svg {
+[class*="accountProfileCard"] [class*="label"],
+[class*="accountProfileCard"] [role="menuitem"] span,
+[class*="accountProfileCard"] [role="menuitem"] div,
+[class*="userPopout"] [class*="label"],
+[class*="userPopout"] [role="menuitem"] span,
+[class*="userPopout"] [role="menuitem"] div,
+[class*="biteSize"] [class*="label"],
+[class*="biteSize"] [role="menuitem"] span,
+[class*="biteSize"] [role="menuitem"] div,
+[class*="userProfileOuter"] [class*="label"],
+[class*="userProfileOuter"] [role="menuitem"] span {
   color: #f4f2f6 !important;
   font-weight: 500 !important;
 }
 
-/* Username & Discriminator / Handle inside Popout */
-[class*="userTag_"],
-[class*="userProfile_"] [class*="headerTag_"] {
+[class*="accountProfileCard"] [class*="item"]:hover [class*="label"],
+[class*="userPopout"] [class*="item"]:hover [class*="label"],
+[class*="biteSize"] [class*="item"]:hover [class*="label"],
+[class*="userProfileOuter"] [class*="item"]:hover [class*="label"] {
   color: #ffffff !important;
 }
 
-[class*="userProfile_"] [class*="discriminator_"],
-[class*="userProfile_"] [class*="userTagDiscriminator_"] {
+[class*="accountProfileCard"] [class*="item"] svg,
+[class*="userPopout"] [class*="item"] svg,
+[class*="biteSize"] [class*="item"] svg,
+[class*="userProfileOuter"] [class*="item"] svg {
   color: #a895d6 !important;
 }
 
-/* Bio text & headers inside Popout */
-[class*="userProfile_"] [class*="descriptionClamp_"],
-[class*="userProfile_"] [class*="bio_"],
-[class*="userProfile_"] [class*="customStatus_"],
-[class*="userProfile_"] p {
+/* Username, Display Name, Discriminator, Badges & Bio text */
+[class*="accountProfileCard"] [class*="userTag"],
+[class*="accountProfileCard"] [class*="nickname"],
+[class*="accountProfileCard"] [class*="username"],
+[class*="accountProfileCard"] [class*="headerTag"],
+[class*="userPopout"] [class*="userTag"],
+[class*="userPopout"] [class*="nickname"],
+[class*="userPopout"] [class*="username"],
+[class*="userPopout"] [class*="headerTag"],
+[class*="biteSize"] [class*="userTag"],
+[class*="biteSize"] [class*="nickname"],
+[class*="biteSize"] [class*="username"],
+[class*="biteSize"] [class*="headerTag"],
+[class*="userProfile"] [class*="headerTag"] {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+[class*="accountProfileCard"] [class*="discriminator"],
+[class*="accountProfileCard"] [class*="userTagDiscriminator"],
+[class*="userPopout"] [class*="discriminator"],
+[class*="userPopout"] [class*="userTagDiscriminator"],
+[class*="biteSize"] [class*="discriminator"],
+[class*="biteSize"] [class*="userTagDiscriminator"],
+[class*="userProfile"] [class*="discriminator"] {
+  color: #a895d6 !important;
+}
+
+[class*="accountProfileCard"] [class*="descriptionClamp"],
+[class*="accountProfileCard"] [class*="bio"],
+[class*="accountProfileCard"] [class*="customStatus"],
+[class*="accountProfileCard"] p,
+[class*="userPopout"] [class*="descriptionClamp"],
+[class*="userPopout"] [class*="bio"],
+[class*="userPopout"] [class*="customStatus"],
+[class*="userPopout"] p,
+[class*="biteSize"] [class*="descriptionClamp"],
+[class*="biteSize"] [class*="bio"],
+[class*="biteSize"] [class*="customStatus"],
+[class*="biteSize"] p,
+[class*="userProfile"] [class*="descriptionClamp"],
+[class*="userProfile"] [class*="bio"],
+[class*="userProfile"] [class*="customStatus"],
+[class*="userProfile"] p {
   color: #e0dce8 !important;
 }
 
+[class*="accountProfileCard"] a,
+[class*="userPopout"] a,
+[class*="biteSize"] a {
+  color: #e0b494 !important;
+}
+
+/* Activity & Game Collection section inside Popout */
+[class*="accountProfileCard"] [class*="activity"],
+[class*="userPopout"] [class*="activity"],
+[class*="biteSize"] [class*="activity"],
+[class*="userProfileOuter"] [class*="activity"] {
+  background-color: #1e1b26 !important;
+  border: 1px solid rgba(168, 149, 214, 0.15) !important;
+  border-radius: 8px !important;
+}
+
 /* 3. Large User Profile Modal (Full Profile Modal) - 100% Solid Opaque */
-[class*="userProfileModal_"],
-[class*="root_"][class*="userProfileModal_"] {
+[class*="userProfileModal"],
+[class*="root"][class*="userProfileModal"] {
+  --profile-gradient-primary-color: #141218 !important;
+  --profile-gradient-secondary-color: #141218 !important;
+  --profile-body-background-color: #181622 !important;
   background-color: #141218 !important;
   background: #141218 !important;
   opacity: 1 !important;
@@ -436,7 +530,7 @@ div[class*="layer_"] > [class*="menu_"] {
   backdrop-filter: none !important;
 }
 
-[class*="userProfileModal_"] [class*="overlayBackground_"] {
+[class*="userProfileModal"] [class*="overlayBackground"] {
   background-color: #181620 !important;
   background: #181620 !important;
   opacity: 1 !important;
@@ -445,17 +539,17 @@ div[class*="layer_"] > [class*="menu_"] {
 }
 
 /* Tab Bar inside Full Profile (UserInfo, Mutual Servers, Mutual Friends) */
-[class*="tabBar_"][class*="top_"] [class*="tabBarItem_"] {
+[class*="tabBar"][class*="top"] [class*="tabBarItem"] {
   color: #a8a8b4 !important;
 }
 
-[class*="tabBar_"][class*="top_"] [class*="tabBarItem_"][class*="selected_"] {
+[class*="tabBar"][class*="top"] [class*="tabBarItem"][class*="selected"] {
   color: #ffffff !important;
   border-bottom: 2px solid #a895d6 !important;
 }
 
 /* Mutual Servers & Mutual Friends List rows */
-[class*="listRow_"]:hover {
+[class*="listRow"]:hover {
   background-color: rgba(168, 149, 214, 0.18) !important;
   border-radius: 8px;
 }
