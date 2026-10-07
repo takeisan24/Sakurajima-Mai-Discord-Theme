@@ -5,19 +5,19 @@
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism and custom styling.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
- * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/SakurajimaMai.theme.css
+ * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
  */
 
 @import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@master/build/v3/naat.v3.css");
 
 :root {
   /* Theme Background Image - Stored permanently in repository */
-  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/maisan.gif");
+  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif");
   --main-theme-color: #d39052;
   --theme-transparency: rgba(0, 0, 0, 0.6);
 
   /* Home Icon Image - Stored permanently in repository */
-  --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/home-icon.gif");
+  --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/home-icon.gif");
   --home-icon-image-position: center center;
   --home-icon-image-zoom: 100%;
 
