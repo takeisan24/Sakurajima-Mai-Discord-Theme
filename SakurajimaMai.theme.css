@@ -293,32 +293,37 @@ div[class*="layer_"] > [class*="menu_"] {
   margin: 6px 8px;
 }
 
-/* 2. Small User Account Popout (Bottom-Left Avatar Click) - 100% Solid Opaque */
-[class*="layerContainer_"] [role="dialog"],
-[class*="layerContainer_"] [class*="layer_"] > div,
-[class*="layerContainer_"] [class*="animatorTop_"] > div,
-[class*="layerContainer_"] [class*="animatorBottom_"] > div,
+/* 2. Small User Account Popout (Bottom-Left Avatar Click) - Clean Rounded Card (No Outer Black Box) */
+/* Reset outer layer animator containers to prevent any black square wrapper box */
+[class*="layerContainer_"],
+[class*="layerContainer_"] [class*="layer_"],
+[class*="layerContainer_"] [class*="animatorTop_"],
+[class*="layerContainer_"] [class*="animatorBottom_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* The actual User Profile Popout Card */
 [class*="userProfileOuter"],
 [class*="userPopoutOuter_"],
-[class*="userProfile_"],
-[class*="userPopout_"],
-[class*="userPanel_"],
-[class*="biteSize_"],
+[class*="biteSize_"][class*="userProfile_"],
+[class*="userProfileOuterThemed_"],
+[class*="userProfileOuterUnthemed_"],
 [class*="accountProfilePopout_"],
-[class*="accountProfileCard_"],
-[class*="profilePanel_"],
-div[class*="layer_"] > [class*="animatorTop_"] [class*="userProfile_"],
-div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
+[class*="accountProfileCard_"] {
   --profile-gradient-primary-color: #141218 !important;
   --profile-gradient-secondary-color: #141218 !important;
-  --profile-body-background-color: #181620 !important;
+  --profile-body-background-color: #181622 !important;
   --profile-body-background-hover: #221f2c !important;
   background-color: #141218 !important;
   background: #141218 !important;
   opacity: 1 !important;
   border: 1px solid rgba(168, 149, 214, 0.28) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
   border-radius: 16px !important;
+  overflow: hidden !important; /* Clips all corners cleanly so no box bleeds outside */
   backdrop-filter: none !important;
 }
 
@@ -345,8 +350,8 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 [class*="overlayBackground_"],
 [class*="profileBody_"],
 [class*="body_"][class*="userProfile_"] {
-  background-color: #181620 !important;
-  background: #181620 !important;
+  background-color: #181622 !important;
+  background: #181622 !important;
   opacity: 1 !important;
   border: 1px solid rgba(168, 149, 214, 0.15) !important;
   border-radius: 12px !important;
@@ -357,9 +362,8 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 [class*="userProfileOuter"] [class*="menu_"],
 [class*="userPopoutOuter_"] [class*="menu_"],
 [class*="accountProfilePopout_"] [class*="menu_"] {
-  background-color: #141218 !important;
-  background: #141218 !important;
-  opacity: 1 !important;
+  background-color: transparent !important;
+  background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -370,8 +374,8 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 [class*="accountProfilePopout_"] [class*="menu_"] [class*="item_"],
 [class*="biteSize_"] [class*="item_"],
 [class*="userProfileOuter"] [class*="item_"] {
-  background-color: #1c1a24 !important;
-  background: #1c1a24 !important;
+  background-color: #201e2a !important;
+  background: #201e2a !important;
   opacity: 1 !important;
   margin: 3px 6px !important;
   border: 1px solid rgba(168, 149, 214, 0.12) !important;
@@ -394,7 +398,9 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 [class*="userPopoutOuter_"] [class*="menu_"] [class*="label_"],
 [class*="accountProfilePopout_"] [class*="menu_"] [class*="label_"],
 [class*="biteSize_"] [class*="label_"],
-[class*="userProfileOuter"] [class*="label_"] {
+[class*="userProfileOuter"] [class*="label_"],
+[class*="biteSize_"] [class*="menu_"] svg,
+[class*="userProfileOuter"] [class*="menu_"] svg {
   color: #f4f2f6 !important;
   font-weight: 500 !important;
 }
