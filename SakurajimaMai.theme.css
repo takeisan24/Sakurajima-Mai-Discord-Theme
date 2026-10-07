@@ -1,8 +1,8 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 1.1.0
- * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, synchronized palette, and custom styling.
+ * @version 1.2.0
+ * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, synchronized palette, Nitro & Onyx overrides.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
@@ -34,6 +34,178 @@
   --server-listing-width: 72px;
   --unread-server-animation: none;
 }
+
+/* ==========================================================================
+   GLOBAL OVERRIDES FOR ONYX (MIDNIGHT), ASH (DARKER), DARK, LIGHT & NITRO
+   ========================================================================== */
+
+:root,
+.theme-dark,
+.theme-light,
+.theme-darker,
+.theme-midnight,
+.theme-amoled,
+[class*="theme-"],
+[data-theme],
+[class*="custom-theme-background"],
+[class*="client-themes-"] {
+  /* Discord Default & Visual Refresh Background Variables */
+  --background-primary: transparent !important;
+  --background-secondary: transparent !important;
+  --background-secondary-alt: transparent !important;
+  --background-tertiary: transparent !important;
+  --background-accent: transparent !important;
+  --background-floating: rgba(36, 34, 40, 0.88) !important;
+  --background-mobile-primary: transparent !important;
+  --background-mobile-secondary: transparent !important;
+  --home-background: transparent !important;
+  --channeltextarea-background: var(--message-box-transparency) !important;
+
+  /* Modern Discord Design Tokens */
+  --bg-base-primary: transparent !important;
+  --bg-base-secondary: transparent !important;
+  --bg-base-tertiary: transparent !important;
+  --bg-surface-raised: rgba(32, 30, 36, 0.45) !important;
+  --bg-surface-overlay: rgba(36, 34, 40, 0.88) !important;
+  --bg-mod-faint: rgba(48, 46, 52, 0.25) !important;
+  --bg-mod-subtle: rgba(48, 46, 52, 0.35) !important;
+  --bg-backdrop: rgba(24, 22, 28, 0.7) !important;
+
+  /* Discord Nitro Client Themes Gradient Neutralization */
+  --custom-theme-background: transparent !important;
+  --client-themes-background: transparent !important;
+  --theme-gradient-start: transparent !important;
+  --theme-gradient-end: transparent !important;
+}
+
+/* Force App Mount Background to respect our Theme Wallpaper */
+#app-mount,
+[class*="appMount_"] {
+  background: transparent !important;
+  background-image: var(--theme-background-image) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+
+[class*="app_"],
+[class*="layers_"],
+[class*="layer_"],
+[class*="base_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+[class*="bg_"] {
+  background: var(--theme-transparency) !important;
+  background-image: none !important;
+}
+
+/* Neutralize Nitro Theme Gradients layered on root containers */
+[class*="custom-theme-background"],
+[class*="client-themes-"],
+[style*="--custom-theme-background"],
+[style*="--client-themes-"] {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* ==========================================================================
+   SIDEBAR, CHANNELS, DMs & FRIENDS LIST
+   ========================================================================== */
+
+/* Sidebar & Channel List Container */
+[class*="sidebar_"],
+[class*="sidebar_"] > [class*="container_"],
+[class*="privateChannels_"],
+[class*="scroller_"][class*="privateChannels_"],
+nav[class*="privateChannels_"],
+nav[class*="sidebar_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Friends Page, DM Page & Main Scrollers */
+[class*="container_"][class*="themed_"],
+[class*="tabBody_"],
+[class*="tabContainer_"],
+[class*="peopleColumn_"],
+[class*="nowPlayingColumn_"],
+[class*="peopleList_"],
+[class*="scroller_"][class*="people_"],
+[class*="container_"][class*="people_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Title Bar & Top Navigation */
+[class*="title_"][class*="container_"],
+[class*="header_"][class*="container_"],
+[class*="themed_"][class*="header_"],
+[class*="chat_"] > [class*="title_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Main Chat Area & Member List */
+[class*="chat_"],
+[class*="chatContent_"],
+[class*="content_"][class*="chat_"],
+[class*="members_"],
+[class*="membersWrap_"],
+[class*="container_"][class*="members_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Active Now & Friend Activity Cards */
+[class*="itemCard_"],
+[class*="interactive_"][class*="card_"],
+[class*="outer_"][class*="padded_"] {
+  background-color: rgba(32, 30, 36, 0.45) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  border-radius: 10px;
+}
+
+[class*="itemCard_"]:hover {
+  background-color: rgba(48, 46, 52, 0.6) !important;
+  border-color: rgba(168, 149, 214, 0.3) !important;
+}
+
+/* Search Bars */
+[class*="searchBar_"] {
+  background-color: rgba(32, 30, 36, 0.5) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(168, 149, 214, 0.15);
+  border-radius: 8px;
+}
+
+/* Bottom Left User Account Panel & Nitro Profile Override */
+[class*="panels_"] {
+  background: var(--message-box-transparency) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 12px 12px 0 0;
+  border-top: 1px solid rgba(168, 149, 214, 0.15);
+}
+
+[class*="panels_"] > [class*="container_"],
+[class*="panels_"] [class*="avatarWrapper_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Neutralize Nitro custom profile banner covering bottom panel */
+[class*="panels_"] [class*="banner_"],
+[class*="panels_"] [class*="userProfileOuter"],
+[class*="panels_"] [class*="accountProfileCard_"] {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* ==========================================================================
+   POLISHED COMPONENTS & UI DETAILS
+   ========================================================================== */
 
 /* ===== SCROLLBAR ===== */
 
