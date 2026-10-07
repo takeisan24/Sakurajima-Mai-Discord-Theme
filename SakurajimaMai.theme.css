@@ -298,7 +298,8 @@ div[class*="layer"] > [class*="menu"] {
 [class*="layerContainer"] > [class*="layer"],
 [class*="layerContainer"] [class*="animatorTop"],
 [class*="layerContainer"] [class*="animatorBottom"],
-[class*="accountProfilePopoutWrapper"] {
+[class*="layerContainer"] [class*="animatorLeft"],
+[class*="layerContainer"] [class*="animatorRight"] {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
@@ -306,11 +307,13 @@ div[class*="layer"] > [class*="menu"] {
 }
 
 /* The actual User Profile Popout Card (Account, BiteSize, UserPopout, Profiles) */
+[class*="accountProfilePopoutWrapper"],
+[class*="accountProfilePopoutWrapper"] > div,
 [class*="accountProfileCard"],
 [class*="accountProfilePopout"],
 [class*="userPopout"],
 [class*="biteSizeOuter"],
-[class*="biteSize"]:not([class*="biteSizeInner"]),
+[class*="biteSize"],
 [class*="userProfileOuter"],
 div[class*="userProfileModalOuter"] {
   --profile-gradient-primary-color: #141218 !important;
