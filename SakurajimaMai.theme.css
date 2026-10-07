@@ -214,60 +214,150 @@ nav[class*="sidebar_"] {
 }
 
 /* ==========================================================================
-   POPOUTS, USER PROFILES, MODALS & MENUS (Solid, Deep Dark, Sharp & Legible)
+   COMPONENT 7: POPOUTS, FLYOUT MENUS & USER PROFILES (ISOLATED MODULE)
    ========================================================================== */
 
-/* User Profile Cards (Mini Popout & Full Modal) - Solid Dark Surface */
-[class*="userProfileOuter"],
-[class*="userProfileModal"],
-[class*="userPanel_"],
-[class*="accountProfileCard_"],
-[class*="popout_"][class*="userProfile_"],
-div[class*="layer_"] > [class*="animatorTop_"] [class*="userProfile_"],
-div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"],
-[class*="modal_"][class*="root_"],
-[class*="root_"][class*="small_"],
-[class*="root_"][class*="medium_"] {
-  background-color: #17151d !important;
-  background: #17151d !important;
+/* 1. Context Menus, Submenus, & Switch Accounts Flyout Container */
+[class*="menu_"][role="menu"],
+[class*="menu_"][role="listbox"],
+[class*="submenu_"][role="menu"],
+[class*="accountProfilePopout_"] {
+  background-color: #16141c !important;
+  background: #16141c !important;
   border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85) !important;
-  border-radius: 16px !important;
-  backdrop-filter: blur(24px) !important;
-}
-
-/* Popout Body, Inner Sections, Bio & Buttons */
-[class*="userProfileInner"],
-[class*="overlayBackground_"],
-[class*="body_"][class*="userProfile_"],
-[class*="section_"][class*="userProfile_"],
-[class*="profileBadges_"] {
-  background-color: rgba(26, 24, 32, 0.95) !important;
-  background: rgba(26, 24, 32, 0.95) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85) !important;
   border-radius: 12px !important;
 }
 
-/* Context Menu & Status Picker dropdown (Online, Idle, DND...) */
-[class*="menu_"][role="menu"],
-[class*="menu_"][role="listbox"],
-[class*="submenu_"][role="menu"] {
-  background-color: #1a1820 !important;
-  background: #1a1820 !important;
+/* Force ALL text in menus & submenus to be bright, crisp, and high-contrast */
+[class*="menu_"] [class*="label_"],
+[class*="menu_"] [class*="accountRowLabel_"],
+[class*="menu_"] [class*="username_"],
+[class*="menu_"] [class*="text-"],
+[class*="menu_"] [class*="item_"] [class*="labelContainer_"],
+[class*="menu_"] [role="menuitem"] span,
+[class*="menu_"] [role="menuitem"] div {
+  color: #f4f2f6 !important;
+  font-weight: 500;
+}
+
+/* Subtext / Muted text inside menus (e.g. secondary account handle) */
+[class*="menu_"] [class*="subtext_"],
+[class*="menu_"] [class*="hint_"] {
+  color: #a8a8b4 !important;
+}
+
+/* Menu Items Hover / Focused State */
+[class*="menu_"] [class*="item_"]:hover,
+[class*="menu_"] [class*="item_"][class*="focused_"],
+[class*="menu_"] [class*="accountRow_"]:hover {
+  background-color: rgba(168, 149, 214, 0.22) !important;
+  border-radius: 8px;
+}
+
+[class*="menu_"] [class*="item_"]:hover [class*="label_"],
+[class*="menu_"] [class*="item_"][class*="focused_"] [class*="label_"],
+[class*="menu_"] [class*="accountRow_"]:hover [class*="accountRowLabel_"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(168, 149, 214, 0.6);
+}
+
+/* Icons inside menus */
+[class*="menu_"] [class*="icon_"],
+[class*="menu_"] svg {
+  color: #a895d6 !important;
+}
+
+/* Menu separators & dividers */
+[class*="menu_"] [class*="separator_"],
+[class*="menu_"] [class*="divider_"] {
+  border-bottom: 1px solid rgba(168, 149, 214, 0.15) !important;
+  margin: 6px 8px;
+}
+
+/* 2. Small User Account Popout (Bottom-Left Avatar Click) */
+[class*="userProfileOuter"],
+[class*="userPanel_"],
+[class*="popout_"][class*="userProfile_"],
+div[class*="layer_"] > [class*="animatorTop_"] [class*="userProfile_"],
+div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
+  background-color: #16141c !important;
+  background: #16141c !important;
+  border: 1px solid rgba(168, 149, 214, 0.25) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+  border-radius: 16px !important;
+}
+
+/* Custom Status Bubble inside User Popout */
+[class*="statusBubbleOuter_"],
+[class*="statusBubble_"] {
+  background-color: rgba(26, 24, 34, 0.95) !important;
   border: 1px solid rgba(168, 149, 214, 0.2) !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
   border-radius: 10px !important;
 }
 
-/* Context Menu Items Hover */
-[class*="menu_"] [class*="item_"]:hover {
-  background-color: rgba(168, 149, 214, 0.18) !important;
+[class*="statusBubble_"] [class*="statusText_"],
+[class*="statusBubble_"] span {
   color: #f4f2f6 !important;
 }
 
-/* Status Picker Specific Menu Items */
-[class*="statusItem_"]:hover {
-  background-color: rgba(168, 149, 214, 0.18) !important;
+/* User Popout Inner Box (Bio, Badges, Roles) */
+[class*="userProfileInner"],
+[class*="overlayBackground_"],
+[class*="profileBody_"] {
+  background-color: rgba(22, 20, 28, 0.95) !important;
+  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  border-radius: 12px !important;
+}
+
+/* Username & Discriminator / Handle inside Popout */
+[class*="userTag_"],
+[class*="userProfile_"] [class*="headerTag_"] {
+  color: #ffffff !important;
+}
+
+[class*="userProfile_"] [class*="discriminator_"],
+[class*="userProfile_"] [class*="userTagDiscriminator_"] {
+  color: #a895d6 !important;
+}
+
+/* Bio text & headers inside Popout */
+[class*="userProfile_"] [class*="descriptionClamp_"],
+[class*="userProfile_"] [class*="bio_"],
+[class*="userProfile_"] [class*="customStatus_"],
+[class*="userProfile_"] p {
+  color: #e0dce8 !important;
+}
+
+/* 3. Large User Profile Modal (Full Profile Modal) */
+[class*="userProfileModal_"],
+[class*="root_"][class*="userProfileModal_"] {
+  background-color: #16141c !important;
+  border: 1px solid rgba(168, 149, 214, 0.25) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9) !important;
+  border-radius: 20px !important;
+}
+
+[class*="userProfileModal_"] [class*="overlayBackground_"] {
+  background-color: rgba(22, 20, 28, 0.95) !important;
+  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  border-radius: 14px !important;
+}
+
+/* Tab Bar inside Full Profile (UserInfo, Mutual Servers, Mutual Friends) */
+[class*="tabBar_"][class*="top_"] [class*="tabBarItem_"] {
+  color: #a8a8b4 !important;
+}
+
+[class*="tabBar_"][class*="top_"] [class*="tabBarItem_"][class*="selected_"] {
+  color: #ffffff !important;
+  border-bottom: 2px solid #a895d6 !important;
+}
+
+/* Mutual Servers & Mutual Friends List rows */
+[class*="listRow_"]:hover {
+  background-color: rgba(168, 149, 214, 0.15) !important;
+  border-radius: 8px;
 }
 
 /* ==========================================================================
