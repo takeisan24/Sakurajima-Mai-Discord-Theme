@@ -1,8 +1,8 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 1.0.0
- * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism and custom styling.
+ * @version 1.1.0
+ * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, synchronized palette, and custom styling.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
@@ -11,25 +11,27 @@
 @import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@master/build/v3/naat.v3.css");
 
 :root {
-  /* Theme Background Image - Stored permanently in repository */
+  /* ===== BACKGROUND & THEME COLORS ===== */
+  /* Main Background: Dark Slate Violet (#302e34) */
   --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif");
-  --main-theme-color: #d39052;
-  --theme-transparency: rgba(0, 0, 0, 0.6);
+  
+  /* Synchronized Palette: Dark Slate Violet + Amethyst Lavender + Blush Porcelain */
+  --theme-transparency: rgba(48, 46, 52, 0.65);
+  --message-box-transparency: rgba(32, 30, 36, 0.55);
 
-  /* Home Icon Image - Stored permanently in repository */
-  --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/home-icon.gif");
+  /* Primary Accent: Amethyst Lavender (#a895d6 - Mai's eyes & highlights) */
+  --main-theme-color: #a895d6;
+  
+  /* Secondary Accent: Blush Porcelain (#e0b494 - Skin warmth & blush) */
+  --secondary-accent-color: #e0b494;
+
+  /* Home Icon: Bunny Hairpin Barrette */
+  --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/bunny-hairpin.png");
   --home-icon-image-position: center center;
-  --home-icon-image-zoom: 100%;
+  --home-icon-image-zoom: 82%;
 
-  /*
-    Server Listing Width
-    Single Column:  72px
-    Double Column:  126px
-    Triple Column:  184px
-    Quad Column:    242px
-  */
+  /* Server Listing Width (Default 72px for single column) */
   --server-listing-width: 72px;
-  --message-box-transparency: rgba(0, 0, 0, 0.4);
   --unread-server-animation: none;
 }
 
@@ -40,12 +42,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d89c65 !important;
-  border-radius: 3px;
+  background-color: rgba(224, 180, 148, 0.6) !important;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #d39052 !important;
+  background-color: #a895d6 !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -55,36 +57,40 @@
 /* ===== EMBEDS ===== */
 
 [class*="embedFull"] {
-  border-left: 4px solid #d39052 !important;
-  background: rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(5px);
+  border-left: 4px solid #a895d6 !important;
+  background: rgba(32, 30, 36, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
 }
 
-/* ===== CONTEXT MENU ===== */
+/* ===== CONTEXT MENU & DROPDOWNS ===== */
 
 [class*="menu_"][role="menu"],
 [class*="menu_"][role="listbox"] {
-  background: rgba(15, 15, 15, 0.8) !important;
-  backdrop-filter: blur(10px);
+  background: rgba(36, 34, 40, 0.88) !important;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(168, 149, 214, 0.15) !important;
+  border-radius: 10px;
 }
 
 /* ===== REACTIONS ===== */
 
 [class*="reaction_"]:not([class*="reactionBtn"]) {
-  background-color: rgba(207, 132, 63, 0.3) !important;
-  border: 1px solid transparent !important;
-  transition: background-color 0.15s ease;
+  background-color: rgba(168, 149, 214, 0.18) !important;
+  border: 1px solid rgba(168, 149, 214, 0.25) !important;
+  border-radius: 8px;
+  transition: all 0.15s ease;
 }
 
 [class*="reaction_"]:not([class*="reactionBtn"]):hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(168, 149, 214, 0.35) !important;
+  border-color: #a895d6 !important;
 }
 
-/* ===== CHANNEL TEXT ===== */
+/* ===== CHANNEL LIST & HOVERS ===== */
 
 [class*="channelName"] {
-  color: #dda878;
+  color: #a8a8b4;
   transition: color 0.15s ease;
 }
 
@@ -92,64 +98,70 @@
 [class*="link_"][class*="channel"]:hover [class*="channelName"],
 [class*="containerDefault"]:hover [class*="channelName"],
 [class*="link_"]:hover [class*="name_"] {
-  color: #d39052 !important;
+  color: #a895d6 !important;
 }
 
 [class*="wrapper_"][class*="clickable"]:hover [class*="icon_"],
 [class*="link_"][class*="channel"]:hover [class*="icon_"],
 [class*="containerDefault"]:hover [class*="icon_"],
 [class*="link_"]:hover [class*="icon_"] {
-  color: #d39052 !important;
+  color: #a895d6 !important;
 }
 
 [class*="modeUnread"] [class*="name_"] {
-  color: #fff !important;
+  color: #f4f2f6 !important;
 }
 
 /* ===== CODE BLOCKS ===== */
 
 code.inline {
-  background-color: #cf843f !important;
-  border: 1px solid transparent !important;
+  background-color: rgba(224, 180, 148, 0.2) !important;
+  color: #f4f2f6 !important;
+  border: 1px solid rgba(224, 180, 148, 0.35) !important;
+  border-radius: 4px;
 }
 
 [class*="codeView"],
 [class*="codeBlock"] code {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  border: 1px solid rgba(211, 144, 82, 0.15);
+  background-color: rgba(24, 22, 28, 0.6) !important;
+  border: 1px solid rgba(168, 149, 214, 0.2);
+  border-radius: 8px;
 }
 
 /* ===== LINKS ===== */
 
 [class*="anchor_"],
 [class*="messageContent"] a {
-  color: #dda878 !important;
-  transition: color 0.15s ease;
+  color: #e0b494 !important;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
 [class*="anchor_"]:hover,
 [class*="messageContent"] a:hover {
-  color: #f5e6d8 !important;
+  color: #f4f2f6 !important;
+  text-shadow: 0 0 6px rgba(224, 180, 148, 0.6);
 }
 
 /* ===== MENTIONS ===== */
 
 [class*="mentioned"] {
-  background-color: rgba(207, 132, 63, 0.5) !important;
+  background-color: rgba(168, 149, 214, 0.18) !important;
 }
 
 [class*="mentioned"]:hover {
-  background-color: rgba(250, 166, 26, 0.08) !important;
+  background-color: rgba(168, 149, 214, 0.25) !important;
 }
 
 [class*="mentioned"]:before {
-  background-color: rgba(207, 132, 63, 1) !important;
+  background-color: #a895d6 !important;
+  width: 3px;
 }
 
 /* ===== MEMBER ROLE HEADER ===== */
 
 [class*="membersGroup"] {
-  color: #d39052 !important;
+  color: #a895d6 !important;
+  letter-spacing: 0.5px;
 }
 
 /* ===== TOOLTIPS ===== */
@@ -158,12 +170,14 @@ code.inline {
 [class*="tooltip_"][class*="tooltipBottom"],
 [class*="tooltip_"][class*="tooltipRight"],
 [class*="tooltip_"][class*="tooltipLeft"] {
-  background-color: rgba(15, 15, 15, 0.9) !important;
-  backdrop-filter: blur(8px);
+  background-color: rgba(36, 34, 40, 0.92) !important;
+  border: 1px solid rgba(168, 149, 214, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
 }
 
 [class*="tooltipPointer"] {
-  border-top-color: rgba(15, 15, 15, 0.9) !important;
+  border-top-color: rgba(36, 34, 40, 0.92) !important;
 }
 
 /* ===== BUTTON / ICON HOVER ===== */
@@ -174,17 +188,35 @@ button:hover svg,
 [class*="closeButton"]:hover svg,
 [class*="actionButton"]:hover svg,
 [class*="toolbar_"] [class*="iconWrapper"]:hover svg {
-  color: #d39052 !important;
+  color: #a895d6 !important;
   transition: color 0.15s ease;
 }
 
 [class*="lookFilled"][class*="colorBrand"]:hover,
 [class*="lookFilled"][class*="colorGreen"]:hover {
-  background-color: #d39052 !important;
+  background-color: #a895d6 !important;
 }
 
 /* ===== TEXT SELECTION ===== */
 
 ::selection {
-  background-color: rgba(207, 132, 63, 0.35) !important;
+  background-color: rgba(168, 149, 214, 0.35) !important;
+  color: #f4f2f6 !important;
+}
+
+/* ===== HOME ICON POLISH ===== */
+
+[class*="tutorialContainer_"] [class*="childWrapper_"] {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
+}
+
+[class*="tutorialContainer_"] [class*="childWrapper_"]:hover {
+  filter: drop-shadow(0 0 8px #a895d6);
+  transform: scale(1.06);
+}
+
+/* ===== CHAT READABILITY ===== */
+
+[class*="message_"]:hover {
+  background-color: rgba(48, 46, 52, 0.25) !important;
 }
