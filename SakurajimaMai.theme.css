@@ -214,19 +214,22 @@ nav[class*="sidebar_"] {
 }
 
 /* ==========================================================================
-   COMPONENT 7: POPOUTS, FLYOUT MENUS & USER PROFILES (ISOLATED MODULE)
+   COMPONENT 7: POPOUTS, FLYOUT MENUS & USER PROFILES (100% SOLID & CLEAR)
    ========================================================================== */
 
-/* 1. Context Menus, Submenus, & Switch Accounts Flyout Container */
+/* 1. Context Menus, Submenus, & Switch Accounts Flyout - 100% Solid Opaque */
 [class*="menu_"][role="menu"],
 [class*="menu_"][role="listbox"],
 [class*="submenu_"][role="menu"],
-[class*="accountProfilePopout_"] {
-  background-color: #16141c !important;
-  background: #16141c !important;
-  border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85) !important;
+[class*="accountProfilePopout_"],
+div[class*="layer_"] > [class*="menu_"] {
+  background-color: #141218 !important;
+  background: #141218 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.28) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
   border-radius: 12px !important;
+  backdrop-filter: none !important;
 }
 
 /* Force ALL text in menus & submenus to be bright, crisp, and high-contrast */
@@ -238,7 +241,7 @@ nav[class*="sidebar_"] {
 [class*="menu_"] [role="menuitem"] span,
 [class*="menu_"] [role="menuitem"] div {
   color: #f4f2f6 !important;
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 /* Subtext / Muted text inside menus (e.g. secondary account handle) */
@@ -251,7 +254,7 @@ nav[class*="sidebar_"] {
 [class*="menu_"] [class*="item_"]:hover,
 [class*="menu_"] [class*="item_"][class*="focused_"],
 [class*="menu_"] [class*="accountRow_"]:hover {
-  background-color: rgba(168, 149, 214, 0.22) !important;
+  background-color: rgba(168, 149, 214, 0.24) !important;
   border-radius: 8px;
 }
 
@@ -271,28 +274,38 @@ nav[class*="sidebar_"] {
 /* Menu separators & dividers */
 [class*="menu_"] [class*="separator_"],
 [class*="menu_"] [class*="divider_"] {
-  border-bottom: 1px solid rgba(168, 149, 214, 0.15) !important;
+  border-bottom: 1px solid rgba(168, 149, 214, 0.18) !important;
   margin: 6px 8px;
 }
 
-/* 2. Small User Account Popout (Bottom-Left Avatar Click) */
+/* 2. Small User Account Popout (Bottom-Left Avatar Click) - 100% Solid Opaque */
 [class*="userProfileOuter"],
+[class*="userPopoutOuter_"],
 [class*="userPanel_"],
-[class*="popout_"][class*="userProfile_"],
+[class*="biteSize_"],
+[class*="accountProfilePopout_"],
 div[class*="layer_"] > [class*="animatorTop_"] [class*="userProfile_"],
 div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
-  background-color: #16141c !important;
-  background: #16141c !important;
-  border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+  --profile-gradient-primary-color: #141218 !important;
+  --profile-gradient-secondary-color: #141218 !important;
+  --profile-body-background-color: #181620 !important;
+  --profile-body-background-hover: #221f2c !important;
+  background-color: #141218 !important;
+  background: #141218 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.28) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
   border-radius: 16px !important;
+  backdrop-filter: none !important;
 }
 
 /* Custom Status Bubble inside User Popout */
 [class*="statusBubbleOuter_"],
 [class*="statusBubble_"] {
-  background-color: rgba(26, 24, 34, 0.95) !important;
-  border: 1px solid rgba(168, 149, 214, 0.2) !important;
+  background-color: #201e28 !important;
+  background: #201e28 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.25) !important;
   border-radius: 10px !important;
 }
 
@@ -301,13 +314,46 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
   color: #f4f2f6 !important;
 }
 
-/* User Popout Inner Box (Bio, Badges, Roles) */
+/* User Popout Inner Box (Bio, Badges, Roles) - Solid Dark Surface */
 [class*="userProfileInner"],
+[class*="userPopoutInner_"],
+[class*="biteSizeInner_"],
+[class*="biteSizeInnerThemed_"],
 [class*="overlayBackground_"],
 [class*="profileBody_"] {
-  background-color: rgba(22, 20, 28, 0.95) !important;
-  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  background-color: #181620 !important;
+  background: #181620 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.15) !important;
   border-radius: 12px !important;
+}
+
+/* Action Button rows inside Small Popout (Edit Profile, DND, Switch Accounts, Clips...) */
+[class*="biteSize_"] [class*="menu_"],
+[class*="userProfileOuter"] [class*="menu_"] {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[class*="biteSize_"] [class*="menu_"] [class*="item_"],
+[class*="userProfileOuter"] [class*="menu_"] [class*="item_"] {
+  background-color: #1c1a24 !important;
+  margin: 3px 6px !important;
+  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  border-radius: 8px !important;
+}
+
+[class*="biteSize_"] [class*="menu_"] [class*="item_"]:hover,
+[class*="userProfileOuter"] [class*="menu_"] [class*="item_"]:hover {
+  background-color: rgba(168, 149, 214, 0.22) !important;
+  border-color: rgba(168, 149, 214, 0.35) !important;
+}
+
+[class*="biteSize_"] [class*="menu_"] [class*="label_"],
+[class*="userProfileOuter"] [class*="menu_"] [class*="label_"] {
+  color: #f4f2f6 !important;
+  font-weight: 500 !important;
 }
 
 /* Username & Discriminator / Handle inside Popout */
@@ -329,18 +375,23 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
   color: #e0dce8 !important;
 }
 
-/* 3. Large User Profile Modal (Full Profile Modal) */
+/* 3. Large User Profile Modal (Full Profile Modal) - 100% Solid Opaque */
 [class*="userProfileModal_"],
 [class*="root_"][class*="userProfileModal_"] {
-  background-color: #16141c !important;
-  border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9) !important;
+  background-color: #141218 !important;
+  background: #141218 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.28) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95) !important;
   border-radius: 20px !important;
+  backdrop-filter: none !important;
 }
 
 [class*="userProfileModal_"] [class*="overlayBackground_"] {
-  background-color: rgba(22, 20, 28, 0.95) !important;
-  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  background-color: #181620 !important;
+  background: #181620 !important;
+  opacity: 1 !important;
+  border: 1px solid rgba(168, 149, 214, 0.15) !important;
   border-radius: 14px !important;
 }
 
@@ -356,7 +407,7 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 
 /* Mutual Servers & Mutual Friends List rows */
 [class*="listRow_"]:hover {
-  background-color: rgba(168, 149, 214, 0.15) !important;
+  background-color: rgba(168, 149, 214, 0.18) !important;
   border-radius: 8px;
 }
 
