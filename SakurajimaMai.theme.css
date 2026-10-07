@@ -584,17 +584,65 @@ code.inline {
 
 /* ===== TOOLTIPS ===== */
 
-[class*="tooltip_"][class*="tooltipTop"],
-[class*="tooltip_"][class*="tooltipBottom"],
-[class*="tooltip_"][class*="tooltipRight"],
-[class*="tooltip_"][class*="tooltipLeft"] {
-  background-color: #1a1820 !important;
-  border: 1px solid rgba(168, 149, 214, 0.2) !important;
-  border-radius: 8px;
+[class*="tooltip_"],
+[class*="tooltipPrimary_"] {
+  --tooltip-text-color: #f4f2f6 !important;
+  --text-normal: #f4f2f6 !important;
+  --text-muted: #b8b4c8 !important;
+  --header-primary: #ffffff !important;
+  background-color: #141218 !important;
+  background: #141218 !important;
+  border: 1px solid rgba(168, 149, 214, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85) !important;
+  border-radius: 8px !important;
+  color: #f4f2f6 !important;
 }
 
-[class*="tooltipPointer"] {
-  border-top-color: #1a1820 !important;
+[class*="tooltipContent_"],
+[class*="tooltip_"] [class*="tooltipContent_"],
+[class*="tooltip_"] [class*="text-"],
+[class*="tooltip_"] span,
+[class*="tooltip_"] div,
+[class*="tooltip_"] p,
+[class*="tooltip_"] strong,
+[class*="tooltip_"] b {
+  color: #f4f2f6 !important;
+  font-weight: 500 !important;
+}
+
+[class*="tooltip_"] [class*="subtext_"],
+[class*="tooltip_"] [class*="muted_"],
+[class*="tooltip_"] [class*="description_"] {
+  color: #c0bcd0 !important;
+}
+
+/* Tooltip Pointers (Directional Arrows) */
+[class*="tooltipTop_"] [class*="tooltipPointer_"],
+[class*="tooltipTop"] [class*="tooltipPointer"],
+[class*="tooltip_"][class*="tooltipTop"] [class*="tooltipPointer_"],
+[class*="tooltip_"][class*="tooltipTop"] [class*="tooltipPointer"] {
+  border-top-color: #141218 !important;
+}
+
+[class*="tooltipBottom_"] [class*="tooltipPointer_"],
+[class*="tooltipBottom"] [class*="tooltipPointer"],
+[class*="tooltip_"][class*="tooltipBottom"] [class*="tooltipPointer_"],
+[class*="tooltip_"][class*="tooltipBottom"] [class*="tooltipPointer"] {
+  border-bottom-color: #141218 !important;
+}
+
+[class*="tooltipLeft_"] [class*="tooltipPointer_"],
+[class*="tooltipLeft"] [class*="tooltipPointer"],
+[class*="tooltip_"][class*="tooltipLeft"] [class*="tooltipPointer_"],
+[class*="tooltip_"][class*="tooltipLeft"] [class*="tooltipPointer"] {
+  border-left-color: #141218 !important;
+}
+
+[class*="tooltipRight_"] [class*="tooltipPointer_"],
+[class*="tooltipRight"] [class*="tooltipPointer"],
+[class*="tooltip_"][class*="tooltipRight"] [class*="tooltipPointer_"],
+[class*="tooltip_"][class*="tooltipRight"] [class*="tooltipPointer"] {
+  border-right-color: #141218 !important;
 }
 
 /* ===== BUTTON / ICON HOVER ===== */
