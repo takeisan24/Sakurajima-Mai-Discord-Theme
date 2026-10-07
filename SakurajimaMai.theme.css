@@ -1,0 +1,190 @@
+/**
+ * @name Sakurajima Mai Theme
+ * @author takeisan24
+ * @version 1.0.0
+ * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism and custom styling.
+ * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
+ * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
+ * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/SakurajimaMai.theme.css
+ */
+
+@import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@master/build/v3/naat.v3.css");
+
+:root {
+  /* Theme Background Image - Stored permanently in repository */
+  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/maisan.gif");
+  --main-theme-color: #d39052;
+  --theme-transparency: rgba(0, 0, 0, 0.6);
+
+  /* Home Icon Image - Stored permanently in repository */
+  --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/home-icon.gif");
+  --home-icon-image-position: center center;
+  --home-icon-image-zoom: 100%;
+
+  /*
+    Server Listing Width
+    Single Column:  72px
+    Double Column:  126px
+    Triple Column:  184px
+    Quad Column:    242px
+  */
+  --server-listing-width: 72px;
+  --message-box-transparency: rgba(0, 0, 0, 0.4);
+  --unread-server-animation: none;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d89c65 !important;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #d39052 !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+
+/* ===== EMBEDS ===== */
+
+[class*="embedFull"] {
+  border-left: 4px solid #d39052 !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(5px);
+}
+
+/* ===== CONTEXT MENU ===== */
+
+[class*="menu_"][role="menu"],
+[class*="menu_"][role="listbox"] {
+  background: rgba(15, 15, 15, 0.8) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== REACTIONS ===== */
+
+[class*="reaction_"]:not([class*="reactionBtn"]) {
+  background-color: rgba(207, 132, 63, 0.3) !important;
+  border: 1px solid transparent !important;
+  transition: background-color 0.15s ease;
+}
+
+[class*="reaction_"]:not([class*="reactionBtn"]):hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ===== CHANNEL TEXT ===== */
+
+[class*="channelName"] {
+  color: #dda878;
+  transition: color 0.15s ease;
+}
+
+[class*="wrapper_"][class*="clickable"]:hover [class*="channelName"],
+[class*="link_"][class*="channel"]:hover [class*="channelName"],
+[class*="containerDefault"]:hover [class*="channelName"],
+[class*="link_"]:hover [class*="name_"] {
+  color: #d39052 !important;
+}
+
+[class*="wrapper_"][class*="clickable"]:hover [class*="icon_"],
+[class*="link_"][class*="channel"]:hover [class*="icon_"],
+[class*="containerDefault"]:hover [class*="icon_"],
+[class*="link_"]:hover [class*="icon_"] {
+  color: #d39052 !important;
+}
+
+[class*="modeUnread"] [class*="name_"] {
+  color: #fff !important;
+}
+
+/* ===== CODE BLOCKS ===== */
+
+code.inline {
+  background-color: #cf843f !important;
+  border: 1px solid transparent !important;
+}
+
+[class*="codeView"],
+[class*="codeBlock"] code {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(211, 144, 82, 0.15);
+}
+
+/* ===== LINKS ===== */
+
+[class*="anchor_"],
+[class*="messageContent"] a {
+  color: #dda878 !important;
+  transition: color 0.15s ease;
+}
+
+[class*="anchor_"]:hover,
+[class*="messageContent"] a:hover {
+  color: #f5e6d8 !important;
+}
+
+/* ===== MENTIONS ===== */
+
+[class*="mentioned"] {
+  background-color: rgba(207, 132, 63, 0.5) !important;
+}
+
+[class*="mentioned"]:hover {
+  background-color: rgba(250, 166, 26, 0.08) !important;
+}
+
+[class*="mentioned"]:before {
+  background-color: rgba(207, 132, 63, 1) !important;
+}
+
+/* ===== MEMBER ROLE HEADER ===== */
+
+[class*="membersGroup"] {
+  color: #d39052 !important;
+}
+
+/* ===== TOOLTIPS ===== */
+
+[class*="tooltip_"][class*="tooltipTop"],
+[class*="tooltip_"][class*="tooltipBottom"],
+[class*="tooltip_"][class*="tooltipRight"],
+[class*="tooltip_"][class*="tooltipLeft"] {
+  background-color: rgba(15, 15, 15, 0.9) !important;
+  backdrop-filter: blur(8px);
+}
+
+[class*="tooltipPointer"] {
+  border-top-color: rgba(15, 15, 15, 0.9) !important;
+}
+
+/* ===== BUTTON / ICON HOVER ===== */
+
+button:hover svg,
+[class*="button_"]:hover svg,
+[class*="iconButton"]:hover svg,
+[class*="closeButton"]:hover svg,
+[class*="actionButton"]:hover svg,
+[class*="toolbar_"] [class*="iconWrapper"]:hover svg {
+  color: #d39052 !important;
+  transition: color 0.15s ease;
+}
+
+[class*="lookFilled"][class*="colorBrand"]:hover,
+[class*="lookFilled"][class*="colorGreen"]:hover {
+  background-color: #d39052 !important;
+}
+
+/* ===== TEXT SELECTION ===== */
+
+::selection {
+  background-color: rgba(207, 132, 63, 0.35) !important;
+}
