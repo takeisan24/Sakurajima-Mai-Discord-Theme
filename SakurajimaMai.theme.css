@@ -223,9 +223,7 @@ nav[class*="sidebar_"] {
 }
 
 /* Neutralize Nitro custom profile banner covering bottom panel */
-[class*="panels_"] [class*="banner_"],
-[class*="panels_"] [class*="userProfileOuter"],
-[class*="panels_"] [class*="accountProfileCard_"] {
+[class*="panels_"] > [class*="container_"] [class*="banner_"] {
   background: transparent !important;
   background-image: none !important;
 }
@@ -296,11 +294,19 @@ div[class*="layer_"] > [class*="menu_"] {
 }
 
 /* 2. Small User Account Popout (Bottom-Left Avatar Click) - 100% Solid Opaque */
+[class*="layerContainer_"] [role="dialog"],
+[class*="layerContainer_"] [class*="layer_"] > div,
+[class*="layerContainer_"] [class*="animatorTop_"] > div,
+[class*="layerContainer_"] [class*="animatorBottom_"] > div,
 [class*="userProfileOuter"],
 [class*="userPopoutOuter_"],
+[class*="userProfile_"],
+[class*="userPopout_"],
 [class*="userPanel_"],
 [class*="biteSize_"],
 [class*="accountProfilePopout_"],
+[class*="accountProfileCard_"],
+[class*="profilePanel_"],
 div[class*="layer_"] > [class*="animatorTop_"] [class*="userProfile_"],
 div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
   --profile-gradient-primary-color: #141218 !important;
@@ -337,7 +343,8 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 [class*="biteSizeInner_"],
 [class*="biteSizeInnerThemed_"],
 [class*="overlayBackground_"],
-[class*="profileBody_"] {
+[class*="profileBody_"],
+[class*="body_"][class*="userProfile_"] {
   background-color: #181620 !important;
   background: #181620 !important;
   opacity: 1 !important;
@@ -347,28 +354,47 @@ div[class*="layer_"] > [class*="animatorBottom_"] [class*="userProfile_"] {
 
 /* Action Button rows inside Small Popout (Edit Profile, DND, Switch Accounts, Clips...) */
 [class*="biteSize_"] [class*="menu_"],
-[class*="userProfileOuter"] [class*="menu_"] {
-  background-color: transparent !important;
+[class*="userProfileOuter"] [class*="menu_"],
+[class*="userPopoutOuter_"] [class*="menu_"],
+[class*="accountProfilePopout_"] [class*="menu_"] {
+  background-color: #141218 !important;
+  background: #141218 !important;
+  opacity: 1 !important;
   border: none !important;
   box-shadow: none !important;
 }
 
 [class*="biteSize_"] [class*="menu_"] [class*="item_"],
-[class*="userProfileOuter"] [class*="menu_"] [class*="item_"] {
+[class*="userProfileOuter"] [class*="menu_"] [class*="item_"],
+[class*="userPopoutOuter_"] [class*="menu_"] [class*="item_"],
+[class*="accountProfilePopout_"] [class*="menu_"] [class*="item_"],
+[class*="biteSize_"] [class*="item_"],
+[class*="userProfileOuter"] [class*="item_"] {
   background-color: #1c1a24 !important;
+  background: #1c1a24 !important;
+  opacity: 1 !important;
   margin: 3px 6px !important;
   border: 1px solid rgba(168, 149, 214, 0.12) !important;
   border-radius: 8px !important;
 }
 
 [class*="biteSize_"] [class*="menu_"] [class*="item_"]:hover,
-[class*="userProfileOuter"] [class*="menu_"] [class*="item_"]:hover {
+[class*="userProfileOuter"] [class*="menu_"] [class*="item_"]:hover,
+[class*="userPopoutOuter_"] [class*="menu_"] [class*="item_"]:hover,
+[class*="accountProfilePopout_"] [class*="menu_"] [class*="item_"]:hover,
+[class*="biteSize_"] [class*="item_"]:hover,
+[class*="userProfileOuter"] [class*="item_"]:hover {
   background-color: rgba(168, 149, 214, 0.22) !important;
+  background: rgba(168, 149, 214, 0.22) !important;
   border-color: rgba(168, 149, 214, 0.35) !important;
 }
 
 [class*="biteSize_"] [class*="menu_"] [class*="label_"],
-[class*="userProfileOuter"] [class*="menu_"] [class*="label_"] {
+[class*="userProfileOuter"] [class*="menu_"] [class*="label_"],
+[class*="userPopoutOuter_"] [class*="menu_"] [class*="label_"],
+[class*="accountProfilePopout_"] [class*="menu_"] [class*="label_"],
+[class*="biteSize_"] [class*="label_"],
+[class*="userProfileOuter"] [class*="label_"] {
   color: #f4f2f6 !important;
   font-weight: 500 !important;
 }
