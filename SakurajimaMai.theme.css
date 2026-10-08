@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.5.0
+ * @version 2.5.1
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -443,30 +443,29 @@ nav[class*="sidebar_"] {
   color: rgb(var(--sm-accent-rgb) / 0.9) !important;
 }
 
-/* Unread channel: Discord's white edge bar is replaced by a lavender diamond
-   notch peeking from the edge, and the channel glyph glows lavender.
-   (Only ~4px of space exists left of the glyph, so the glyph carries the signal.) */
+/* Unread channel: Discord's white edge bar is replaced by a small lavender gem
+   (lavender with a peach glint, the same pair as the title-bar wordmark),
+   centred in the 16px gutter between the list edge and the channel glyph,
+   and the glyph itself glows lavender. The gem hangs off the row wrapper, not
+   the link, because the link clips anything outside its own box. */
 [class*="containerDefault_"] [class*="unread_"] {
   display: none !important;
 }
 
-[class*="containerDefault_"] [class*="modeUnread"] [class*="link_"] {
-  position: relative;
-}
-
-[class*="containerDefault_"] [class*="modeUnread"] [class*="link_"]::before {
+[class*="containerDefault_"] [class*="modeUnread"]::before {
   content: "";
   position: absolute;
-  left: 2px;
+  left: -3.5px;
   top: 50%;
-  width: 6px;
-  height: 6px;
-  margin-top: -3px;
-  border-radius: 1px;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border-radius: 1.5px;
   transform: rotate(45deg);
-  background: var(--sm-accent);
-  box-shadow: 0 0 6px rgb(var(--sm-accent-rgb) / 0.75);
+  background: linear-gradient(135deg, #c9bbef, var(--sm-accent) 60%, var(--sm-accent-2));
+  box-shadow: 0 0 7px rgb(var(--sm-accent-rgb) / 0.8);
   pointer-events: none;
+  z-index: 1;
 }
 
 [class*="containerDefault_"] [class*="modeUnread"] [class*="iconContainer_"] svg {
