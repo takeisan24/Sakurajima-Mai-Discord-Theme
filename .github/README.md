@@ -63,6 +63,8 @@
 2. Open **User Settings → Themes → Open Themes Folder** (usually `%AppData%\BetterDiscord\themes`) and put the file there.
 3. Enable **Sakurajima Mai Theme**.
 
+> BetterDiscord uses the same file, but the theme is developed and tested on Vencord. If something looks off on BetterDiscord, please [report it](#support).
+
 > The theme always renders the dark Mai look, whichever Discord appearance you pick (Dark, Ash, Onyx, Light or a Nitro color theme), so nothing conflicts.
 
 ## Customization
@@ -179,12 +181,16 @@ Turning on **User Settings → Accessibility → Reduced Motion** in Discord (or
 - **Something looks broken after a Discord update:** open an [issue](https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme/issues) with a screenshot.
 - **Problems with the server list or base layout:** these may come from the NotAnotherAnimeTheme base. Check its [issues](https://github.com/puckzxz/NotAnotherAnimeTheme/issues) or [support server](https://discord.gg/FdZhbjY).
 
+## Support
+
+Found a bug or need help? Open an [issue](https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme/issues), or send a Discord DM to **t.ahnofficial204**. A screenshot and your client (Vencord, Vesktop or BetterDiscord) help a lot.
+
 ## Changelog
 
 <details>
 <summary>Version history</summary>
 
-- **3.9.0:** plugin switches (`--sm-role-mentions`, `--sm-codeblocks`), preview screenshots, plugin compatibility and performance guides
+- **3.9.0:** BetterDiscord note and Discord DM support contact; plugin switches (`--sm-role-mentions`, `--sm-codeblocks`), preview screenshots, plugin compatibility and performance guides
 - **3.8.2:** Onboarding verified; every translucent blurple tint remapped to lavender
 - **3.8.1:** voice call and Stage views on the Mai surface instead of pure black, lavender "Start the Stage" pulse
 - **3.8.0:** secondary screens verified live: Discovery, Quests, Shop, Nitro Home, Events, Channels & Roles, Server Guide, Members, Server Boosts, Server Settings

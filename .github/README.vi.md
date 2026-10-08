@@ -63,6 +63,8 @@
 2. Mở **User Settings → Themes → Open Themes Folder** (thường là `%AppData%\BetterDiscord\themes`) và chép file vào đó.
 3. Bật **Sakurajima Mai Theme**.
 
+> BetterDiscord dùng cùng một file, nhưng theme được phát triển và kiểm tra trên Vencord. Nếu thấy lỗi trên BetterDiscord, hãy [báo cho mình](#hỗ-trợ).
+
 > Theme luôn hiển thị giao diện Mai tối, dù bạn chọn giao diện nào của Discord (Dark, Ash, Onyx, Light hay theme màu Nitro), nên không bị xung đột.
 
 ## Tùy chỉnh
@@ -178,6 +180,10 @@ Bật **User Settings → Accessibility → Reduced Motion** trong Discord (ho�
 - **Biến trong QuickCSS không có tác dụng:** thêm `!important` như trong ví dụ để ghi đè giá trị mặc định của theme.
 - **Giao diện bị lỗi sau khi Discord cập nhật:** mở [issue](https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme/issues) kèm ảnh chụp màn hình.
 - **Lỗi ở danh sách server hoặc bố cục nền:** có thể do nền NotAnotherAnimeTheme. Xem [issues](https://github.com/puckzxz/NotAnotherAnimeTheme/issues) hoặc [server hỗ trợ](https://discord.gg/FdZhbjY) của dự án gốc.
+
+## Hỗ trợ
+
+Gặp lỗi hoặc cần giúp đỡ? Mở [issue](https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme/issues), hoặc nhắn DM Discord cho **t.ahnofficial204**. Kèm ảnh chụp màn hình và client bạn dùng (Vencord, Vesktop hay BetterDiscord) sẽ giúp xử lý nhanh hơn.
 
 ## Lịch sử phiên bản
 
