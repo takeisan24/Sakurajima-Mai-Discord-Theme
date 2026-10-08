@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.3.0
+ * @version 3.4.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -612,6 +612,17 @@ nav[class*="sidebar_"] {
   background-color: transparent !important;
 }
 
+/* Your avatar in the user panel: lavender ring on hover (opens the account
+   popout) */
+[class*="panels_"] [class*="avatar_"] {
+  border-radius: 50%;
+  transition: box-shadow 0.15s ease;
+}
+
+[class*="panels_"] [class*="avatar_"]:hover {
+  box-shadow: 0 0 0 2px rgb(var(--sm-accent-rgb) / 0.6);
+}
+
 /* Settings gear (last panel button): lavender on hover. Discord already spins
    it with its own Lottie animation, so no extra motion is added. */
 [class*="panels_"] [class*="buttons_"] > button:last-child:hover svg {
@@ -753,6 +764,63 @@ nav[class*="sidebar_"] {
 
 [class*="markup_"] a[class*="anchor_"]:hover {
   background-size: 100% 1px;
+}
+
+/* Message hover toolbar (react, reply, edit...): solid Mai surface with a
+   lavender ring; its icons glow lavender on hover */
+/* (three attribute selectors: Discord pins its shadow with a doubled class) */
+[class*="buttonsInner_"][class*="popover_"][class*="wrapper_"],
+[class*="buttonsInner_"] {
+  background: var(--sm-surface-1) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 1px rgb(var(--sm-accent-rgb) / 0.25), 0 4px 12px rgb(0 0 0 / 0.4) !important;
+}
+
+[class*="buttonsInner_"] [role="button"]:hover svg {
+  color: var(--sm-accent) !important;
+}
+
+/* Images and videos in chat: lavender ring on hover (click to enlarge) */
+[class*="messageListItem_"] [class*="imageWrapper_"] {
+  transition: box-shadow 0.15s ease;
+}
+
+[class*="messageListItem_"] [class*="imageWrapper_"]:hover {
+  box-shadow: 0 0 0 2px rgb(var(--sm-accent-rgb) / 0.55) !important;
+}
+
+/* Jumbo emoji and stickers pop a little on hover */
+[class*="messageListItem_"] img.emoji.jumboable,
+[class*="clickableSticker_"] {
+  transition: transform 0.15s ease;
+}
+
+[class*="messageListItem_"] img.emoji.jumboable:hover,
+[class*="clickableSticker_"]:hover {
+  transform: scale(1.1);
+}
+
+/* Embeds light up on hover: peach rail, slightly brighter glass */
+[class*="embedFull_"] {
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+[class*="embedFull_"]:hover {
+  border-left-color: var(--sm-accent-2) !important;
+  background: rgb(var(--sm-glass-rgb) / 0.85) !important;
+}
+
+/* Search keyword highlights in lavender instead of yellow */
+.highlight {
+  background: rgb(var(--sm-accent-rgb) / 0.35) !important;
+  color: var(--sm-text-strong) !important;
+  border-radius: 3px;
+}
+
+/* Autocomplete (@mention, /command, :emoji:): the selected row gets the same
+   lavender rail as the selected channel */
+[class*="autocomplete_"] [aria-selected="true"] > [class*="base_"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
 }
 
 /* "Replying to ..." bar above the input: lavender rail */
@@ -952,6 +1020,10 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="messageListItem_"] img.emoji.jumboable,
+  [class*="messageListItem_"] img.emoji.jumboable:hover,
+  [class*="clickableSticker_"],
+  [class*="clickableSticker_"]:hover,
   [class*="messageListItem_"] img[class*="avatar_"],
   [class*="messageListItem_"] img[class*="avatar_"]:hover,
   [class*="markup_"] a[class*="anchor_"],
