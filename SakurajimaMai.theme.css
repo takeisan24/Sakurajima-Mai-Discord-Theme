@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.8.0
+ * @version 2.9.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -129,7 +129,8 @@
   --interactive-background-active: rgb(var(--sm-accent-rgb) / 0.24) !important;
   --interactive-background-selected: rgb(var(--sm-accent-rgb) / 0.22) !important;
 
-  /* Borders */
+  /* Borders (app-frame-border draws the outlines around the panels) */
+  --app-frame-border: rgb(var(--sm-accent-rgb) / 0.16) !important;
   --border-muted: rgb(var(--sm-accent-rgb) / 0.1) !important;
   --border-subtle: rgb(var(--sm-accent-rgb) / 0.16) !important;
   --border-normal: rgb(var(--sm-accent-rgb) / 0.22) !important;
@@ -559,6 +560,12 @@ nav[class*="sidebar_"] {
 [class*="panels_"] [class*="avatarWrapper_"] {
   background: transparent !important;
   background-color: transparent !important;
+}
+
+/* Settings gear (last panel button): lavender on hover. Discord already spins
+   it with its own Lottie animation, so no extra motion is added. */
+[class*="panels_"] [class*="buttons_"] > button:last-child:hover svg {
+  color: var(--sm-accent) !important;
 }
 
 /* Nitro profile banner painted behind the bottom panel */
