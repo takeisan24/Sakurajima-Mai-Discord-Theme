@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.6.1
+ * @version 2.7.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -151,6 +151,10 @@
   --icon-muted: var(--sm-icon-muted) !important;
   --channels-default: var(--sm-text-muted) !important;
   --input-placeholder-text-default: var(--sm-text-muted) !important;
+  --input-border-default: rgb(var(--sm-accent-rgb) / 0.2) !important;
+  --input-border-hover: rgb(var(--sm-accent-rgb) / 0.35) !important;
+  --input-border-focused: rgb(var(--sm-accent-rgb) / 0.6) !important;
+  --input-border-active: rgb(var(--sm-accent-rgb) / 0.6) !important;
 
   /* Brand: buttons, toggles, checkboxes */
   --background-brand: var(--sm-accent-strong) !important;
@@ -695,6 +699,37 @@ nav[class*="sidebar_"] {
   color: #ffffff !important;
 }
 
+/* ==========================================================================
+   MESSAGE INPUT
+   Same language as the search box: calm lavender edge, ring while typing.
+   ========================================================================== */
+
+[class*="channelTextArea_"] {
+  border-color: rgb(var(--sm-accent-rgb) / 0.2) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[class*="channelTextArea_"]:hover {
+  border-color: rgb(var(--sm-accent-rgb) / 0.35) !important;
+}
+
+[class*="channelTextArea_"]:focus-within {
+  border-color: rgb(var(--sm-accent-rgb) / 0.6) !important;
+  box-shadow: 0 0 0 3px rgb(var(--sm-accent-rgb) / 0.15) !important;
+}
+
+/* Gift / GIF / sticker / emoji / apps buttons glow lavender on hover */
+[class*="channelTextArea_"] button:hover svg {
+  color: var(--sm-accent) !important;
+}
+
+/* "Someone is typing..." dots */
+[class*="typing_"] [class*="dots_"],
+[class*="typing_"] [class*="dots_"] circle {
+  color: var(--sm-accent) !important;
+  fill: var(--sm-accent) !important;
+}
+
 /* Embeds */
 [class*="embedFull"] {
   border-left: 4px solid var(--sm-accent) !important;
@@ -756,6 +791,7 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="channelTextArea_"],
   [class*="reaction_"],
   [class*="reaction_"]:hover,
   [class*="reaction_"]:active,
