@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.4.0
+ * @version 3.5.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -192,6 +192,16 @@
   --radio-border-selected-hover: var(--sm-accent) !important;
   --radio-foreground-active: var(--sm-accent) !important;
 
+  /* Every notification red (mention counts, Inbox dot, tab badges, header
+     badges) becomes the mention rose-mauve */
+  --background-feedback-notification: var(--sm-mention) !important;
+
+  /* Selected-tab underline (Inbox, profile tabs, top tab bars) */
+  --selected-tab-item-color: var(--sm-accent) !important;
+
+  /* Image viewer backdrop: deep plum instead of pure black */
+  --background-scrim-lightbox: rgb(14 11 20 / 0.92) !important;
+
   /* The message you jump to (reply click, "Jump to message") glows lavender */
   --message-highlight-background-default: rgb(var(--sm-accent-rgb) / 0.14) !important;
   --message-highlight-background-hover: rgb(var(--sm-accent-rgb) / 0.2) !important;
@@ -206,7 +216,7 @@
      ShikiCodeblocks paints its own colors, which are left untouched) */
   --spine-default: var(--sm-accent) !important;
   --spoiler-hidden-background: #2f2a3b !important;
-  --spoiler-hidden-background-hover: #3a3349 !important;
+  --spoiler-hidden-background-hover: #4a3f63 !important; /* lavender hint: click to reveal */
   --text-code-keyword: #c3b3f0 !important;
   --text-code-title: var(--sm-accent-2) !important;
   --text-code-variable: #d7b4e8 !important;
@@ -810,6 +820,69 @@ nav[class*="sidebar_"] {
   background: rgb(var(--sm-glass-rgb) / 0.85) !important;
 }
 
+/* Quick Switcher (Ctrl+K): lavender ring on the search field, lavender rail
+   on the selected result, like the channel list and autocomplete */
+[class*="quickswitcher_"] [class*="input_"] {
+  border: 1px solid rgb(var(--sm-accent-rgb) / 0.6) !important;
+  box-shadow: 0 0 0 3px rgb(var(--sm-accent-rgb) / 0.15) !important;
+}
+
+[class*="quickswitcher_"] [aria-selected="true"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+/* Forum post cards: glass surface so titles stay readable over the
+   wallpaper; on hover they lift 2px and the edge glows lavender */
+[class*="card_"] > [class*="mainCard_"] {
+  background-color: rgb(var(--sm-glass-rgb) / 0.55) !important;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+[class*="card_"] > [class*="mainCard_"]:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--sm-accent-rgb) / 0.5) !important;
+  background-color: rgb(var(--sm-glass-rgb) / 0.7) !important;
+}
+
+/* Text cursor in every input is lavender */
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: var(--sm-accent);
+}
+
+/* Settings sidebars (user and server settings): lavender rail on the selected
+   page, and items slide 2px on hover like the channel list */
+[class*="side_"] [class*="themed_"][class*="selected_"][class*="item_"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+[class*="side_"] [class*="item_"][class*="themed_"] {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+[class*="side_"] [class*="item_"][class*="themed_"]:hover {
+  transform: translateX(2px);
+}
+
+/* New settings layout (2025+): same rail and slide, and the sub-page
+   indicator (a white thumb on a track) becomes lavender */
+[class*="itemContainer_"] > [class*="item_"][class*="active_"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+[class*="itemContainer_"] > [class*="item_"] {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+[class*="itemContainer_"] > [class*="item_"]:hover {
+  transform: translateX(2px);
+}
+
+[class*="subnav_"] [class*="thumb_"] {
+  background: var(--sm-accent) !important;
+}
+
 /* Search keyword highlights in lavender instead of yellow */
 .highlight {
   background: rgb(var(--sm-accent-rgb) / 0.35) !important;
@@ -1020,6 +1093,12 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="card_"] > [class*="mainCard_"],
+  [class*="card_"] > [class*="mainCard_"]:hover,
+  [class*="itemContainer_"] > [class*="item_"],
+  [class*="itemContainer_"] > [class*="item_"]:hover,
+  [class*="side_"] [class*="item_"][class*="themed_"],
+  [class*="side_"] [class*="item_"][class*="themed_"]:hover,
   [class*="messageListItem_"] img.emoji.jumboable,
   [class*="messageListItem_"] img.emoji.jumboable:hover,
   [class*="clickableSticker_"],
