@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.2.0
+ * @version 2.2.1
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -99,6 +99,14 @@
   --custom-theme-base-color-amount: 0% !important;
   --custom-theme-text-color-amount: 0% !important;
 
+  /* Base layers: identical in every Appearance mode, so Dark, Ash, Onyx (pure
+     black) and Light all render the same Mai theme instead of leaking their own
+     colors wherever a layer is not made transparent */
+  --background-base-lowest: var(--sm-surface-0) !important;
+  --background-base-lower: var(--sm-surface-1) !important;
+  --background-base-low: var(--sm-surface-2) !important;
+  --chat-background-default: transparent !important;
+
   /* Floating surfaces: 100% solid */
   --background-surface-high: var(--sm-surface-1) !important;
   --background-surface-higher: var(--sm-surface-2) !important;
@@ -162,14 +170,6 @@
   --scrollbar-thin-track: transparent !important;
   --scrollbar-auto-thumb: rgb(var(--sm-accent-2-rgb) / 0.55) !important;
   --scrollbar-auto-track: transparent !important;
-}
-
-/* Light mode: base layers would stay white under our light text, so darken them */
-.theme-light {
-  --background-base-lowest: var(--sm-surface-0) !important;
-  --background-base-lower: var(--sm-surface-1) !important;
-  --background-base-low: var(--sm-surface-2) !important;
-  --chat-background-default: transparent !important;
 }
 
 /* Nitro client themes: drop the gradient layers so the wallpaper shows through */
