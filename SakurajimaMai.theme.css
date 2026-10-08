@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.7.0
+ * @version 3.8.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -868,6 +868,37 @@ nav[class*="sidebar_"] {
 [class^="pro_"],
 [class*=" pro_"] {
   color: var(--sm-accent) !important;
+}
+
+/* Brand-style tab bars (Discovery, Inbox...): some pages re-declare the tab
+   color locally, so pin it on the tabs themselves */
+[class*="item_"][class*="brand_"] {
+  --selected-tab-item-color: var(--sm-accent) !important;
+}
+
+/* Side navigation lists (Discovery: Apps / Servers / Quests): lavender rail on
+   the selected entry */
+[class*="navItem_"][class*="selected_"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+/* Underline-style tabs (Quests, Shop navigation): lavender underline on the
+   selected tab instead of white */
+[class*="tabWrapper_"][aria-selected="true"] > *,
+[class*="navigationMenuButton_"][class*="selected_"] {
+  border-bottom-color: var(--sm-accent) !important;
+}
+
+/* Home sidebar (Friends, Nitro Home, Shop, Quests, DMs): lavender rail on the
+   selected entry, like the channel list */
+[class*="interactive_"][class*="interactiveSelected"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+/* Animated switches (e.g. "Follow Category") paint their "on" color as an
+   inline blurple style; catch that value and use lavender */
+[class*="switchIndicator_"][style*="88, 101, 242"] {
+  background-color: var(--sm-accent-strong) !important;
 }
 
 /* Text cursor in every input is lavender */
