@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.2.1
+ * @version 3.2.2
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -425,6 +425,21 @@ nav[class*="sidebar_"] {
   box-shadow: 0 0 10px rgb(var(--sm-accent-rgb) / 0.55) !important;
 }
 
+/* The emoji picker's category rail reuses the same pill component (8px wide);
+   there it must stay a solid lavender bar, not the server ring */
+[class*="categoryPill_"] .wrapper__58105 .item__58105[class] {
+  display: block !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: var(--sm-accent) !important;
+  width: 4px !important;
+  height: 20px !important;
+  inset: auto !important;
+  top: calc(50% - 10px) !important;
+  left: 4px !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
 /* Hover: faint ring and a small lift */
 .wrapper__58105 .item__58105.hovered__58105:not(.selected__58105) {
   display: block !important;
@@ -702,11 +717,11 @@ nav[class*="sidebar_"] {
   background: var(--sm-mention) !important;
 }
 
-/* Names, timestamps and reply previews keep their edge over the wallpaper */
-[class*="messageListItem_"] [class*="username_"],
+/* Small grey text (timestamps, reply previews) gets a faint shadow over the
+   wallpaper; usernames get none so role colors stay clean */
 [class*="messageListItem_"] [class*="timestamp_"],
 [class*="repliedTextPreview_"] {
-  text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
 }
 
 /* Your own reactions: Light, low-contrast and chat-opacity modes paint them
