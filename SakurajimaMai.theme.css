@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.3.0
+ * @version 2.4.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -50,6 +50,7 @@
   --sm-accent-strong-active: #63509a;
   --sm-accent-2: #e8bf9f;
   --sm-accent-2-rgb: 232 191 159;
+  --sm-mention: #c94467; /* mention badges: rose, white text 4.7:1 */
 
   /* Solid surfaces for floating UI (popouts, menus, tooltips, modals),
      stepped from the wallpaper hue so they read as the same material */
@@ -347,6 +348,72 @@ nav[class*="sidebar_"] {
   color: var(--sm-accent) !important;
 }
 
+/* ==========================================================================
+   SERVER LIST
+   Three distinct signals: dot = unread, lavender ring = where you are,
+   rose badge = mentions. Builds on the base theme's pill-as-ring.
+   ========================================================================== */
+
+/* Unread (not selected, not hovered): small lavender dot at the left edge */
+.wrapper__58105 .item__58105.visible__58105:not(.selected__58105):not(.hovered__58105) {
+  border: none !important;
+  background: var(--sm-accent) !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  inset: auto !important;
+  top: calc(50% - 4px) !important;
+  left: -2px !important;
+}
+
+/* Read servers: no indicator at all */
+.wrapper__58105 .item__58105:not(.visible__58105):not(.selected__58105):not(.hovered__58105) {
+  display: none !important;
+}
+
+/* Selected server or folder: full lavender ring with a soft glow */
+.wrapper__58105 .item__58105.selected__58105 {
+  display: block !important;
+  border: 2px solid var(--sm-accent) !important;
+  box-shadow: 0 0 10px rgb(var(--sm-accent-rgb) / 0.55) !important;
+}
+
+/* Hover: faint ring and a small lift */
+.wrapper__58105 .item__58105.hovered__58105:not(.selected__58105) {
+  display: block !important;
+  border: 2px solid rgb(var(--sm-accent-rgb) / 0.45) !important;
+  background: transparent !important;
+}
+
+[class*="listItem_"] [class*="blobContainer_"] {
+  transition: transform 0.15s ease;
+}
+
+[class*="listItem_"]:hover [class*="blobContainer_"] {
+  transform: translateY(-2px);
+}
+
+/* Mention badges (servers, channels, DMs) */
+[class*="numberBadge_"] {
+  background-color: var(--sm-mention) !important;
+}
+
+/* "NEW" pill at the list edge: rose when mentions are off-screen, lavender for plain unread */
+[class*="unreadMentionsBar_"][class*="mention_"] {
+  background-color: var(--sm-mention) !important;
+}
+
+[class*="unreadMentionsBar_"][class*="unread_"] {
+  background-color: var(--sm-accent-strong) !important;
+  color: #ffffff !important;
+}
+
+/* Folders keep the color the user picked; the open folder sits on lavender glass */
+[class*="expandedFolderBackground_"],
+[class*="folderGroupBackground_"] {
+  background-color: rgb(var(--sm-accent-rgb) / 0.12) !important;
+}
+
 /* Active Now & friend activity cards */
 [class*="itemCard_"],
 [class*="interactive_"][class*="card_"],
@@ -558,6 +625,8 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="listItem_"] [class*="blobContainer_"],
+  [class*="listItem_"]:hover [class*="blobContainer_"],
   [class*="searchBar_"],
   [class*="tutorialContainer_"] [class*="childWrapper_"],
   [class*="tutorialContainer_"] [class*="childWrapper_"]:hover {

@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.3.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.4.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -97,6 +97,7 @@ Copy the variables you want to change, for example:
 | `--sm-panel-blur` | `10px` | Blur behind the user panel |
 | `--sm-separator-alpha` | `0.6` | Lavender separators around the chat (`0` hides them) |
 | `--sm-accent` + `--sm-accent-rgb` | `#a895d6` / `168 149 214` | Main accent (hover, highlights, links in menus). **Change both together.** |
+| `--sm-mention` | `#c94467` | Mention badges and the "NEW" pill when mentions are off-screen |
 | `--sm-accent-strong` (+ `-hover`, `-active`) | `#7d68b8` | Filled buttons. Keep it dark enough for white text. |
 | `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
 | `--sm-surface-0` … `--sm-surface-3` | `#16151a` … `#28262d` | Solid surfaces for popouts, menus, tooltips, modals |
@@ -123,7 +124,8 @@ The theme is being refined component by component toward a stable release for th
 - [x] Palette and wallpaper pass: Lavender Dusk palette, centered wallpaper with readable chat glass (v2.1.0)
 - [x] App frame: lavender gradient separators framing the chat, softened wallpaper (v2.2.0)
 - [x] Title bar bunny logo, channel header and search polish (v2.3.0)
-- [ ] Server list, channel list, chat, member list, user panel
+- [x] Server list: unread dot, selected ring, hover lift, rose mention badges, BetterFolders-friendly (v2.4.0)
+- [ ] Channel list, chat, member list, user panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
 - [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)
