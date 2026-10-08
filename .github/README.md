@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.2.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-3.3.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -139,7 +139,8 @@ The theme is being refined component by component toward a stable release for th
 - [x] Nitro profiles: native colors + lavender ring by default, `--sm-nitro-profiles: mai` switch (v3.0.0)
 - [x] Menus, tooltips, modals and pickers verified live: solid Mai surfaces, red danger actions kept, lavender selection (no extra CSS needed thanks to the token layer)
 - [x] Lavender keyboard focus rings (v3.1.0)
-- [ ] Voice and call screens (needs a live call to verify)
+- [x] Voice and call screens verified live on a community server (status colors kept)
+- [x] UX pass: lavender jump highlight, message hover rail, avatar bounce, sliding link underline, button press, lavender switches/checkboxes, reply bar and jump-to-present bar (v3.3.0)
 - [x] Reduced motion: still wallpaper and no hover motion when the OS asks for it (v3.2.0)
 - [ ] Preview screenshots and community submission
 

@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.2.2
+ * @version 3.3.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -178,6 +178,23 @@
   --control-primary-border-default: transparent !important;
   --control-primary-text-default: #ffffff !important;
   --badge-background-brand: var(--sm-accent-strong) !important; /* "NEW" feature badges */
+
+  /* Switches, checkboxes and radios: lavender when on */
+  --switch-background-selected-default: var(--sm-accent-strong) !important;
+  --switch-background-selected-hover: var(--sm-accent-strong-hover) !important;
+  --switch-border-selected-default: var(--sm-accent-strong) !important;
+  --switch-border-selected-hover: var(--sm-accent-strong-hover) !important;
+  --checkbox-background-selected-default: var(--sm-accent-strong) !important;
+  --checkbox-background-selected-hover: var(--sm-accent-strong-hover) !important;
+  --checkbox-border-selected-default: var(--sm-accent) !important;
+  --checkbox-border-selected-hover: var(--sm-accent) !important;
+  --radio-border-selected-default: var(--sm-accent) !important;
+  --radio-border-selected-hover: var(--sm-accent) !important;
+  --radio-foreground-active: var(--sm-accent) !important;
+
+  /* The message you jump to (reply click, "Jump to message") glows lavender */
+  --message-highlight-background-default: rgb(var(--sm-accent-rgb) / 0.14) !important;
+  --message-highlight-background-hover: rgb(var(--sm-accent-rgb) / 0.2) !important;
 
   /* Chat: mentions & reactions (keeps the "you reacted" state visible) */
   --message-mentioned-background-default: rgb(var(--sm-mention-rgb) / 0.12) !important;
@@ -712,6 +729,44 @@ nav[class*="sidebar_"] {
   background-color: rgb(var(--sm-accent-rgb) / 0.06) !important;
 }
 
+/* Hovered message: a thin lavender rail on the left edge helps the eye stay
+   on the line being read (mentioned messages keep their rose rail) */
+[class*="messageListItem_"] [class*="message_"]:not([class*="mentioned_"]):hover {
+  box-shadow: inset 2px 0 0 rgb(var(--sm-accent-rgb) / 0.6);
+}
+
+/* Avatars in chat bounce up slightly on hover: they open the profile */
+[class*="messageListItem_"] img[class*="avatar_"] {
+  transition: transform 0.15s ease;
+}
+
+[class*="messageListItem_"] img[class*="avatar_"]:hover {
+  transform: scale(1.06);
+}
+
+/* Links in messages: a peach underline slides in on hover */
+[class*="markup_"] a[class*="anchor_"] {
+  text-decoration: none !important;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.2s ease, color 0.15s ease;
+}
+
+[class*="markup_"] a[class*="anchor_"]:hover {
+  background-size: 100% 1px;
+}
+
+/* "Replying to ..." bar above the input: lavender rail */
+[class*="replyBar_"] {
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+/* "You're viewing older messages / Jump to present" bar */
+[class*="jumpToPresentBar_"] {
+  background-color: var(--sm-accent-strong) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+}
+
 /* Mentioned messages follow the mention color (rose-mauve), like the badges */
 [class*="message_"][class*="mentioned_"]::before {
   background: var(--sm-mention) !important;
@@ -733,6 +788,15 @@ nav[class*="sidebar_"] {
 
 [class*="reaction_"][class*="reactionMe_"] [class*="reactionCount_"] {
   color: var(--reaction-text-reacted-default) !important;
+}
+
+/* Filled buttons press in slightly when clicked */
+[class*="lookFilled_"] {
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+[class*="lookFilled_"]:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 /* Reactions: a small pop on hover and a press-in on click */
@@ -888,6 +952,11 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="messageListItem_"] img[class*="avatar_"],
+  [class*="messageListItem_"] img[class*="avatar_"]:hover,
+  [class*="markup_"] a[class*="anchor_"],
+  [class*="lookFilled_"],
+  [class*="lookFilled_"]:active:not(:disabled),
   #app-mount,
   [class*="appMount_"] {
     background-image: var(--sm-wallpaper-reduced-motion) !important;
