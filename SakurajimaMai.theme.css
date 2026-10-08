@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.4.0
+ * @version 2.4.2
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -50,7 +50,7 @@
   --sm-accent-strong-active: #63509a;
   --sm-accent-2: #e8bf9f;
   --sm-accent-2-rgb: 232 191 159;
-  --sm-mention: #c94467; /* mention badges: rose, white text 4.7:1 */
+  --sm-mention: #b9487f; /* mention badges: rose-mauve, clearly apart from Discord red; white text 4.9:1 */
 
   /* Solid surfaces for floating UI (popouts, menus, tooltips, modals),
      stepped from the wallpaper hue so they read as the same material */
@@ -562,6 +562,24 @@ nav[class*="sidebar_"] {
 
 [class*="message_"][class*="mentioned_"]::before {
   background: var(--sm-accent) !important;
+}
+
+/* "NEW" divider above unread messages: lavender (unread), not red (mention).
+   Discord paints the line, the pill and its cap from --divider-color. */
+[class*="isUnread_"],
+.low-saturation [class*="isUnread_"] {
+  --divider-color: var(--sm-accent-strong) !important;
+}
+
+/* The date label on that line stays readable (lavender 6.9:1 instead of 3.4:1) */
+[class*="isUnread_"] [class*="content_"] {
+  color: var(--sm-accent) !important;
+}
+
+/* "N new messages" bar pinned at the top of the chat (Discord paints it blurple) */
+[class*="newMessagesBar_"] {
+  background-color: var(--sm-accent-strong) !important;
+  color: #ffffff !important;
 }
 
 /* Embeds */

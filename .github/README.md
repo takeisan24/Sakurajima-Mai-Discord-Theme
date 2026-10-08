@@ -97,7 +97,7 @@ Copy the variables you want to change, for example:
 | `--sm-panel-blur` | `10px` | Blur behind the user panel |
 | `--sm-separator-alpha` | `0.6` | Lavender separators around the chat (`0` hides them) |
 | `--sm-accent` + `--sm-accent-rgb` | `#a895d6` / `168 149 214` | Main accent (hover, highlights, links in menus). **Change both together.** |
-| `--sm-mention` | `#c94467` | Mention badges and the "NEW" pill when mentions are off-screen |
+| `--sm-mention` | `#b9487f` | Mention badges and the "NEW" pill when mentions are off-screen |
 | `--sm-accent-strong` (+ `-hover`, `-active`) | `#7d68b8` | Filled buttons. Keep it dark enough for white text. |
 | `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
 | `--sm-surface-0` … `--sm-surface-3` | `#16151a` … `#28262d` | Solid surfaces for popouts, menus, tooltips, modals |
