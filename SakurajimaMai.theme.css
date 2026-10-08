@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.4.3
+ * @version 2.5.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -160,6 +160,7 @@
   --control-primary-background-active: var(--sm-accent-strong-active) !important;
   --control-primary-border-default: transparent !important;
   --control-primary-text-default: #ffffff !important;
+  --badge-background-brand: var(--sm-accent-strong) !important; /* "NEW" feature badges */
 
   /* Chat: mentions & reactions (keeps the "you reacted" state visible) */
   --message-mentioned-background-default: rgb(var(--sm-accent-rgb) / 0.14) !important;
@@ -421,6 +422,67 @@ nav[class*="sidebar_"] {
   background-color: rgb(var(--sm-accent-rgb) / 0.12) !important;
 }
 
+/* ==========================================================================
+   CHANNEL LIST
+   ========================================================================== */
+
+/* Selected channel: lavender rail on the left edge + soft lavender fill,
+   the same "you are here" language as the selected-server ring */
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="link_"] {
+  background-color: rgb(var(--sm-accent-rgb) / 0.18) !important;
+  box-shadow: inset 3px 0 0 var(--sm-accent) !important;
+}
+
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="name_"] {
+  color: var(--sm-text-strong) !important;
+}
+
+/* Category headers: lavender, like the member-list role headers.
+   The server's own text and casing are left untouched. */
+[class*="wrapperCommon_"] [class*="name_"] {
+  color: rgb(var(--sm-accent-rgb) / 0.9) !important;
+}
+
+/* Unread channel: Discord's white edge bar is replaced by a lavender diamond
+   notch peeking from the edge, and the channel glyph glows lavender.
+   (Only ~4px of space exists left of the glyph, so the glyph carries the signal.) */
+[class*="containerDefault_"] [class*="unread_"] {
+  display: none !important;
+}
+
+[class*="containerDefault_"] [class*="modeUnread"] [class*="link_"] {
+  position: relative;
+}
+
+[class*="containerDefault_"] [class*="modeUnread"] [class*="link_"]::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  background: var(--sm-accent);
+  box-shadow: 0 0 6px rgb(var(--sm-accent-rgb) / 0.75);
+  pointer-events: none;
+}
+
+[class*="containerDefault_"] [class*="modeUnread"] [class*="iconContainer_"] svg {
+  color: var(--sm-accent) !important;
+  filter: drop-shadow(0 0 3px rgb(var(--sm-accent-rgb) / 0.6));
+}
+
+/* Hover: the channel name slides 2px to the right */
+[class*="containerDefault_"] [class*="link_"] [class*="name_"] {
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+[class*="containerDefault_"] [class*="link_"]:hover [class*="name_"] {
+  transform: translateX(2px);
+}
+
 /* Active Now & friend activity cards */
 [class*="itemCard_"],
 [class*="interactive_"][class*="card_"],
@@ -650,6 +712,8 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="containerDefault_"] [class*="link_"] [class*="name_"],
+  [class*="containerDefault_"] [class*="link_"]:hover [class*="name_"],
   [class*="listItem_"] [class*="blobContainer_"],
   [class*="listItem_"]:hover [class*="blobContainer_"],
   [class*="searchBar_"],

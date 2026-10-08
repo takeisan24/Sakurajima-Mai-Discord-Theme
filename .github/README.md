@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.4.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.5.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -125,7 +125,8 @@ The theme is being refined component by component toward a stable release for th
 - [x] App frame: lavender gradient separators framing the chat, softened wallpaper (v2.2.0)
 - [x] Title bar bunny logo, channel header and search polish (v2.3.0)
 - [x] Server list: unread dot, selected ring, hover lift, rose mention badges, BetterFolders-friendly (v2.4.0)
-- [ ] Channel list, chat, member list, user panel
+- [x] Channel list: selected rail, lavender categories, diamond-notch unread with glowing glyph, hover slide, lavender "NEW" feature badges (v2.5.0)
+- [ ] Chat, message input, member list, user panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
 - [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)
