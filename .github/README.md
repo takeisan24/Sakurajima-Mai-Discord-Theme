@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.9.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-3.0.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -102,6 +102,7 @@ Copy the variables you want to change, for example:
 | `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
 | `--sm-surface-0` … `--sm-surface-3` | `#16151a` … `#28262d` | Solid surfaces for popouts, menus, tooltips, modals |
 | `--sm-text`, `--sm-text-strong`, `--sm-text-subtle`, `--sm-text-muted` | `#f4f2f6`, `#fff`, `#d3d0dc`, `#a9a6b2` | Text colors |
+| `--sm-nitro-profiles` | `native` | `native` keeps other people's Nitro profile colors, `mai` redraws every profile in the Mai palette |
 | `--sm-radius-menu` | `12px` | Context menu corners |
 | `--sm-logo-mask` | Bunny head SVG | Title-bar logo shape (any SVG/PNG used as a mask, tinted with `--sm-accent`) |
 | `--home-icon-image`, `--home-icon-image-zoom`, `--home-icon-image-position` | Bunny hairpin, `82%`, `center` | Home button icon |
@@ -109,12 +110,16 @@ Copy the variables you want to change, for example:
 
 ## Nitro behavior
 
-| Nitro feature | Current behavior |
+| Nitro feature | Behavior |
 |---|---|
 | **Client theme** (your own app gradient) | Neutralized, so the Mai wallpaper is visible |
-| **Profile theme** (other people's popout colors) | Shown in the solid Mai palette |
+| **Profile theme** (other people's popout and profile colors) | **Kept exactly as the owner chose**, with a lavender ring. Profiles without a Nitro theme use the solid Mai palette |
 
-Planned (see the roadmap): keep other people's Nitro profile colors with Mai accents by default, plus a one-line QuickCSS switch to force the Mai palette.
+Prefer every profile in the Mai palette? Add this to QuickCSS:
+
+```css
+:root { --sm-nitro-profiles: mai !important; }
+```
 
 ## Roadmap
 
@@ -130,7 +135,7 @@ The theme is being refined component by component toward a stable release for th
 - [x] Message input: lavender edge, focus ring, lavender button hover, lavender typing dots; app-wide input borders (v2.7.0)
 - [x] Member list: lavender hover wash and 2px slide; Nitro nameplates untouched (v2.8.0)
 - [x] User panel and app frame outlines: lavender frame borders (--app-frame-border), lavender settings gear on hover; Nitro nameplates untouched (v2.9.0)
-- [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
+- [x] Nitro profiles: native colors + lavender ring by default, `--sm-nitro-profiles: mai` switch (v3.0.0)
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
 - [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)
 - [ ] Preview screenshots and community submission

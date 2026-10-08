@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.9.0
+ * @version 3.0.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -71,6 +71,11 @@
   --sm-radius-menu: 12px;
   --sm-shadow-float: 0 16px 48px rgb(0 0 0 / 0.6);
 
+  /* ===== NITRO PROFILES =====
+     native: other people's Nitro profile colors are shown as they chose them
+     mai:    every profile is redrawn in the Mai palette */
+  --sm-nitro-profiles: native;
+
   /* ===== SIGNATURE: bunny logo in the title bar (monochrome mask, tinted with --sm-accent) ===== */
   --sm-logo-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><mask id='m'><g fill='%23fff'><ellipse cx='8.6' cy='6.2' rx='2.1' ry='5.4' transform='rotate(-12 8.6 6.2)'/><ellipse cx='15.4' cy='6.2' rx='2.1' ry='5.4' transform='rotate(12 15.4 6.2)'/><circle cx='12' cy='15.2' r='7'/></g><g fill='%23000'><circle cx='9.4' cy='14.8' r='1.1'/><circle cx='14.6' cy='14.8' r='1.1'/></g></mask><rect width='24' height='24' fill='%23fff' mask='url(%23m)'/></svg>");
 
@@ -92,14 +97,13 @@
    Discord paints almost everything from these variables, so overriding them
    themes menus, popouts, tooltips, modals and pickers without fragile class
    selectors. Applied to every element that (re)declares a theme so nested
-   theme-light / theme-dark containers (e.g. user profiles) inherit it too.
+   theme-light / theme-dark containers inherit it too. Nitro-themed user
+   profiles (.custom-user-profile-theme) are skipped so their owner's colors
+   and Discord's matching text colors stay intact (see USER PROFILES).
    ========================================================================== */
 
 :root,
-.theme-dark,
-.theme-light,
-.theme-darker,
-.theme-midnight {
+:is(.theme-dark, .theme-light, .theme-darker, .theme-midnight):not(.custom-user-profile-theme) {
   /* Neutralize Nitro client-theme tinting (same as Discord's .disable-adaptive-theme) */
   --custom-theme-base-color-amount: 0% !important;
   --custom-theme-text-color-amount: 0% !important;
@@ -597,17 +601,11 @@ nav[class*="sidebar_"] {
    from these, so nothing is nested or clipped (profile frames & effects work).
    ========================================================================== */
 
-.user-profile-popout,
-.user-profile-modal,
-.user-profile-modal-v2,
-.user-profile-sidebar {
-  /* Nitro profile theme colors -> solid Mai surfaces */
-  --profile-gradient-primary-color: var(--sm-surface-0) !important;
-  --profile-gradient-secondary-color: var(--sm-surface-0) !important;
-  --profile-gradient-overlay-color: transparent !important;
-  --profile-gradient-button-color: var(--sm-accent-strong) !important;
-  --profile-gradient-modal-background-color: var(--sm-surface-1) !important;
-
+/* Default (Nitro mode "native"): profiles WITH a Nitro profile theme keep the
+   owner's colors exactly as Discord draws them (Discord also picks light or
+   dark text for those colors, so they stay readable). Profiles WITHOUT one get
+   solid Mai surfaces. Every profile gets the lavender ring below. */
+:is(.user-profile-popout, .user-profile-modal, .user-profile-modal-v2, .user-profile-sidebar):not(.custom-user-profile-theme) {
   --background-surface-high: var(--sm-surface-0) !important;
   --background-surface-higher: var(--sm-surface-2) !important;
   --background-surface-highest: var(--sm-surface-3) !important;
@@ -627,6 +625,36 @@ nav[class*="sidebar_"] {
   --control-secondary-background-default: rgb(var(--sm-accent-rgb) / 0.12) !important;
   --control-secondary-background-hover: rgb(var(--sm-accent-rgb) / 0.22) !important;
   --control-secondary-background-active: rgb(var(--sm-accent-rgb) / 0.18) !important;
+}
+
+/* Opt-in (--sm-nitro-profiles: mai): every profile, Nitro or not, is redrawn
+   in solid Mai surfaces with Mai text, ignoring the owner's profile colors. */
+@container style(--sm-nitro-profiles: mai) {
+  :is(.user-profile-popout, .user-profile-modal, .user-profile-modal-v2, .user-profile-sidebar).custom-user-profile-theme {
+    --profile-gradient-primary-color: var(--sm-surface-0) !important;
+    --profile-gradient-secondary-color: var(--sm-surface-0) !important;
+    --profile-gradient-overlay-color: transparent !important;
+    --profile-gradient-button-color: var(--sm-accent-strong) !important;
+    --profile-gradient-modal-background-color: var(--sm-surface-1) !important;
+    --background-surface-high: var(--sm-surface-0) !important;
+    --background-surface-higher: var(--sm-surface-2) !important;
+    --background-surface-highest: var(--sm-surface-3) !important;
+    --background-base-lower: var(--sm-surface-0) !important;
+    --user-profile-overlay-background: rgb(var(--sm-accent-rgb) / 0.07) !important;
+    --user-profile-overlay-background-hover: rgb(var(--sm-accent-rgb) / 0.18) !important;
+    --user-profile-border: rgb(var(--sm-accent-rgb) / 0.16) !important;
+    --text-default: var(--sm-text) !important;
+    --text-strong: var(--sm-text-strong) !important;
+    --text-subtle: var(--sm-text-subtle) !important;
+    --text-muted: var(--sm-text-muted) !important;
+    --interactive-text-default: var(--sm-text-subtle) !important;
+    --interactive-text-hover: var(--sm-text-strong) !important;
+    --interactive-text-active: var(--sm-text-strong) !important;
+    --icon-strong: var(--sm-text-strong) !important;
+    --icon-default: var(--sm-text-subtle) !important;
+    --icon-subtle: var(--sm-text-muted) !important;
+    --text-link: var(--sm-accent-2) !important;
+  }
 }
 
 /* Outline ring instead of a border: no layout shift, no double edge.
