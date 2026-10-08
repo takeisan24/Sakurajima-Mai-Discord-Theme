@@ -1,8 +1,8 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 1.3.0
- * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, synchronized palette, Nitro & Onyx overrides, and solid dark popouts.
+ * @version 2.0.0
+ * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
@@ -10,92 +10,168 @@
 
 @import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@master/build/v3/naat.v3.css");
 
+/* ==========================================================================
+   USER SETTINGS — edit only this block to customize the theme
+   ========================================================================== */
+
 :root {
-  /* ===== BACKGROUND & THEME COLORS ===== */
-  /* Main Background: Dark Slate Violet (#302e34) */
+  /* ===== WALLPAPER ===== */
   --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif");
-  
-  /* Crystal Clear Dark Transparency (Clean, Deep, No Milky Fog) */
+
+  /* Glass layers over the wallpaper (lower alpha = more wallpaper visible) */
   --theme-transparency: rgba(16, 14, 20, 0.42);
   --message-box-transparency: rgba(20, 18, 26, 0.48);
+  --sm-panel-blur: 10px;
 
-  /* Primary Accent: Amethyst Lavender (#a895d6 - Mai's eyes & highlights) */
-  --main-theme-color: #a895d6;
-  
-  /* Secondary Accent: Blush Porcelain (#e0b494 - Skin warmth & blush) */
-  --secondary-accent-color: #e0b494;
+  /* ===== PALETTE =====
+     Accent: Amethyst Lavender (Mai's eyes & highlights)
+     Accent 2: Blush Porcelain (skin warmth & blush)
+     *-rgb values are space separated so they work with rgb(var(--x) / alpha) */
+  --sm-accent: #a895d6;
+  --sm-accent-rgb: 168 149 214;
+  --sm-accent-strong: #7d68b8; /* filled buttons: white text stays readable (4.6:1) */
+  --sm-accent-strong-hover: #6f5aa8;
+  --sm-accent-strong-active: #63509a;
+  --sm-accent-2: #e0b494;
+  --sm-accent-2-rgb: 224 180 148;
 
-  /* Home Icon: Bunny Hairpin Barrette */
+  /* Solid surfaces for floating UI (popouts, menus, tooltips, modals) */
+  --sm-surface-0: #141218;
+  --sm-surface-1: #181622;
+  --sm-surface-2: #1e1b28;
+  --sm-surface-3: #24202f;
+
+  /* Text */
+  --sm-text: #f4f2f6;
+  --sm-text-strong: #ffffff;
+  --sm-text-subtle: #d0cce0;
+  --sm-text-muted: #a8a8b4;
+  --sm-icon-muted: #8e8a9c;
+
+  /* Shape */
+  --sm-radius-menu: 12px;
+  --sm-shadow-float: 0 16px 48px rgb(0 0 0 / 0.6);
+
+  /* ===== HOME ICON: Bunny Hairpin Barrette ===== */
   --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/bunny-hairpin.png");
   --home-icon-image-position: center center;
   --home-icon-image-zoom: 82%;
 
-  /* Server Listing Width (Default 72px for single column) */
+  /* ===== SERVER LIST (base NAAT options) ===== */
   --server-listing-width: 72px;
   --unread-server-animation: none;
+
+  /* Aliases consumed by the base NAAT stylesheet */
+  --main-theme-color: var(--sm-accent);
+  --secondary-accent-color: var(--sm-accent-2);
 }
 
 /* ==========================================================================
-   GLOBAL OVERRIDES FOR ONYX (MIDNIGHT), ASH (DARKER), DARK, LIGHT & NITRO
+   DISCORD DESIGN TOKENS
+   Discord paints almost everything from these variables, so overriding them
+   themes menus, popouts, tooltips, modals and pickers without fragile class
+   selectors. Applied to every element that (re)declares a theme so nested
+   theme-light / theme-dark containers (e.g. user profiles) inherit it too.
    ========================================================================== */
 
 :root,
 .theme-dark,
 .theme-light,
 .theme-darker,
-.theme-midnight,
-.theme-amoled,
-[class*="theme-"],
-[data-theme],
-#app-mount[class*="custom-theme-background"],
-#app-mount [class*="client-themes-"] {
-  /* Discord Default & Visual Refresh Background Variables */
-  --background-primary: transparent !important;
-  --background-secondary: transparent !important;
-  --background-secondary-alt: transparent !important;
-  --background-tertiary: transparent !important;
-  --background-accent: transparent !important;
-  --background-floating: #17151d !important;
-  --background-mobile-primary: transparent !important;
-  --background-mobile-secondary: transparent !important;
-  --home-background: transparent !important;
-  --channeltextarea-background: var(--message-box-transparency) !important;
+.theme-midnight {
+  /* Neutralize Nitro client-theme tinting (same as Discord's .disable-adaptive-theme) */
+  --custom-theme-base-color-amount: 0% !important;
+  --custom-theme-text-color-amount: 0% !important;
 
-  /* Modern Discord Design Tokens - Clean & Crisp */
-  --bg-base-primary: transparent !important;
-  --bg-base-secondary: transparent !important;
-  --bg-base-tertiary: transparent !important;
-  --bg-surface-raised: rgba(22, 20, 28, 0.55) !important;
-  --bg-surface-overlay: #17151d !important;
-  --bg-mod-faint: rgba(168, 149, 214, 0.08) !important;
-  --bg-mod-subtle: rgba(168, 149, 214, 0.14) !important;
-  --bg-backdrop: rgba(12, 10, 16, 0.75) !important;
+  /* Floating surfaces: 100% solid */
+  --background-surface-high: var(--sm-surface-1) !important;
+  --background-surface-higher: var(--sm-surface-2) !important;
+  --background-surface-highest: var(--sm-surface-3) !important;
+  --modal-background: var(--sm-surface-1) !important;
+  --input-background-default: rgb(12 10 16 / 0.45) !important;
+  --background-code: rgb(20 18 24 / 0.75) !important;
 
-  /* High-Contrast Text & Icon Tokens (Immune to Light Mode black text) */
-  --text-normal: #f4f2f6 !important;
-  --text-muted: #a8a8b4 !important;
-  --header-primary: #ffffff !important;
-  --header-secondary: #d8d4e2 !important;
-  --interactive-normal: #d0cce0 !important;
-  --interactive-hover: #ffffff !important;
-  --interactive-active: #ffffff !important;
-  --interactive-muted: #6e6b7b !important;
-  --channels-default: #a8a8b4 !important;
+  /* Hover / selection fills */
+  --background-mod-muted: rgb(var(--sm-accent-rgb) / 0.08) !important;
+  --background-mod-subtle: rgb(var(--sm-accent-rgb) / 0.12) !important;
+  --background-mod-normal: rgb(var(--sm-accent-rgb) / 0.18) !important;
+  --background-mod-strong: rgb(var(--sm-accent-rgb) / 0.26) !important;
+  --interactive-background-hover: rgb(var(--sm-accent-rgb) / 0.18) !important;
+  --interactive-background-active: rgb(var(--sm-accent-rgb) / 0.24) !important;
+  --interactive-background-selected: rgb(var(--sm-accent-rgb) / 0.22) !important;
 
-  /* Interaction Hover Modifiers (No white flash/box in Light mode) */
-  --background-modifier-hover: rgba(168, 149, 214, 0.12) !important;
-  --background-modifier-active: rgba(168, 149, 214, 0.2) !important;
-  --background-modifier-selected: rgba(168, 149, 214, 0.22) !important;
-  --background-modifier-accent: rgba(168, 149, 214, 0.2) !important;
+  /* Borders */
+  --border-muted: rgb(var(--sm-accent-rgb) / 0.1) !important;
+  --border-subtle: rgb(var(--sm-accent-rgb) / 0.16) !important;
+  --border-normal: rgb(var(--sm-accent-rgb) / 0.22) !important;
+  --border-strong: rgb(var(--sm-accent-rgb) / 0.32) !important;
 
-  /* Discord Nitro Client Themes Gradient Neutralization */
-  --custom-theme-background: transparent !important;
-  --client-themes-background: transparent !important;
-  --theme-gradient-start: transparent !important;
-  --theme-gradient-end: transparent !important;
+  /* Text & icons (also keeps Light mode readable on the dark surfaces) */
+  --text-default: var(--sm-text) !important;
+  --text-strong: var(--sm-text-strong) !important;
+  --text-subtle: var(--sm-text-subtle) !important;
+  --text-muted: var(--sm-text-muted) !important;
+  --text-link: var(--sm-accent-2) !important;
+  --text-brand: var(--sm-accent) !important;
+  --interactive-text-default: var(--sm-text-subtle) !important;
+  --interactive-text-hover: var(--sm-text-strong) !important;
+  --interactive-text-active: var(--sm-text-strong) !important;
+  --icon-strong: var(--sm-text-strong) !important;
+  --icon-default: var(--sm-text-subtle) !important;
+  --icon-subtle: var(--sm-text-muted) !important;
+  --icon-muted: var(--sm-icon-muted) !important;
+  --channels-default: var(--sm-text-muted) !important;
+
+  /* Brand: buttons, toggles, checkboxes */
+  --background-brand: var(--sm-accent-strong) !important;
+  --control-brand-foreground: var(--sm-accent) !important;
+  --control-brand-foreground-new: var(--sm-accent) !important;
+  --control-primary-background-default: var(--sm-accent-strong) !important;
+  --control-primary-background-hover: var(--sm-accent-strong-hover) !important;
+  --control-primary-background-active: var(--sm-accent-strong-active) !important;
+  --control-primary-border-default: transparent !important;
+  --control-primary-text-default: #ffffff !important;
+
+  /* Chat: mentions & reactions (keeps the "you reacted" state visible) */
+  --message-mentioned-background-default: rgb(var(--sm-accent-rgb) / 0.14) !important;
+  --message-mentioned-background-hover: rgb(var(--sm-accent-rgb) / 0.22) !important;
+  --reaction-background-default: rgb(var(--sm-accent-rgb) / 0.12) !important;
+  --reaction-background-hover: rgb(var(--sm-accent-rgb) / 0.24) !important;
+  --reaction-border-hover: rgb(var(--sm-accent-rgb) / 0.5) !important;
+  --reaction-background-reacted-default: rgb(var(--sm-accent-rgb) / 0.32) !important;
+  --reaction-border-reacted-default: var(--sm-accent) !important;
+
+  /* Scrollbars (Discord keeps its own widths, we only recolor) */
+  --scrollbar-thin-thumb: rgb(var(--sm-accent-2-rgb) / 0.55) !important;
+  --scrollbar-thin-track: transparent !important;
+  --scrollbar-auto-thumb: rgb(var(--sm-accent-2-rgb) / 0.55) !important;
+  --scrollbar-auto-track: transparent !important;
 }
 
-/* Force App Mount Background to respect our Theme Wallpaper */
+/* Light mode: base layers would stay white under our light text, so darken them */
+.theme-light {
+  --background-base-lowest: var(--sm-surface-0) !important;
+  --background-base-lower: var(--sm-surface-1) !important;
+  --background-base-low: var(--sm-surface-2) !important;
+  --chat-background-default: transparent !important;
+}
+
+/* Nitro client themes: drop the gradient layers so the wallpaper shows through */
+.custom-theme-background {
+  --background-gradient-chat: transparent !important;
+  --background-gradient-app-frame: transparent !important;
+  --background-gradient-lowest: transparent !important;
+  --background-gradient-lower: transparent !important;
+  --background-gradient-low: transparent !important;
+  --background-gradient-high: transparent !important;
+  --background-gradient-higher: transparent !important;
+  --background-gradient-highest: transparent !important;
+}
+
+/* ==========================================================================
+   APP BACKGROUND
+   ========================================================================== */
+
 #app-mount,
 [class*="appMount_"] {
   background: transparent !important;
@@ -105,11 +181,10 @@
   background-attachment: fixed !important;
 }
 
+/* Only the top-level app layers (never floating layers, badges or sprites) */
 [class*="app_"],
 [class*="layers_"],
-[class*="layer_"],
-[class*="base_"] {
-  background: transparent !important;
+[class*="layers_"] > [class*="layer_"] {
   background-color: transparent !important;
 }
 
@@ -118,48 +193,28 @@
   background-image: none !important;
 }
 
-/* Neutralize Nitro Theme Gradients layered on root client containers only (Never touch user popouts/modals) */
-#app-mount [class*="client-themes-"]:not([class*="user-profile"]):not([class*="userPopout"]):not([class*="outer_"]):not([class*="modal"]):not([class*="menu"]),
-#app-mount > [class*="custom-theme-background"],
-body[class*="custom-theme-background"],
-[class*="appMount_"][class*="custom-theme-background"],
-[class*="app_"][class*="custom-theme-background"]:not([class*="user-profile"]):not([class*="outer_"]),
-[class*="bg_"][class*="custom-theme-background"],
-[class*="layers_"][class*="custom-theme-background"] {
-  background: transparent !important;
-  background-image: none !important;
-}
-
 /* ==========================================================================
-   SIDEBAR, CHANNELS, DMs & FRIENDS LIST (Clean & Clear, No Milky Haze)
+   SIDEBAR, CHANNELS, DMs & FRIENDS LIST
    ========================================================================== */
 
-/* Sidebar & Channel List Container */
 [class*="sidebar_"],
 [class*="sidebar_"] > [class*="container_"],
 [class*="privateChannels_"],
-[class*="scroller_"][class*="privateChannels_"],
-nav[class*="privateChannels_"],
 nav[class*="sidebar_"] {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* Friends Page, DM Page & Main Scrollers - Remove Milky Blur */
 [class*="container_"][class*="themed_"],
 [class*="tabBody_"],
-[class*="tabContainer_"],
 [class*="peopleColumn_"],
 [class*="nowPlayingColumn_"],
-[class*="peopleList_"],
-[class*="scroller_"][class*="people_"],
-[class*="container_"][class*="people_"] {
+[class*="peopleList_"] {
   background: transparent !important;
   background-color: transparent !important;
   backdrop-filter: none !important;
 }
 
-/* Title Bar & Top Navigation */
 [class*="title_"][class*="container_"],
 [class*="header_"][class*="container_"],
 [class*="themed_"][class*="header_"],
@@ -168,10 +223,8 @@ nav[class*="sidebar_"] {
   background-color: transparent !important;
 }
 
-/* Main Chat Area & Member List */
 [class*="chat_"],
 [class*="chatContent_"],
-[class*="content_"][class*="chat_"],
 [class*="members_"],
 [class*="membersWrap_"],
 [class*="container_"][class*="members_"] {
@@ -179,44 +232,57 @@ nav[class*="sidebar_"] {
   background-color: transparent !important;
 }
 
-/* Active Now & Friend Activity Cards - Clean Dark Surface */
+/* Active Now & friend activity cards */
 [class*="itemCard_"],
 [class*="interactive_"][class*="card_"],
 [class*="outer_"][class*="padded_"] {
-  background-color: rgba(22, 20, 28, 0.55) !important;
-  border: 1px solid rgba(168, 149, 214, 0.12) !important;
+  background-color: rgb(22 20 28 / 0.55) !important;
+  border: 1px solid rgb(var(--sm-accent-rgb) / 0.12) !important;
   backdrop-filter: none !important;
   border-radius: 10px;
 }
 
 [class*="itemCard_"]:hover {
-  background-color: rgba(30, 28, 38, 0.72) !important;
-  border-color: rgba(168, 149, 214, 0.28) !important;
+  background-color: rgb(30 28 38 / 0.72) !important;
+  border-color: rgb(var(--sm-accent-rgb) / 0.28) !important;
 }
 
-/* Channel & DM Item Hover */
+/* Channel & DM rows */
 [class*="channel_"][class*="interactive_"]:hover {
-  background-color: rgba(168, 149, 214, 0.12) !important;
+  background-color: rgb(var(--sm-accent-rgb) / 0.12) !important;
 }
 
 [class*="channel_"][class*="interactive_"][class*="selected_"] {
-  background-color: rgba(168, 149, 214, 0.2) !important;
+  background-color: rgb(var(--sm-accent-rgb) / 0.2) !important;
 }
 
-/* Search Bars */
+[class*="channelName"] {
+  transition: color 0.15s ease;
+}
+
+[class*="wrapper_"][class*="clickable"]:hover [class*="channelName"],
+[class*="link_"][class*="channel"]:hover [class*="channelName"],
+[class*="link_"]:hover [class*="name_"],
+[class*="wrapper_"][class*="clickable"]:hover [class*="icon_"],
+[class*="link_"][class*="channel"]:hover [class*="icon_"],
+[class*="link_"]:hover [class*="icon_"] {
+  color: var(--sm-accent) !important;
+}
+
+/* Search bars */
 [class*="searchBar_"] {
-  background-color: rgba(22, 20, 28, 0.6) !important;
-  border: 1px solid rgba(168, 149, 214, 0.15);
+  background-color: rgb(22 20 28 / 0.6) !important;
+  border: 1px solid rgb(var(--sm-accent-rgb) / 0.15);
   border-radius: 8px;
   backdrop-filter: none !important;
 }
 
-/* Bottom Left User Account Panel */
+/* Bottom-left user account panel */
 [class*="panels_"] {
   background: var(--message-box-transparency) !important;
   border-radius: 12px 12px 0 0;
-  border-top: 1px solid rgba(168, 149, 214, 0.15);
-  backdrop-filter: blur(10px);
+  border-top: 1px solid rgb(var(--sm-accent-rgb) / 0.15);
+  backdrop-filter: blur(var(--sm-panel-blur));
 }
 
 [class*="panels_"] > [class*="container_"],
@@ -225,710 +291,161 @@ nav[class*="sidebar_"] {
   background-color: transparent !important;
 }
 
-/* Neutralize Nitro custom profile banner covering bottom panel */
+/* Nitro profile banner painted behind the bottom panel */
 [class*="panels_"] > [class*="container_"] [class*="banner_"] {
   background: transparent !important;
   background-image: none !important;
 }
 
 /* ==========================================================================
-   COMPONENT 7: POPOUTS, FLYOUT MENUS & USER PROFILES (100% SOLID & CLEAR)
+   CONTEXT MENUS & SUBMENUS
+   Colors come from the tokens above, so danger (red) / premium items keep
+   their meaning. Only the shape is styled here.
    ========================================================================== */
 
-/* 1. Context Menus, Submenus, & Switch Accounts Flyout - 100% Solid Opaque */
-[class*="menu"][role="menu"],
-[class*="menu"][role="listbox"],
-[class*="submenu"][role="menu"],
-div[class*="layer"] > [class*="menu"] {
-  background-color: #141218 !important;
-  background: #141218 !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.28) !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
-  border-radius: 12px !important;
+[class*="menu_"][role="menu"] {
+  border: 1px solid rgb(var(--sm-accent-rgb) / 0.28) !important;
+  border-radius: var(--sm-radius-menu) !important;
+  box-shadow: var(--sm-shadow-float) !important;
   backdrop-filter: none !important;
 }
 
-/* Force ALL text in menus & submenus to be bright, crisp, and high-contrast */
-[class*="menu"] [class*="label"],
-[class*="menu"] [class*="accountRowLabel"],
-[class*="menu"] [class*="username"],
-[class*="menu"] [class*="text-"],
-[class*="menu"] [class*="item"] [class*="labelContainer"],
-[class*="menu"] [role="menuitem"] span,
-[class*="menu"] [role="menuitem"] div {
-  color: #f4f2f6 !important;
-  font-weight: 500 !important;
-}
-
-/* Subtext / Muted text inside menus */
-[class*="menu"] [class*="subtext"],
-[class*="menu"] [class*="hint"] {
-  color: #a8a8b4 !important;
-}
-
-/* Menu Items Hover / Focused State */
-[class*="menu"] [class*="item"]:hover,
-[class*="menu"] [class*="item"][class*="focused"],
-[class*="menu"] [class*="accountRow"]:hover {
-  background-color: rgba(168, 149, 214, 0.24) !important;
-  border-radius: 8px;
-}
-
-[class*="menu"] [class*="item"]:hover [class*="label"],
-[class*="menu"] [class*="item"][class*="focused"] [class*="label"],
-[class*="menu"] [class*="accountRow"]:hover [class*="accountRowLabel"] {
-  color: #ffffff !important;
-  text-shadow: 0 0 8px rgba(168, 149, 214, 0.6);
-}
-
-/* Icons inside menus */
-[class*="menu"] [class*="icon"],
-[class*="menu"] svg {
-  color: #a895d6 !important;
-}
-
-/* Menu separators & dividers */
-[class*="menu"] [class*="separator"],
-[class*="menu"] [class*="divider"] {
-  border-bottom: 1px solid rgba(168, 149, 214, 0.18) !important;
-  margin: 6px 8px;
-}
-
-/* 2. Small User Account Popout & Profile Cards - 100% Solid Opaque (No Bleed, No Transparent Glass) */
-/* Reset outer positioning/animator containers to prevent black square wrapper */
-[class*="layerContainer_"],
-[class*="layerContainer"],
-[class*="layerContainer"] > [class*="layer"],
-[class*="layer_"] > [class*="animatorTop"],
-[class*="layer_"] > [class*="animatorBottom"],
-[class*="layer_"] > [class*="animatorLeft"],
-[class*="layer_"] > [class*="animatorRight"],
-[class*="animatorTop_"],
-[class*="animatorBottom_"],
-[class*="animatorLeft_"],
-[class*="animatorRight_"],
-[class*="accountProfilePopoutWrapper"] {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* The actual User Profile Popout Card (Account, BiteSize, UserPopout, Profiles) */
-.user-profile-popout,
-[class*="user-profile-popout"],
-div[class*="outer_"][class*="user-profile-popout"],
-div[class*="outer_"][class*="custom-user-profile-theme"],
-div[class*="themeContainer_"][class*="user-profile-popout"],
-[class*="accountProfilePopoutWrapper"] > div,
-[class*="accountProfileCard"],
-[class*="accountProfilePopout"],
-[class*="userPopout"],
-[class*="biteSizeOuter"],
-[class*="biteSize"],
-[class*="userProfileOuter"],
-div[class*="userProfileModalOuter"] {
-  --profile-gradient-primary-color: #141218 !important;
-  --profile-gradient-secondary-color: #141218 !important;
-  --profile-gradient-overlay-color: transparent !important;
-  --profile-gradient-button-color: #201e2a !important;
-  --profile-gradient-modal-background-color: #181622 !important;
-  --profile-body-background-color: #181622 !important;
-  --profile-body-background-hover: #221f2c !important;
-  --profile-avatar-border-color: #141218 !important;
-  --custom-theme-base-color-light: #181622 !important;
-  --custom-theme-text-color-light: #f4f2f6 !important;
-  --custom-theme-base-color-dark: #141218 !important;
-  --custom-theme-text-color-dark: #f4f2f6 !important;
-  --background-floating: #141218 !important;
-  --background-primary: #141218 !important;
-  --background-secondary: #181622 !important;
-  --background-secondary-alt: #181622 !important;
-  --background-tertiary: #141218 !important;
-  --text-normal: #f4f2f6 !important;
-  --text-muted: #a8a8b4 !important;
-  --header-primary: #ffffff !important;
-  --header-secondary: #d0cce0 !important;
-  --interactive-normal: #d0cce0 !important;
-  --interactive-hover: #ffffff !important;
-  --interactive-active: #ffffff !important;
-  background-color: #141218 !important;
-  background: #141218 !important;
-  background-image: none !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.28) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(168, 149, 214, 0.15) !important;
-  border-radius: 16px !important;
-  overflow: hidden !important;
-  backdrop-filter: none !important;
-}
-
-/* Eliminate milky-white / gradient overlay pseudo-elements */
-.user-profile-popout::before,
-[class*="user-profile-popout"]::before,
-div[class*="outer_"][class*="user-profile-popout"]::before,
-div[class*="outer_"][class*="custom-user-profile-theme"]::before,
-[class*="user-profile-popout"] [class*="inner_"]::before,
-[class*="user-profile-popout"] [class*="overlay_"]::before,
-[class*="custom-user-profile-theme"]::before {
-  background: none !important;
-  display: none !important;
-  content: none !important;
-  opacity: 0 !important;
-}
-
-/* User Popout Inner Box & Overlay Background - 100% Solid Dark Surface */
-.user-profile-popout [class*="inner_"],
-[class*="user-profile-popout"] [class*="inner_"],
-[class*="userProfileInner"],
-[class*="userPopoutInner"],
-[class*="biteSizeInner"],
-[class*="userProfileThemeContainer"],
-[class*="overlayBackground"],
-[class*="profileBody"],
-[class*="biteSizeOverlayBackground"],
-[class*="userPopoutOverlayBackground"],
-[class*="body"][class*="userProfile"],
-.user-profile-popout [class*="body_"],
-[class*="user-profile-popout"] [class*="body_"] {
-  --profile-gradient-primary-color: #141218 !important;
-  --profile-gradient-secondary-color: #141218 !important;
-  --profile-body-background-color: #181622 !important;
-  --profile-body-background-hover: #221f2c !important;
-  background-color: #181622 !important;
-  background: #181622 !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.14) !important;
-  border-radius: 12px !important;
-  backdrop-filter: none !important;
-}
-
-/* Preserve user custom photo banner */
-[class*="banner"][style*="background-image"],
-[class*="biteSizeBanner"][style*="background-image"],
-[class*="popoutBanner"][style*="background-image"],
-.user-profile-popout [class*="banner_"],
-[class*="user-profile-popout"] [class*="banner_"] {
-  background-color: transparent !important;
-}
-
-/* Custom Status Bubble inside User Popout */
-.user-profile-popout [class*="statusBubble"],
-.user-profile-popout [class*="statusBubbleOuter"],
-[class*="user-profile-popout"] [class*="statusBubble"],
-[class*="user-profile-popout"] [class*="statusBubbleOuter"],
-[class*="statusBubbleOuter"],
-[class*="statusBubble"] {
-  background-color: #201e28 !important;
-  background: #201e28 !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  border-radius: 10px !important;
-}
-
-.user-profile-popout [class*="statusBubble"] *,
-[class*="user-profile-popout"] [class*="statusBubble"] *,
-[class*="statusBubbleOuter"] *,
-[class*="statusBubble"] *,
-[class*="statusBubble"] [class*="statusText"],
-[class*="statusBubble"] span,
-[class*="statusBubble"] div,
-[class*="statusBubble"] p {
-  color: #f4f2f6 !important;
-}
-
-/* Action Button rows inside Small Popout (Edit Profile, DND, Switch Accounts, Clips...) */
-.user-profile-popout [class*="menu"],
-[class*="user-profile-popout"] [class*="menu"],
-[class*="accountProfileCard"] [class*="menu"],
-[class*="userPopout"] [class*="menu"],
-[class*="biteSize"] [class*="menu"],
-[class*="userProfileOuter"] [class*="menu"] {
-  background-color: transparent !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.user-profile-popout [class*="item"],
-.user-profile-popout [role="menuitem"],
-.user-profile-popout [class*="item_"],
-[class*="user-profile-popout"] [class*="item"],
-[class*="user-profile-popout"] [role="menuitem"],
-[class*="user-profile-popout"] [class*="item_"],
-[class*="accountProfileCard"] [class*="item"],
-[class*="accountProfileCard"] [role="menuitem"],
-[class*="userPopout"] [class*="item"],
-[class*="userPopout"] [role="menuitem"],
-[class*="biteSize"] [class*="item"],
-[class*="biteSize"] [role="menuitem"],
-[class*="userProfileOuter"] [class*="item"],
-[class*="userProfileOuter"] [role="menuitem"] {
-  background-color: #201e2a !important;
-  background: #201e2a !important;
-  opacity: 1 !important;
-  margin: 3px 6px !important;
-  border: 1px solid rgba(168, 149, 214, 0.14) !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
-}
-
-.user-profile-popout [class*="item"]:hover,
-.user-profile-popout [role="menuitem"]:hover,
-.user-profile-popout [class*="item_"]:hover,
-[class*="user-profile-popout"] [class*="item"]:hover,
-[class*="user-profile-popout"] [role="menuitem"]:hover,
-[class*="user-profile-popout"] [class*="item_"]:hover,
-[class*="accountProfileCard"] [class*="item"]:hover,
-[class*="accountProfileCard"] [role="menuitem"]:hover,
-[class*="userPopout"] [class*="item"]:hover,
-[class*="userPopout"] [role="menuitem"]:hover,
-[class*="biteSize"] [class*="item"]:hover,
-[class*="biteSize"] [role="menuitem"]:hover,
-[class*="userProfileOuter"] [class*="item"]:hover {
-  background-color: rgba(168, 149, 214, 0.22) !important;
-  background: rgba(168, 149, 214, 0.22) !important;
-  border-color: rgba(168, 149, 214, 0.35) !important;
-}
-
-.user-profile-popout [class*="label"],
-.user-profile-popout [role="menuitem"] span,
-.user-profile-popout [role="menuitem"] div,
-.user-profile-popout [class*="label_"],
-[class*="user-profile-popout"] [class*="label"],
-[class*="user-profile-popout"] [role="menuitem"] span,
-[class*="user-profile-popout"] [role="menuitem"] div,
-[class*="user-profile-popout"] [class*="label_"],
-[class*="accountProfileCard"] [class*="label"],
-[class*="accountProfileCard"] [role="menuitem"] span,
-[class*="accountProfileCard"] [role="menuitem"] div,
-[class*="userPopout"] [class*="label"],
-[class*="userPopout"] [role="menuitem"] span,
-[class*="userPopout"] [role="menuitem"] div,
-[class*="biteSize"] [class*="label"],
-[class*="biteSize"] [role="menuitem"] span,
-[class*="biteSize"] [role="menuitem"] div,
-[class*="userProfileOuter"] [class*="label"],
-[class*="userProfileOuter"] [role="menuitem"] span {
-  color: #f4f2f6 !important;
-  font-weight: 500 !important;
-}
-
-.user-profile-popout [class*="item"]:hover [class*="label"],
-.user-profile-popout [role="menuitem"]:hover span,
-[class*="user-profile-popout"] [class*="item"]:hover [class*="label"],
-[class*="user-profile-popout"] [role="menuitem"]:hover span,
-[class*="accountProfileCard"] [class*="item"]:hover [class*="label"],
-[class*="userPopout"] [class*="item"]:hover [class*="label"],
-[class*="biteSize"] [class*="item"]:hover [class*="label"],
-[class*="userProfileOuter"] [class*="item"]:hover [class*="label"] {
-  color: #ffffff !important;
-}
-
-.user-profile-popout [class*="item"] svg,
-.user-profile-popout [role="menuitem"] svg,
-[class*="user-profile-popout"] [class*="item"] svg,
-[class*="user-profile-popout"] [role="menuitem"] svg,
-[class*="accountProfileCard"] [class*="item"] svg,
-[class*="userPopout"] [class*="item"] svg,
-[class*="biteSize"] [class*="item"] svg,
-[class*="userProfileOuter"] [class*="item"] svg {
-  color: #a895d6 !important;
-}
-
-/* Username, Display Name, Discriminator, Badges & Bio text */
-.user-profile-popout [class*="userTag"],
-.user-profile-popout [class*="nickname"],
-.user-profile-popout [class*="username"],
-.user-profile-popout [class*="headerTag"],
-.user-profile-popout [class*="userTag_"],
-.user-profile-popout [class*="nickname_"],
-.user-profile-popout [class*="username_"],
-[class*="user-profile-popout"] [class*="userTag"],
-[class*="user-profile-popout"] [class*="nickname"],
-[class*="user-profile-popout"] [class*="username"],
-[class*="user-profile-popout"] [class*="headerTag"],
-[class*="accountProfileCard"] [class*="userTag"],
-[class*="accountProfileCard"] [class*="nickname"],
-[class*="accountProfileCard"] [class*="username"],
-[class*="accountProfileCard"] [class*="headerTag"],
-[class*="userPopout"] [class*="userTag"],
-[class*="userPopout"] [class*="nickname"],
-[class*="userPopout"] [class*="username"],
-[class*="userPopout"] [class*="headerTag"],
-[class*="biteSize"] [class*="userTag"],
-[class*="biteSize"] [class*="nickname"],
-[class*="biteSize"] [class*="username"],
-[class*="biteSize"] [class*="headerTag"],
-[class*="userProfile"] [class*="headerTag"] {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-}
-
-.user-profile-popout [class*="discriminator"],
-.user-profile-popout [class*="userTagDiscriminator"],
-[class*="user-profile-popout"] [class*="discriminator"],
-[class*="user-profile-popout"] [class*="userTagDiscriminator"],
-[class*="accountProfileCard"] [class*="discriminator"],
-[class*="accountProfileCard"] [class*="userTagDiscriminator"],
-[class*="userPopout"] [class*="discriminator"],
-[class*="userPopout"] [class*="userTagDiscriminator"],
-[class*="biteSize"] [class*="discriminator"],
-[class*="biteSize"] [class*="userTagDiscriminator"],
-[class*="userProfile"] [class*="discriminator"] {
-  color: #a895d6 !important;
-}
-
-.user-profile-popout [class*="descriptionClamp"],
-.user-profile-popout [class*="bio"],
-.user-profile-popout [class*="customStatus"],
-.user-profile-popout [class*="eyebrow"],
-.user-profile-popout h1,
-.user-profile-popout h2,
-.user-profile-popout h3,
-.user-profile-popout h4,
-.user-profile-popout h5,
-.user-profile-popout p,
-[class*="user-profile-popout"] [class*="descriptionClamp"],
-[class*="user-profile-popout"] [class*="bio"],
-[class*="user-profile-popout"] [class*="customStatus"],
-[class*="user-profile-popout"] [class*="eyebrow"],
-[class*="user-profile-popout"] h1,
-[class*="user-profile-popout"] h2,
-[class*="user-profile-popout"] h3,
-[class*="user-profile-popout"] h4,
-[class*="user-profile-popout"] h5,
-[class*="user-profile-popout"] p,
-[class*="accountProfileCard"] [class*="descriptionClamp"],
-[class*="accountProfileCard"] [class*="bio"],
-[class*="accountProfileCard"] [class*="customStatus"],
-[class*="accountProfileCard"] p,
-[class*="userPopout"] [class*="descriptionClamp"],
-[class*="userPopout"] [class*="bio"],
-[class*="userPopout"] [class*="customStatus"],
-[class*="userPopout"] p,
-[class*="biteSize"] [class*="descriptionClamp"],
-[class*="biteSize"] [class*="bio"],
-[class*="biteSize"] [class*="customStatus"],
-[class*="biteSize"] p,
-[class*="userProfile"] [class*="descriptionClamp"],
-[class*="userProfile"] [class*="bio"],
-[class*="userProfile"] [class*="customStatus"],
-[class*="userProfile"] p {
-  color: #e0dce8 !important;
-}
-
-.user-profile-popout a,
-[class*="user-profile-popout"] a,
-[class*="accountProfileCard"] a,
-[class*="userPopout"] a,
-[class*="biteSize"] a {
-  color: #e0b494 !important;
-}
-
-/* Activity & Game Collection section inside Popout */
-.user-profile-popout [class*="activity"],
-[class*="user-profile-popout"] [class*="activity"],
-[class*="accountProfileCard"] [class*="activity"],
-[class*="userPopout"] [class*="activity"],
-[class*="biteSize"] [class*="activity"],
-[class*="userProfileOuter"] [class*="activity"] {
-  background-color: #1e1b26 !important;
-  border: 1px solid rgba(168, 149, 214, 0.15) !important;
-  border-radius: 8px !important;
-}
-
-/* 3. Large User Profile Modal (Full Profile Modal) - 100% Solid Opaque */
-.user-profile-modal,
-[class*="user-profile-modal"],
-div[class*="outer_"][class*="user-profile-modal"],
-div[class*="themeContainer_"][class*="user-profile-modal"],
-[class*="userProfileModal"],
-[class*="root"][class*="userProfileModal"] {
-  --profile-gradient-primary-color: #141218 !important;
-  --profile-gradient-secondary-color: #141218 !important;
-  --profile-gradient-overlay-color: transparent !important;
-  --profile-gradient-button-color: #201e2a !important;
-  --profile-gradient-modal-background-color: #181622 !important;
-  --profile-body-background-color: #181622 !important;
-  --profile-body-background-hover: #221f2c !important;
-  --custom-theme-base-color-light: #181622 !important;
-  --custom-theme-text-color-light: #f4f2f6 !important;
-  --custom-theme-base-color-dark: #141218 !important;
-  --custom-theme-text-color-dark: #f4f2f6 !important;
-  background-color: #141218 !important;
-  background: #141218 !important;
-  background-image: none !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.28) !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95) !important;
-  border-radius: 20px !important;
-  backdrop-filter: none !important;
-}
-
-.user-profile-modal::before,
-[class*="user-profile-modal"]::before {
-  background: none !important;
-  display: none !important;
-  content: none !important;
-  opacity: 0 !important;
-}
-
-.user-profile-modal [class*="inner_"],
-[class*="user-profile-modal"] [class*="inner_"],
-.user-profile-modal [class*="body_"],
-[class*="user-profile-modal"] [class*="body_"],
-[class*="userProfileModal"] [class*="overlayBackground"] {
-  background-color: #181620 !important;
-  background: #181620 !important;
-  opacity: 1 !important;
-  border: 1px solid rgba(168, 149, 214, 0.15) !important;
-  border-radius: 14px !important;
-}
-
-/* Tab Bar inside Full Profile (UserInfo, Mutual Servers, Mutual Friends) */
-[class*="tabBar"][class*="top"] [class*="tabBarItem"] {
-  color: #a8a8b4 !important;
-}
-
-[class*="tabBar"][class*="top"] [class*="tabBarItem"][class*="selected"] {
-  color: #ffffff !important;
-  border-bottom: 2px solid #a895d6 !important;
-}
-
-/* Mutual Servers & Mutual Friends List rows */
-[class*="listRow"]:hover {
-  background-color: rgba(168, 149, 214, 0.18) !important;
-  border-radius: 8px;
+[class*="menu_"][role="menu"] [class*="item_"] {
+  border-radius: 6px;
 }
 
 /* ==========================================================================
-   POLISHED COMPONENTS & UI DETAILS
+   USER PROFILES: small popout, account popout, full modal, DM sidebar
+   Token-only: Discord draws backgrounds, rows, hovers and the status bubble
+   from these, so nothing is nested or clipped (profile frames & effects work).
    ========================================================================== */
 
-/* ===== SCROLLBAR ===== */
+.user-profile-popout,
+.user-profile-modal,
+.user-profile-modal-v2,
+.user-profile-sidebar {
+  /* Nitro profile theme colors -> solid Mai surfaces */
+  --profile-gradient-primary-color: var(--sm-surface-0) !important;
+  --profile-gradient-secondary-color: var(--sm-surface-0) !important;
+  --profile-gradient-overlay-color: transparent !important;
+  --profile-gradient-button-color: var(--sm-accent-strong) !important;
+  --profile-gradient-modal-background-color: var(--sm-surface-1) !important;
 
-::-webkit-scrollbar {
-  width: 6px !important;
+  --background-surface-high: var(--sm-surface-0) !important;
+  --background-surface-higher: var(--sm-surface-2) !important;
+  --background-surface-highest: var(--sm-surface-3) !important;
+  --background-base-lower: var(--sm-surface-0) !important;
+
+  /* Inner cards, rows & separators */
+  --user-profile-overlay-background: rgb(var(--sm-accent-rgb) / 0.07) !important;
+  --user-profile-overlay-background-hover: rgb(var(--sm-accent-rgb) / 0.18) !important;
+  --user-profile-background-hover: rgb(var(--sm-accent-rgb) / 0.08) !important;
+  --user-profile-border: rgb(var(--sm-accent-rgb) / 0.16) !important;
+  --user-profile-toolbar-background: rgb(20 18 24 / 0.72) !important;
+  --user-profile-toolbar-border: rgb(var(--sm-accent-rgb) / 0.12) !important;
+  --user-profile-activity-toolbar-background: rgb(20 18 24 / 0.5) !important;
+  --user-profile-note-background-focus: rgb(0 0 0 / 0.3) !important;
+
+  /* Secondary buttons inside profiles */
+  --control-secondary-background-default: rgb(var(--sm-accent-rgb) / 0.12) !important;
+  --control-secondary-background-hover: rgb(var(--sm-accent-rgb) / 0.22) !important;
+  --control-secondary-background-active: rgb(var(--sm-accent-rgb) / 0.18) !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgba(224, 180, 148, 0.6) !important;
-  border-radius: 4px;
+/* Outline ring instead of a border: no layout shift, no double edge.
+   Skipped for decorative profile frames, which draw their own edge. */
+.user-profile-popout:not(.custom-profile-frame),
+.user-profile-modal:not(.custom-profile-frame) {
+  box-shadow: 0 0 0 1px rgb(var(--sm-accent-rgb) / 0.3), var(--sm-shadow-float) !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #a895d6 !important;
+/* ==========================================================================
+   TOOLTIPS
+   The pointer arrow reads --background-surface-high, so it stays in sync.
+   ========================================================================== */
+
+[class*="tooltip_"][class*="tooltipPrimary_"] {
+  --background-surface-high: var(--sm-surface-0) !important;
+  box-shadow: 0 0 0 1px rgb(var(--sm-accent-rgb) / 0.3), 0 8px 24px rgb(0 0 0 / 0.6) !important;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent !important;
+/* ==========================================================================
+   CHAT
+   ========================================================================== */
+
+/* Message hover (mentioned messages keep their own hover from the tokens) */
+[class*="messageListItem_"] [class*="message_"]:not([class*="mentioned_"]):hover {
+  background-color: rgb(var(--sm-accent-rgb) / 0.06) !important;
 }
 
-/* ===== EMBEDS ===== */
+[class*="message_"][class*="mentioned_"]::before {
+  background: var(--sm-accent) !important;
+}
 
+/* Embeds */
 [class*="embedFull"] {
-  border-left: 4px solid #a895d6 !important;
-  background: rgba(24, 22, 28, 0.75) !important;
+  border-left: 4px solid var(--sm-accent) !important;
+  background: rgb(24 22 28 / 0.75) !important;
   border-radius: 8px;
 }
 
-/* ===== REACTIONS ===== */
-
-[class*="reaction_"]:not([class*="reactionBtn"]) {
-  background-color: rgba(168, 149, 214, 0.18) !important;
-  border: 1px solid rgba(168, 149, 214, 0.25) !important;
-  border-radius: 8px;
-  transition: all 0.15s ease;
-}
-
-[class*="reaction_"]:not([class*="reactionBtn"]):hover {
-  background-color: rgba(168, 149, 214, 0.35) !important;
-  border-color: #a895d6 !important;
-}
-
-/* ===== CHANNEL LIST & HOVERS ===== */
-
-[class*="channelName"] {
-  color: #a8a8b4;
-  transition: color 0.15s ease;
-}
-
-[class*="wrapper_"][class*="clickable"]:hover [class*="channelName"],
-[class*="link_"][class*="channel"]:hover [class*="channelName"],
-[class*="containerDefault"]:hover [class*="channelName"],
-[class*="link_"]:hover [class*="name_"] {
-  color: #a895d6 !important;
-}
-
-[class*="wrapper_"][class*="clickable"]:hover [class*="icon_"],
-[class*="link_"][class*="channel"]:hover [class*="icon_"],
-[class*="containerDefault"]:hover [class*="icon_"],
-[class*="link_"]:hover [class*="icon_"] {
-  color: #a895d6 !important;
-}
-
-[class*="modeUnread"] [class*="name_"] {
-  color: #f4f2f6 !important;
-}
-
-/* ===== CODE BLOCKS ===== */
-
+/* Inline code */
 code.inline {
-  background-color: rgba(224, 180, 148, 0.2) !important;
-  color: #f4f2f6 !important;
-  border: 1px solid rgba(224, 180, 148, 0.35) !important;
-  border-radius: 4px;
+  background-color: rgb(var(--sm-accent-2-rgb) / 0.2) !important;
+  color: var(--sm-text) !important;
+  border: 1px solid rgb(var(--sm-accent-2-rgb) / 0.35) !important;
 }
 
-[class*="codeView"],
-[class*="codeBlock"] code {
-  background-color: rgba(20, 18, 24, 0.75) !important;
-  border: 1px solid rgba(168, 149, 214, 0.2);
-  border-radius: 8px;
-}
-
-/* ===== LINKS ===== */
-
-[class*="anchor_"],
-[class*="messageContent"] a {
-  color: #e0b494 !important;
+/* Links */
+[class*="anchor_"] {
   transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
-[class*="anchor_"]:hover,
-[class*="messageContent"] a:hover {
-  color: #f4f2f6 !important;
-  text-shadow: 0 0 6px rgba(224, 180, 148, 0.6);
+[class*="anchor_"]:hover {
+  color: var(--sm-text) !important;
+  text-shadow: 0 0 6px rgb(var(--sm-accent-2-rgb) / 0.6);
 }
 
-/* ===== MENTIONS ===== */
-
-[class*="mentioned"] {
-  background-color: rgba(168, 149, 214, 0.18) !important;
-}
-
-[class*="mentioned"]:hover {
-  background-color: rgba(168, 149, 214, 0.25) !important;
-}
-
-[class*="mentioned"]:before {
-  background-color: #a895d6 !important;
-  width: 3px;
-}
-
-/* ===== MEMBER ROLE HEADER ===== */
-
+/* Member list role headers */
 [class*="membersGroup"] {
-  color: #a895d6 !important;
+  color: var(--sm-accent) !important;
   letter-spacing: 0.5px;
 }
 
-/* ===== TOOLTIPS ===== */
+/* ==========================================================================
+   SMALL DETAILS
+   ========================================================================== */
 
-[class*="tooltip"],
-[class*="tooltip_"],
-[class*="tooltipPrimary"],
-[class*="tooltipPrimary_"] {
-  --tooltip-text-color: #f4f2f6 !important;
-  --text-normal: #f4f2f6 !important;
-  --text-muted: #b8b4c8 !important;
-  --header-primary: #ffffff !important;
-  background-color: #141218 !important;
-  background: #141218 !important;
-  border: 1px solid rgba(168, 149, 214, 0.3) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85) !important;
-  border-radius: 8px !important;
-  color: #f4f2f6 !important;
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sm-accent) !important;
 }
 
-[class*="tooltip"] *,
-[class*="tooltipContent"],
-[class*="tooltipContent_"],
-[class*="tooltip_"] [class*="tooltipContent_"],
-[class*="tooltip_"] [class*="text-"],
-[class*="tooltip_"] span,
-[class*="tooltip_"] div,
-[class*="tooltip_"] p,
-[class*="tooltip_"] strong,
-[class*="tooltip_"] b {
-  color: #f4f2f6 !important;
-  font-weight: 500 !important;
-}
-
-[class*="tooltip_"] [class*="subtext_"],
-[class*="tooltip_"] [class*="muted_"],
-[class*="tooltip_"] [class*="description_"] {
-  color: #c0bcd0 !important;
-}
-
-/* Tooltip Pointers (Directional Arrows) */
-[class*="tooltipTop_"] [class*="tooltipPointer_"],
-[class*="tooltipTop"] [class*="tooltipPointer"],
-[class*="tooltip_"][class*="tooltipTop"] [class*="tooltipPointer_"],
-[class*="tooltip_"][class*="tooltipTop"] [class*="tooltipPointer"] {
-  border-top-color: #141218 !important;
-}
-
-[class*="tooltipBottom_"] [class*="tooltipPointer_"],
-[class*="tooltipBottom"] [class*="tooltipPointer"],
-[class*="tooltip_"][class*="tooltipBottom"] [class*="tooltipPointer_"],
-[class*="tooltip_"][class*="tooltipBottom"] [class*="tooltipPointer"] {
-  border-bottom-color: #141218 !important;
-}
-
-[class*="tooltipLeft_"] [class*="tooltipPointer_"],
-[class*="tooltipLeft"] [class*="tooltipPointer"],
-[class*="tooltip_"][class*="tooltipLeft"] [class*="tooltipPointer_"],
-[class*="tooltip_"][class*="tooltipLeft"] [class*="tooltipPointer"] {
-  border-left-color: #141218 !important;
-}
-
-[class*="tooltipRight_"] [class*="tooltipPointer_"],
-[class*="tooltipRight"] [class*="tooltipPointer"],
-[class*="tooltip_"][class*="tooltipRight"] [class*="tooltipPointer_"],
-[class*="tooltip_"][class*="tooltipRight"] [class*="tooltipPointer"] {
-  border-right-color: #141218 !important;
-}
-
-/* ===== BUTTON / ICON HOVER ===== */
-
-button:hover svg,
-[class*="button_"]:hover svg,
-[class*="iconButton"]:hover svg,
-[class*="closeButton"]:hover svg,
-[class*="actionButton"]:hover svg,
-[class*="toolbar_"] [class*="iconWrapper"]:hover svg {
-  color: #a895d6 !important;
+/* Icon-only toolbar buttons glow lavender (filled / red / green buttons untouched) */
+[class*="toolbar_"] [class*="iconWrapper"]:hover svg,
+[class*="iconButton"]:hover svg {
+  color: var(--sm-accent) !important;
   transition: color 0.15s ease;
 }
 
-[class*="lookFilled"][class*="colorBrand"]:hover,
-[class*="lookFilled"][class*="colorGreen"]:hover {
-  background-color: #a895d6 !important;
-}
-
-/* ===== TEXT SELECTION ===== */
-
 ::selection {
-  background-color: rgba(168, 149, 214, 0.35) !important;
-  color: #f4f2f6 !important;
+  background-color: rgb(var(--sm-accent-rgb) / 0.35) !important;
+  color: var(--sm-text) !important;
 }
 
-/* ===== HOME ICON POLISH ===== */
-
+/* Home icon */
 [class*="tutorialContainer_"] [class*="childWrapper_"] {
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
 }
 
 [class*="tutorialContainer_"] [class*="childWrapper_"]:hover {
-  filter: drop-shadow(0 0 8px #a895d6);
+  filter: drop-shadow(0 0 8px var(--sm-accent));
   transform: scale(1.06);
 }
 
-/* ===== CHAT READABILITY ===== */
-
-[class*="message_"]:hover {
-  background-color: rgba(168, 149, 214, 0.06) !important;
+@media (prefers-reduced-motion: reduce) {
+  [class*="tutorialContainer_"] [class*="childWrapper_"],
+  [class*="tutorialContainer_"] [class*="childWrapper_"]:hover {
+    transition: none;
+    transform: none;
+  }
 }
