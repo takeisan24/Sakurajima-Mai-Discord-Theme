@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.2.1
+ * @version 2.3.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -37,7 +37,7 @@
   --sm-panel-blur: 10px;
 
   /* Lavender separators around the chat: peak opacity, 0 hides them */
-  --sm-separator-alpha: 0.4;
+  --sm-separator-alpha: 0.6;
 
   /* ===== PALETTE: Lavender Dusk =====
      Accent: Amethyst Lavender, the saturated twin of the wallpaper hue (257° vs 260°)
@@ -68,6 +68,9 @@
   /* Shape */
   --sm-radius-menu: 12px;
   --sm-shadow-float: 0 16px 48px rgb(0 0 0 / 0.6);
+
+  /* ===== SIGNATURE: bunny logo in the title bar (monochrome mask, tinted with --sm-accent) ===== */
+  --sm-logo-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><mask id='m'><g fill='%23fff'><ellipse cx='8.6' cy='6.2' rx='2.1' ry='5.4' transform='rotate(-12 8.6 6.2)'/><ellipse cx='15.4' cy='6.2' rx='2.1' ry='5.4' transform='rotate(12 15.4 6.2)'/><circle cx='12' cy='15.2' r='7'/></g><g fill='%23000'><circle cx='9.4' cy='14.8' r='1.1'/><circle cx='14.6' cy='14.8' r='1.1'/></g></mask><rect width='24' height='24' fill='%23fff' mask='url(%23m)'/></svg>");
 
   /* ===== HOME ICON: Bunny Hairpin Barrette ===== */
   --home-icon-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/master/image/bunny-hairpin.png");
@@ -145,6 +148,7 @@
   --icon-subtle: var(--sm-text-muted) !important;
   --icon-muted: var(--sm-icon-muted) !important;
   --channels-default: var(--sm-text-muted) !important;
+  --input-placeholder-text-default: var(--sm-text-muted) !important;
 
   /* Brand: buttons, toggles, checkboxes */
   --background-brand: var(--sm-accent-strong) !important;
@@ -277,6 +281,70 @@ nav[class*="sidebar_"] {
 [class*="container_"][class*="themed_"] {
   border-bottom: 1px solid transparent !important;
   border-image: linear-gradient(to right, transparent, var(--sm-separator) 50%, transparent) 1 !important;
+}
+
+/* ==========================================================================
+   TITLE BAR, CHANNEL HEADER & SEARCH
+   ========================================================================== */
+
+/* Title bar (top window strip): the server icon duplicates the server list,
+   so it becomes the theme's bunny logo; the server name steps back to muted. */
+[class*="bar_"]:has(> [class*="trailing_"]) > [class*="title_"] [class*="guildIcon_"] {
+  background: var(--sm-accent) !important;
+  -webkit-mask: var(--sm-logo-mask) center / contain no-repeat;
+  mask: var(--sm-logo-mask) center / contain no-repeat;
+  border-radius: 0 !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+[class*="bar_"]:has(> [class*="trailing_"]) > [class*="title_"] [class*="defaultColor_"] {
+  color: var(--sm-text-muted) !important;
+}
+
+/* Minimize / maximize glow lavender; close keeps Discord's red */
+[class*="winButton_"]:not([class*="winButtonClose_"]):hover {
+  background-color: rgb(var(--sm-accent-rgb) / 0.18) !important;
+  color: var(--sm-text-strong) !important;
+}
+
+/* Channel header: lavender channel glyph */
+[class*="container_"][class*="themed_"] [class*="channelIcon_"] svg {
+  color: var(--sm-accent) !important;
+}
+
+/* Header toolbar: a toggled-on button (e.g. member list shown) gets a lavender
+   underline so its state reads at a glance */
+[class*="toolbar_"] [class*="iconWrapper_"][class*="selected_"] {
+  position: relative;
+  color: var(--sm-accent) !important;
+}
+
+[class*="toolbar_"] [class*="iconWrapper_"][class*="selected_"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 12px;
+  height: 2px;
+  margin-left: -6px;
+  border-radius: 2px;
+  background: var(--sm-accent);
+  pointer-events: none;
+}
+
+/* Search: calm at rest, lavender ring while typing */
+[class*="searchBar_"] {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[class*="searchBar_"]:focus-within {
+  border-color: rgb(var(--sm-accent-rgb) / 0.6) !important;
+  box-shadow: 0 0 0 3px rgb(var(--sm-accent-rgb) / 0.15) !important;
+}
+
+[class*="searchBar_"]:focus-within svg {
+  color: var(--sm-accent) !important;
 }
 
 /* Active Now & friend activity cards */
@@ -490,6 +558,7 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="searchBar_"],
   [class*="tutorialContainer_"] [class*="childWrapper_"],
   [class*="tutorialContainer_"] [class*="childWrapper_"]:hover {
     transition: none;

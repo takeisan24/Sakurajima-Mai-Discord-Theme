@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.2.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.3.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -25,7 +25,7 @@
 - **Built on Discord's own design tokens:** menus, popouts, tooltips, modals and pickers are themed through the variables Discord actually uses, so they survive most Discord updates.
 - **Readable everywhere:** danger actions stay red, mention badges stay red, your own reactions stay highlighted, and Light mode keeps readable text.
 - **Nitro aware:** Nitro client theme gradients are neutralized so the Mai wallpaper shows through.
-- **Bunny hairpin home icon**, plus everything from the NotAnotherAnimeTheme base (server list columns, unread rings, transparent layers).
+- **Bunny signature:** a lavender bunny logo in the title bar and the bunny hairpin home icon, plus everything from the NotAnotherAnimeTheme base (server list columns, unread rings, transparent layers).
 
 ## Installation
 
@@ -76,7 +76,7 @@ Copy the variables you want to change, for example:
   --sm-chat-glass: 0.15 !important;
 
   /* Lavender separators around the chat (0 hides them) */
-  --sm-separator-alpha: 0.4 !important;
+  --sm-separator-alpha: 0.6 !important;
 
   /* Blur behind the bottom-left user panel (0px disables it) */
   --sm-panel-blur: 10px !important;
@@ -95,13 +95,14 @@ Copy the variables you want to change, for example:
 | `--sm-chat-glass` | `0.15` | Extra glass on the chat and friends list (keeps text readable over Mai) |
 | `--message-box-transparency` | `rgb(var(--sm-glass-rgb) / .48)` | Message box and user panel glass |
 | `--sm-panel-blur` | `10px` | Blur behind the user panel |
-| `--sm-separator-alpha` | `0.4` | Lavender separators around the chat (`0` hides them) |
+| `--sm-separator-alpha` | `0.6` | Lavender separators around the chat (`0` hides them) |
 | `--sm-accent` + `--sm-accent-rgb` | `#a895d6` / `168 149 214` | Main accent (hover, highlights, links in menus). **Change both together.** |
 | `--sm-accent-strong` (+ `-hover`, `-active`) | `#7d68b8` | Filled buttons. Keep it dark enough for white text. |
 | `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
 | `--sm-surface-0` … `--sm-surface-3` | `#16151a` … `#28262d` | Solid surfaces for popouts, menus, tooltips, modals |
 | `--sm-text`, `--sm-text-strong`, `--sm-text-subtle`, `--sm-text-muted` | `#f4f2f6`, `#fff`, `#d3d0dc`, `#a9a6b2` | Text colors |
 | `--sm-radius-menu` | `12px` | Context menu corners |
+| `--sm-logo-mask` | Bunny head SVG | Title-bar logo shape (any SVG/PNG used as a mask, tinted with `--sm-accent`) |
 | `--home-icon-image`, `--home-icon-image-zoom`, `--home-icon-image-position` | Bunny hairpin, `82%`, `center` | Home button icon |
 | `--server-listing-width` | `72px` | Server list width (from the NotAnotherAnimeTheme base) |
 
@@ -121,7 +122,7 @@ The theme is being refined component by component toward a stable release for th
 - [x] Rebuild on Discord's design tokens; fix popout, menu, tooltip, badge and scrollbar regressions (v2.0.0)
 - [x] Palette and wallpaper pass: Lavender Dusk palette, centered wallpaper with readable chat glass (v2.1.0)
 - [x] App frame: lavender gradient separators framing the chat, softened wallpaper (v2.2.0)
-- [ ] Title bar, channel header and search polish
+- [x] Title bar bunny logo, channel header and search polish (v2.3.0)
 - [ ] Server list, channel list, chat, member list, user panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
