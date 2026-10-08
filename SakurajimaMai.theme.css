@@ -1,8 +1,8 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.8.2
- * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
+ * @version 3.9.0
+ * @description A calm lavender Sakurajima Mai theme for Discord (Vencord / BetterDiscord): wallpaper glass, solid popouts, Discord design tokens, Nitro- and plugin-friendly, accessible.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
@@ -79,6 +79,14 @@
      native: other people's Nitro profile colors are shown as they chose them
      mai:    every profile is redrawn in the Mai palette */
   --sm-nitro-profiles: native;
+
+  /* ===== PLUGINS (Vencord) =====
+     Plugin colors win by default; switch one to "mai" to repaint it.
+     --sm-role-mentions  RoleColorEverywhere's role-colored @mention pills
+     --sm-codeblocks     ShikiCodeblocks' theme background (syntax colors stay;
+                         pick the syntax theme in the plugin settings) */
+  --sm-role-mentions: native;
+  --sm-codeblocks: native;
 
   /* ===== SIGNATURE: bunny logo in the title bar (monochrome mask, tinted with --sm-accent) ===== */
   --sm-logo-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><mask id='m'><g fill='%23fff'><ellipse cx='8.6' cy='6.2' rx='2.1' ry='5.4' transform='rotate(-12 8.6 6.2)'/><ellipse cx='15.4' cy='6.2' rx='2.1' ry='5.4' transform='rotate(12 15.4 6.2)'/><circle cx='12' cy='15.2' r='7'/></g><g fill='%23000'><circle cx='9.4' cy='14.8' r='1.1'/><circle cx='14.6' cy='14.8' r='1.1'/></g></mask><rect width='24' height='24' fill='%23fff' mask='url(%23m)'/></svg>");
@@ -1057,6 +1065,20 @@ textarea,
 .vc-shiki-container {
   border: 1px solid rgb(var(--sm-accent-rgb) / 0.18) !important;
   border-radius: 8px !important;
+}
+
+/* Opt-in plugin repaints (see PLUGINS in the settings block) */
+@container style(--sm-codeblocks: mai) {
+  .vc-shiki-root {
+    background-color: var(--sm-surface-0) !important;
+  }
+}
+
+@container style(--sm-role-mentions: mai) {
+  .mention[style*="color"] {
+    color: var(--mention-foreground) !important;
+    background-color: var(--mention-background) !important;
+  }
 }
 
 /* "NEW" divider above unread messages: lavender (unread), not red (mention).
