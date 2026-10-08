@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.7.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.8.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -128,7 +128,8 @@ The theme is being refined component by component toward a stable release for th
 - [x] Channel list: selected rail, lavender categories, diamond-notch unread with glowing glyph, hover slide, lavender "NEW" feature badges (v2.5.0)
 - [x] Chat: rose-mauve mentions, lavender quotes, calm spoilers, Mai syntax palette for Discord's highlighter, readable names over the wallpaper, reaction pop (v2.6.1). Plugin colors (ShikiCodeblocks, role-colored mentions) are left untouched
 - [x] Message input: lavender edge, focus ring, lavender button hover, lavender typing dots; app-wide input borders (v2.7.0)
-- [ ] Member list, user panel
+- [x] Member list: lavender hover wash and 2px slide; Nitro nameplates untouched (v2.8.0)
+- [ ] User panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
 - [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)

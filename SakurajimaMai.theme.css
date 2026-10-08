@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.7.0
+ * @version 2.8.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -754,6 +754,28 @@ code.inline {
   text-shadow: 0 0 6px rgb(var(--sm-accent-2-rgb) / 0.6);
 }
 
+/* ==========================================================================
+   MEMBER LIST
+   ========================================================================== */
+
+/* Hover: lavender wash fading to the right, and the row slides 2px like the
+   channel list. Nitro nameplates are painted above this background and stay. */
+[class*="member_"][class*="clickable_"] {
+  transition: background-color 0.15s ease;
+}
+
+[class*="member_"][class*="clickable_"]:hover {
+  background: linear-gradient(90deg, rgb(var(--sm-accent-rgb) / 0.18), transparent 85%) !important;
+}
+
+[class*="member_"] [class*="memberInner_"] {
+  transition: transform 0.15s ease;
+}
+
+[class*="member_"][class*="clickable_"]:hover [class*="memberInner_"] {
+  transform: translateX(2px);
+}
+
 /* Member list role headers */
 [class*="membersGroup"] {
   color: var(--sm-accent) !important;
@@ -791,6 +813,8 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="member_"] [class*="memberInner_"],
+  [class*="member_"][class*="clickable_"]:hover [class*="memberInner_"],
   [class*="channelTextArea_"],
   [class*="reaction_"],
   [class*="reaction_"]:hover,
