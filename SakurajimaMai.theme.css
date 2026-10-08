@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.1.0
+ * @version 2.2.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -16,20 +16,28 @@
 
 :root {
   /* ===== WALLPAPER ===== */
-  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif");
+  /* Bundled wallpapers (same animation, different intensity):
+       maisan-soft.gif        default: Mai's colors pulled 55% toward the background so text stays readable
+       maisan.gif             original, full contrast
+       maisan-silhouette.gif  Mai as a dark silhouette, maximum readability */
+  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan-soft.gif");
   --sm-wallpaper-color: #302e34; /* the GIF's own flat background; shown while it loads */
   --sm-wallpaper-position: center;
   --sm-wallpaper-size: cover;
 
   /* ===== GLASS (Balanced style) =====
      --sm-glass-rgb tints every glass layer; alphas control how much wallpaper shows.
-     The chat glass stacks on top of the app glass because the chat sits over Mai:
-     0.42 app + 0.35 chat ≈ 0.62 total, enough for 4.5:1 text over her white collar. */
+     The chat glass stacks on top of the app glass because the chat sits over Mai.
+     With the soft wallpaper, 0.15 keeps text at 7.7:1 over her white collar;
+     raise it (e.g. 0.35) with the original wallpaper. */
   --sm-glass-rgb: 20 19 24;
   --theme-transparency: rgb(var(--sm-glass-rgb) / 0.42);
   --message-box-transparency: rgb(var(--sm-glass-rgb) / 0.48);
-  --sm-chat-glass: 0.35;
+  --sm-chat-glass: 0.15;
   --sm-panel-blur: 10px;
+
+  /* Lavender separators around the chat: peak opacity, 0 hides them */
+  --sm-separator-alpha: 0.4;
 
   /* ===== PALETTE: Lavender Dusk =====
      Accent: Amethyst Lavender, the saturated twin of the wallpaper hue (257° vs 260°)
@@ -70,9 +78,8 @@
   --server-listing-width: 72px;
   --unread-server-animation: none;
 
-  /* Aliases consumed by the base NAAT stylesheet */
+  /* Alias consumed by the base NAAT stylesheet (server-list pill border) */
   --main-theme-color: var(--sm-accent);
-  --secondary-accent-color: var(--sm-accent-2);
 }
 
 /* ==========================================================================
@@ -245,6 +252,31 @@ nav[class*="sidebar_"] {
 [class*="peopleColumn_"] {
   background: rgb(var(--sm-glass-rgb) / var(--sm-chat-glass)) !important;
   backdrop-filter: none !important;
+}
+
+/* Separators: lavender lines that fade out toward their ends, framing the
+   chat symmetrically. Left = chat edge, right = member list / Active Now edge,
+   bottom = channel header. Static, no animation. */
+:root {
+  --sm-separator: rgb(var(--sm-accent-rgb) / var(--sm-separator-alpha));
+  --sm-separator-v: linear-gradient(to bottom, transparent, var(--sm-separator) 40%, var(--sm-separator) 60%, transparent);
+}
+
+[class*="chatContent_"],
+[class*="peopleColumn_"] {
+  border-inline-start: 1px solid transparent !important;
+  border-image: var(--sm-separator-v) 1 !important;
+}
+
+[class*="container_"]:has(> [class*="membersWrap_"]),
+[class*="nowPlayingColumn_"] {
+  border-inline-start: 1px solid transparent !important;
+  border-image: var(--sm-separator-v) 1 !important;
+}
+
+[class*="container_"][class*="themed_"] {
+  border-bottom: 1px solid transparent !important;
+  border-image: linear-gradient(to right, transparent, var(--sm-separator) 50%, transparent) 1 !important;
 }
 
 /* Active Now & friend activity cards */

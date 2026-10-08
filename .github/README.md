@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.1.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.2.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -61,16 +61,22 @@ Copy the variables you want to change, for example:
 
 ```css
 :root {
-  /* Your own wallpaper (any .jpg / .png / .gif URL) */
-  --theme-background-image: url("https://example.com/my-wallpaper.jpg") !important;
+  /* Wallpaper. Bundled variants of the Mai GIF:
+     maisan-soft.gif (default), maisan.gif (original, more vivid),
+     maisan-silhouette.gif (dark silhouette, easiest reading).
+     Or any .jpg / .png / .gif URL of your own. */
+  --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif") !important;
 
   /* Glass over the whole app. Lower alpha = more wallpaper.
      More glass: 0.30   Default: 0.42   Easier reading: 0.60 */
   --theme-transparency: rgb(var(--sm-glass-rgb) / 0.42) !important;
 
   /* Extra glass on the chat only, where text sits over Mai.
-     0 = none, 0.35 = default, 0.5 = very easy reading */
-  --sm-chat-glass: 0.35 !important;
+     0.15 = default (soft wallpaper), 0.35 = recommended with the original wallpaper */
+  --sm-chat-glass: 0.15 !important;
+
+  /* Lavender separators around the chat (0 hides them) */
+  --sm-separator-alpha: 0.4 !important;
 
   /* Blur behind the bottom-left user panel (0px disables it) */
   --sm-panel-blur: 10px !important;
@@ -81,14 +87,15 @@ Copy the variables you want to change, for example:
 
 | Variable | Default | What it changes |
 |---|---|---|
-| `--theme-background-image` | Mai GIF | Wallpaper |
+| `--theme-background-image` | `maisan-soft.gif` | Wallpaper. Also bundled: `maisan.gif` (original), `maisan-silhouette.gif` |
 | `--sm-wallpaper-color` | `#302e34` | Color around the wallpaper and while it loads |
 | `--sm-wallpaper-position`, `--sm-wallpaper-size` | `center`, `cover` | Wallpaper placement (e.g. `right bottom` / `auto 100%` for a cut-out character) |
 | `--sm-glass-rgb` | `20 19 24` | Tint of every glass layer |
 | `--theme-transparency` | `rgb(var(--sm-glass-rgb) / .42)` | Glass over the whole app |
-| `--sm-chat-glass` | `0.35` | Extra glass on the chat and friends list (keeps text readable over Mai) |
+| `--sm-chat-glass` | `0.15` | Extra glass on the chat and friends list (keeps text readable over Mai) |
 | `--message-box-transparency` | `rgb(var(--sm-glass-rgb) / .48)` | Message box and user panel glass |
 | `--sm-panel-blur` | `10px` | Blur behind the user panel |
+| `--sm-separator-alpha` | `0.4` | Lavender separators around the chat (`0` hides them) |
 | `--sm-accent` + `--sm-accent-rgb` | `#a895d6` / `168 149 214` | Main accent (hover, highlights, links in menus). **Change both together.** |
 | `--sm-accent-strong` (+ `-hover`, `-active`) | `#7d68b8` | Filled buttons. Keep it dark enough for white text. |
 | `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
@@ -113,7 +120,9 @@ The theme is being refined component by component toward a stable release for th
 
 - [x] Rebuild on Discord's design tokens; fix popout, menu, tooltip, badge and scrollbar regressions (v2.0.0)
 - [x] Palette and wallpaper pass: Lavender Dusk palette, centered wallpaper with readable chat glass (v2.1.0)
-- [ ] Glass layer, server list, channel list, chat, member list, user panel
+- [x] App frame: lavender gradient separators framing the chat, softened wallpaper (v2.2.0)
+- [ ] Title bar, channel header and search polish
+- [ ] Server list, channel list, chat, member list, user panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
 - [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)
@@ -130,7 +139,7 @@ The theme is being refined component by component toward a stable release for th
 | Path | Owner | Purpose |
 |---|---|---|
 | `SakurajimaMai.theme.css` | This theme | The Sakurajima Mai theme |
-| `image/maisan.gif`, `image/bunny-hairpin.*` | This theme | Wallpaper and home icon |
+| `image/maisan*.gif`, `image/bunny-hairpin.*` | This theme | Wallpapers (original, soft, silhouette) and home icon |
 | `.github/README.md` | This theme | This page |
 | `css/v3/`, `build/v3/` | NotAnotherAnimeTheme | Base stylesheet imported by the theme |
 | `NotAnotherAnimeTheme.theme.css`, `README.md`, `community/`, `css/*csl.css` | NotAnotherAnimeTheme | The original theme, its README and community themes |
