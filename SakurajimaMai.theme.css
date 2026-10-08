@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.2.0
+ * @version 3.2.1
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -202,6 +202,13 @@
   --reaction-border-hover: rgb(var(--sm-accent-rgb) / 0.5) !important;
   --reaction-background-reacted-default: rgb(var(--sm-accent-rgb) / 0.32) !important;
   --reaction-border-reacted-default: var(--sm-accent) !important;
+  --reaction-background-reacted-hover: rgb(var(--sm-accent-rgb) / 0.4) !important;
+  --reaction-background-active: rgb(var(--sm-accent-rgb) / 0.3) !important;
+  --reaction-border-active: var(--sm-accent) !important;
+  --reaction-text-default: var(--sm-text-subtle) !important;
+  --reaction-text-hover: var(--sm-text-strong) !important;
+  --reaction-text-active: var(--sm-text-strong) !important;
+  --reaction-text-reacted-default: var(--sm-text-strong) !important;
 
   /* Scrollbars (Discord keeps its own widths, we only recolor) */
   --scrollbar-thin-thumb: rgb(var(--sm-accent-2-rgb) / 0.55) !important;
@@ -700,6 +707,17 @@ nav[class*="sidebar_"] {
 [class*="messageListItem_"] [class*="timestamp_"],
 [class*="repliedTextPreview_"] {
   text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
+}
+
+/* Your own reactions: Light, low-contrast and chat-opacity modes paint them
+   from Discord's raw blurple palette, so pin them to the reaction tokens */
+[class*="reaction_"][class*="reactionMe_"] {
+  background-color: var(--reaction-background-reacted-default) !important;
+  border-color: var(--reaction-border-reacted-default) !important;
+}
+
+[class*="reaction_"][class*="reactionMe_"] [class*="reactionCount_"] {
+  color: var(--reaction-text-reacted-default) !important;
 }
 
 /* Reactions: a small pop on hover and a press-in on click */
