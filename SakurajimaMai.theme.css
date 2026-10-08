@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.0.0
+ * @version 2.1.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -17,36 +17,45 @@
 :root {
   /* ===== WALLPAPER ===== */
   --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan.gif");
+  --sm-wallpaper-color: #302e34; /* the GIF's own flat background; shown while it loads */
+  --sm-wallpaper-position: center;
+  --sm-wallpaper-size: cover;
 
-  /* Glass layers over the wallpaper (lower alpha = more wallpaper visible) */
-  --theme-transparency: rgba(16, 14, 20, 0.42);
-  --message-box-transparency: rgba(20, 18, 26, 0.48);
+  /* ===== GLASS (Balanced style) =====
+     --sm-glass-rgb tints every glass layer; alphas control how much wallpaper shows.
+     The chat glass stacks on top of the app glass because the chat sits over Mai:
+     0.42 app + 0.35 chat ≈ 0.62 total, enough for 4.5:1 text over her white collar. */
+  --sm-glass-rgb: 20 19 24;
+  --theme-transparency: rgb(var(--sm-glass-rgb) / 0.42);
+  --message-box-transparency: rgb(var(--sm-glass-rgb) / 0.48);
+  --sm-chat-glass: 0.35;
   --sm-panel-blur: 10px;
 
-  /* ===== PALETTE =====
-     Accent: Amethyst Lavender (Mai's eyes & highlights)
-     Accent 2: Blush Porcelain (skin warmth & blush)
+  /* ===== PALETTE: Lavender Dusk =====
+     Accent: Amethyst Lavender, the saturated twin of the wallpaper hue (257° vs 260°)
+     Accent 2: Porcelain Peach, taken from Mai's skin tone in the wallpaper
      *-rgb values are space separated so they work with rgb(var(--x) / alpha) */
   --sm-accent: #a895d6;
   --sm-accent-rgb: 168 149 214;
   --sm-accent-strong: #7d68b8; /* filled buttons: white text stays readable (4.6:1) */
   --sm-accent-strong-hover: #6f5aa8;
   --sm-accent-strong-active: #63509a;
-  --sm-accent-2: #e0b494;
-  --sm-accent-2-rgb: 224 180 148;
+  --sm-accent-2: #e8bf9f;
+  --sm-accent-2-rgb: 232 191 159;
 
-  /* Solid surfaces for floating UI (popouts, menus, tooltips, modals) */
-  --sm-surface-0: #141218;
-  --sm-surface-1: #181622;
-  --sm-surface-2: #1e1b28;
-  --sm-surface-3: #24202f;
+  /* Solid surfaces for floating UI (popouts, menus, tooltips, modals),
+     stepped from the wallpaper hue so they read as the same material */
+  --sm-surface-0: #16151a;
+  --sm-surface-1: #1b1a20;
+  --sm-surface-2: #211f26;
+  --sm-surface-3: #28262d;
 
   /* Text */
   --sm-text: #f4f2f6;
   --sm-text-strong: #ffffff;
-  --sm-text-subtle: #d0cce0;
-  --sm-text-muted: #a8a8b4;
-  --sm-icon-muted: #8e8a9c;
+  --sm-text-subtle: #d3d0dc;
+  --sm-text-muted: #a9a6b2;
+  --sm-icon-muted: #8e8b96;
 
   /* Shape */
   --sm-radius-menu: 12px;
@@ -88,8 +97,8 @@
   --background-surface-higher: var(--sm-surface-2) !important;
   --background-surface-highest: var(--sm-surface-3) !important;
   --modal-background: var(--sm-surface-1) !important;
-  --input-background-default: rgb(12 10 16 / 0.45) !important;
-  --background-code: rgb(20 18 24 / 0.75) !important;
+  --input-background-default: rgb(var(--sm-glass-rgb) / 0.45) !important;
+  --background-code: rgb(var(--sm-glass-rgb) / 0.75) !important;
 
   /* Hover / selection fills */
   --background-mod-muted: rgb(var(--sm-accent-rgb) / 0.08) !important;
@@ -174,10 +183,11 @@
 
 #app-mount,
 [class*="appMount_"] {
-  background: transparent !important;
+  background: var(--sm-wallpaper-color) !important;
   background-image: var(--theme-background-image) !important;
-  background-size: cover !important;
-  background-position: center !important;
+  background-size: var(--sm-wallpaper-size) !important;
+  background-position: var(--sm-wallpaper-position) !important;
+  background-repeat: no-repeat !important;
   background-attachment: fixed !important;
 }
 
@@ -207,7 +217,6 @@ nav[class*="sidebar_"] {
 
 [class*="container_"][class*="themed_"],
 [class*="tabBody_"],
-[class*="peopleColumn_"],
 [class*="nowPlayingColumn_"],
 [class*="peopleList_"] {
   background: transparent !important;
@@ -224,7 +233,6 @@ nav[class*="sidebar_"] {
 }
 
 [class*="chat_"],
-[class*="chatContent_"],
 [class*="members_"],
 [class*="membersWrap_"],
 [class*="container_"][class*="members_"] {
@@ -232,18 +240,25 @@ nav[class*="sidebar_"] {
   background-color: transparent !important;
 }
 
+/* Extra glass where text sits over Mai (chat and the friends list) */
+[class*="chatContent_"],
+[class*="peopleColumn_"] {
+  background: rgb(var(--sm-glass-rgb) / var(--sm-chat-glass)) !important;
+  backdrop-filter: none !important;
+}
+
 /* Active Now & friend activity cards */
 [class*="itemCard_"],
 [class*="interactive_"][class*="card_"],
 [class*="outer_"][class*="padded_"] {
-  background-color: rgb(22 20 28 / 0.55) !important;
+  background-color: rgb(var(--sm-glass-rgb) / 0.55) !important;
   border: 1px solid rgb(var(--sm-accent-rgb) / 0.12) !important;
   backdrop-filter: none !important;
   border-radius: 10px;
 }
 
 [class*="itemCard_"]:hover {
-  background-color: rgb(30 28 38 / 0.72) !important;
+  background-color: rgb(var(--sm-glass-rgb) / 0.72) !important;
   border-color: rgb(var(--sm-accent-rgb) / 0.28) !important;
 }
 
@@ -271,7 +286,7 @@ nav[class*="sidebar_"] {
 
 /* Search bars */
 [class*="searchBar_"] {
-  background-color: rgb(22 20 28 / 0.6) !important;
+  background-color: rgb(var(--sm-glass-rgb) / 0.6) !important;
   border: 1px solid rgb(var(--sm-accent-rgb) / 0.15);
   border-radius: 8px;
   backdrop-filter: none !important;
@@ -341,9 +356,9 @@ nav[class*="sidebar_"] {
   --user-profile-overlay-background-hover: rgb(var(--sm-accent-rgb) / 0.18) !important;
   --user-profile-background-hover: rgb(var(--sm-accent-rgb) / 0.08) !important;
   --user-profile-border: rgb(var(--sm-accent-rgb) / 0.16) !important;
-  --user-profile-toolbar-background: rgb(20 18 24 / 0.72) !important;
+  --user-profile-toolbar-background: rgb(var(--sm-glass-rgb) / 0.72) !important;
   --user-profile-toolbar-border: rgb(var(--sm-accent-rgb) / 0.12) !important;
-  --user-profile-activity-toolbar-background: rgb(20 18 24 / 0.5) !important;
+  --user-profile-activity-toolbar-background: rgb(var(--sm-glass-rgb) / 0.5) !important;
   --user-profile-note-background-focus: rgb(0 0 0 / 0.3) !important;
 
   /* Secondary buttons inside profiles */
@@ -385,7 +400,7 @@ nav[class*="sidebar_"] {
 /* Embeds */
 [class*="embedFull"] {
   border-left: 4px solid var(--sm-accent) !important;
-  background: rgb(24 22 28 / 0.75) !important;
+  background: rgb(var(--sm-glass-rgb) / 0.75) !important;
   border-radius: 8px;
 }
 

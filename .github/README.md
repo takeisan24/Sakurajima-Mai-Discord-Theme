@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.0.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-2.1.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -21,7 +21,7 @@
 ## Features
 
 - **Balanced glass style:** the wallpaper stays visible behind the sidebars and chat, while a dark glass layer keeps text readable. Popouts, menus, tooltips and modals are 100% solid, so they never blend into the background.
-- **One editable palette:** amethyst lavender (Mai's eyes) and blush porcelain (skin warmth) on deep violet surfaces. Change the whole theme from one block of variables.
+- **Lavender Dusk palette:** amethyst lavender (the saturated twin of the wallpaper's violet-grey) and porcelain peach (Mai's skin tone in the wallpaper), on surfaces stepped from the wallpaper hue so popouts feel like the same material. Change the whole theme from one block of variables.
 - **Built on Discord's own design tokens:** menus, popouts, tooltips, modals and pickers are themed through the variables Discord actually uses, so they survive most Discord updates.
 - **Readable everywhere:** danger actions stay red, mention badges stay red, your own reactions stay highlighted, and Light mode keeps readable text.
 - **Nitro aware:** Nitro client theme gradients are neutralized so the Mai wallpaper shows through.
@@ -64,11 +64,13 @@ Copy the variables you want to change, for example:
   /* Your own wallpaper (any .jpg / .png / .gif URL) */
   --theme-background-image: url("https://example.com/my-wallpaper.jpg") !important;
 
-  /* Glass darkness behind the sidebars and chat.
-     Lower alpha = more wallpaper, higher = easier to read.
+  /* Glass over the whole app. Lower alpha = more wallpaper.
      More glass: 0.30   Default: 0.42   Easier reading: 0.60 */
-  --theme-transparency: rgba(16, 14, 20, 0.42) !important;
-  --message-box-transparency: rgba(20, 18, 26, 0.48) !important;
+  --theme-transparency: rgb(var(--sm-glass-rgb) / 0.42) !important;
+
+  /* Extra glass on the chat only, where text sits over Mai.
+     0 = none, 0.35 = default, 0.5 = very easy reading */
+  --sm-chat-glass: 0.35 !important;
 
   /* Blur behind the bottom-left user panel (0px disables it) */
   --sm-panel-blur: 10px !important;
@@ -80,14 +82,18 @@ Copy the variables you want to change, for example:
 | Variable | Default | What it changes |
 |---|---|---|
 | `--theme-background-image` | Mai GIF | Wallpaper |
-| `--theme-transparency` | `rgba(16,14,20,.42)` | Glass layer behind sidebars and chat |
-| `--message-box-transparency` | `rgba(20,18,26,.48)` | Message box and user panel glass |
+| `--sm-wallpaper-color` | `#302e34` | Color around the wallpaper and while it loads |
+| `--sm-wallpaper-position`, `--sm-wallpaper-size` | `center`, `cover` | Wallpaper placement (e.g. `right bottom` / `auto 100%` for a cut-out character) |
+| `--sm-glass-rgb` | `20 19 24` | Tint of every glass layer |
+| `--theme-transparency` | `rgb(var(--sm-glass-rgb) / .42)` | Glass over the whole app |
+| `--sm-chat-glass` | `0.35` | Extra glass on the chat and friends list (keeps text readable over Mai) |
+| `--message-box-transparency` | `rgb(var(--sm-glass-rgb) / .48)` | Message box and user panel glass |
 | `--sm-panel-blur` | `10px` | Blur behind the user panel |
 | `--sm-accent` + `--sm-accent-rgb` | `#a895d6` / `168 149 214` | Main accent (hover, highlights, links in menus). **Change both together.** |
 | `--sm-accent-strong` (+ `-hover`, `-active`) | `#7d68b8` | Filled buttons. Keep it dark enough for white text. |
-| `--sm-accent-2` + `--sm-accent-2-rgb` | `#e0b494` / `224 180 148` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
-| `--sm-surface-0` … `--sm-surface-3` | `#141218` … `#24202f` | Solid surfaces for popouts, menus, tooltips, modals |
-| `--sm-text`, `--sm-text-strong`, `--sm-text-subtle`, `--sm-text-muted` | `#f4f2f6`, `#fff`, `#d0cce0`, `#a8a8b4` | Text colors |
+| `--sm-accent-2` + `--sm-accent-2-rgb` | `#e8bf9f` / `232 191 159` | Secondary accent (links, scrollbar, inline code). **Change both together.** |
+| `--sm-surface-0` … `--sm-surface-3` | `#16151a` … `#28262d` | Solid surfaces for popouts, menus, tooltips, modals |
+| `--sm-text`, `--sm-text-strong`, `--sm-text-subtle`, `--sm-text-muted` | `#f4f2f6`, `#fff`, `#d3d0dc`, `#a9a6b2` | Text colors |
 | `--sm-radius-menu` | `12px` | Context menu corners |
 | `--home-icon-image`, `--home-icon-image-zoom`, `--home-icon-image-position` | Bunny hairpin, `82%`, `center` | Home button icon |
 | `--server-listing-width` | `72px` | Server list width (from the NotAnotherAnimeTheme base) |
@@ -106,7 +112,7 @@ Planned (see the roadmap): keep other people's Nitro profile colors with Mai acc
 The theme is being refined component by component toward a stable release for the NotAnotherAnimeTheme community folder:
 
 - [x] Rebuild on Discord's design tokens; fix popout, menu, tooltip, badge and scrollbar regressions (v2.0.0)
-- [ ] Palette and wallpaper pass
+- [x] Palette and wallpaper pass: Lavender Dusk palette, centered wallpaper with readable chat glass (v2.1.0)
 - [ ] Glass layer, server list, channel list, chat, member list, user panel
 - [ ] Nitro profiles: native colors + Mai accents by default, `--sm-nitro-profiles` switch
 - [ ] Menus, tooltips, modals, settings, pickers, voice and call
