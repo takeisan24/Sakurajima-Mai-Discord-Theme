@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.4.2
+ * @version 2.4.3
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -289,7 +289,9 @@ nav[class*="sidebar_"] {
    ========================================================================== */
 
 /* Title bar (top window strip): the server icon duplicates the server list,
-   so it becomes the theme's bunny logo; the server name steps back to muted. */
+   so it becomes the theme's bunny logo, and the name next to it becomes the
+   theme's wordmark: a static lavender -> peach gradient (the only gradient text
+   in the theme, so it stays a signature). */
 [class*="bar_"]:has(> [class*="trailing_"]) > [class*="title_"] [class*="guildIcon_"] {
   background: var(--sm-accent) !important;
   -webkit-mask: var(--sm-logo-mask) center / contain no-repeat;
@@ -300,7 +302,12 @@ nav[class*="sidebar_"] {
 }
 
 [class*="bar_"]:has(> [class*="trailing_"]) > [class*="title_"] [class*="defaultColor_"] {
-  color: var(--sm-text-muted) !important;
+  color: transparent !important;
+  background: linear-gradient(90deg, var(--sm-accent), var(--sm-accent-2)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.4px !important;
 }
 
 /* Minimize / maximize glow lavender; close keeps Discord's red */
