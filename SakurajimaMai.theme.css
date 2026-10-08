@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.8.1
+ * @version 3.8.2
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -187,6 +187,34 @@
   --brand-160: #e7e0f6 !important;
   --brand-15a: rgb(125 104 184 / 0.15) !important;
   --brand-50a: rgb(125 104 184 / 0.5) !important;
+
+  /* Translucent blurple tints (selected onboarding answers, highlighted rows,
+     drop targets...) all derive from these -hsl values: lavender instead */
+  --opacity-blurple-1-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-4-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-8-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-12-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-16-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-20-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-24-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-28-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-32-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-36-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-40-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-44-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-48-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-52-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-56-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-60-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-64-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-68-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-72-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-76-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-80-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-84-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-88-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-92-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
+  --opacity-blurple-96-hsl: 257 calc(var(--saturation-factor, 1) * 44%) 71% !important;
 
   /* Brand: buttons, toggles, checkboxes */
   --background-brand: var(--sm-accent-strong) !important;
