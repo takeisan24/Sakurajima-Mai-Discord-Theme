@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 2.5.1
+ * @version 2.6.1
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -51,6 +51,7 @@
   --sm-accent-2: #e8bf9f;
   --sm-accent-2-rgb: 232 191 159;
   --sm-mention: #b9487f; /* mention badges: rose-mauve, clearly apart from Discord red; white text 4.9:1 */
+  --sm-mention-rgb: 185 72 127;
 
   /* Solid surfaces for floating UI (popouts, menus, tooltips, modals),
      stepped from the wallpaper hue so they read as the same material */
@@ -163,8 +164,23 @@
   --badge-background-brand: var(--sm-accent-strong) !important; /* "NEW" feature badges */
 
   /* Chat: mentions & reactions (keeps the "you reacted" state visible) */
-  --message-mentioned-background-default: rgb(var(--sm-accent-rgb) / 0.14) !important;
-  --message-mentioned-background-hover: rgb(var(--sm-accent-rgb) / 0.22) !important;
+  --message-mentioned-background-default: rgb(var(--sm-mention-rgb) / 0.12) !important;
+  --message-mentioned-background-hover: rgb(var(--sm-mention-rgb) / 0.18) !important;
+  --mention-background: rgb(var(--sm-mention-rgb) / 0.28) !important;
+  --mention-foreground: #f4c9dd !important;
+
+  /* Quotes, spoilers and Discord's built-in code highlighting (Vencord's
+     ShikiCodeblocks paints its own colors, which are left untouched) */
+  --spine-default: var(--sm-accent) !important;
+  --spoiler-hidden-background: #2f2a3b !important;
+  --spoiler-hidden-background-hover: #3a3349 !important;
+  --text-code-keyword: #c3b3f0 !important;
+  --text-code-title: var(--sm-accent-2) !important;
+  --text-code-variable: #d7b4e8 !important;
+  --text-code-attribute: var(--sm-accent) !important;
+  --text-code-number: #e59cbf !important;
+  --text-code-string: #f0cfae !important;
+  --text-code-comment: var(--sm-icon-muted) !important;
   --reaction-background-default: rgb(var(--sm-accent-rgb) / 0.12) !important;
   --reaction-background-hover: rgb(var(--sm-accent-rgb) / 0.24) !important;
   --reaction-border-hover: rgb(var(--sm-accent-rgb) / 0.5) !important;
@@ -628,8 +644,37 @@ nav[class*="sidebar_"] {
   background-color: rgb(var(--sm-accent-rgb) / 0.06) !important;
 }
 
+/* Mentioned messages follow the mention color (rose-mauve), like the badges */
 [class*="message_"][class*="mentioned_"]::before {
-  background: var(--sm-accent) !important;
+  background: var(--sm-mention) !important;
+}
+
+/* Names, timestamps and reply previews keep their edge over the wallpaper */
+[class*="messageListItem_"] [class*="username_"],
+[class*="messageListItem_"] [class*="timestamp_"],
+[class*="repliedTextPreview_"] {
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
+}
+
+/* Reactions: a small pop on hover and a press-in on click */
+[class*="reaction_"] {
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+[class*="reaction_"]:hover {
+  transform: scale(1.05);
+}
+
+[class*="reaction_"]:active {
+  transform: scale(0.95);
+}
+
+/* Code blocks: soft frame in both Discord's renderer and ShikiCodeblocks.
+   Syntax colors and plugin themes are never overridden. */
+[class*="markup_"] pre,
+.vc-shiki-container {
+  border: 1px solid rgb(var(--sm-accent-rgb) / 0.18) !important;
+  border-radius: 8px !important;
 }
 
 /* "NEW" divider above unread messages: lavender (unread), not red (mention).
@@ -711,6 +756,9 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [class*="reaction_"],
+  [class*="reaction_"]:hover,
+  [class*="reaction_"]:active,
   [class*="containerDefault_"] [class*="link_"] [class*="name_"],
   [class*="containerDefault_"] [class*="link_"]:hover [class*="name_"],
   [class*="listItem_"] [class*="blobContainer_"],
