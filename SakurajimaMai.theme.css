@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.8.0
+ * @version 3.8.1
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -899,6 +899,19 @@ nav[class*="sidebar_"] {
    inline blurple style; catch that value and use lavender */
 [class*="switchIndicator_"][style*="88, 101, 242"] {
   background-color: var(--sm-accent-strong) !important;
+}
+
+/* Voice call and Stage views paint pure black (var(--black)) on the call
+   area and the speaker row; use the darkest Mai surface instead */
+[class*="callContainer_"],
+[class*="callContainer_"] [class*="scroller_"][class*="auto_"],
+[class*="callContainer_"] [class*="rowContainer_"] {
+  background-color: var(--background-base-lowest) !important;
+}
+
+/* "Start the Stage" prompt pulses in green; pulse in lavender */
+[class*="callContainer_"] [class*="pulse_"] {
+  --green-360-hsl: 257 44% 71%;
 }
 
 /* Text cursor in every input is lavender */
