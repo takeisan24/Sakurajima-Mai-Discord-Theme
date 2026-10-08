@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.0.0-a895d6?style=flat-square" alt="Version 2.0.0">
+  <img src="https://img.shields.io/badge/version-3.2.0-a895d6?style=flat-square" alt="Version 2.0.0">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -89,6 +89,7 @@ Copy the variables you want to change, for example:
 |---|---|---|
 | `--theme-background-image` | `maisan-soft.gif` | Wallpaper. Also bundled: `maisan.gif` (original), `maisan-silhouette.gif` |
 | `--sm-wallpaper-color` | `#302e34` | Color around the wallpaper and while it loads |
+| `--sm-wallpaper-reduced-motion` | `maisan-soft-static.png` | Still image used when the OS requests reduced motion. Set it to your own still image if you replace the wallpaper |
 | `--sm-wallpaper-position`, `--sm-wallpaper-size` | `center`, `cover` | Wallpaper placement (e.g. `right bottom` / `auto 100%` for a cut-out character) |
 | `--sm-glass-rgb` | `20 19 24` | Tint of every glass layer |
 | `--theme-transparency` | `rgb(var(--sm-glass-rgb) / .42)` | Glass over the whole app |
@@ -136,8 +137,10 @@ The theme is being refined component by component toward a stable release for th
 - [x] Member list: lavender hover wash and 2px slide; Nitro nameplates untouched (v2.8.0)
 - [x] User panel and app frame outlines: lavender frame borders (--app-frame-border), lavender settings gear on hover; Nitro nameplates untouched (v2.9.0)
 - [x] Nitro profiles: native colors + lavender ring by default, `--sm-nitro-profiles: mai` switch (v3.0.0)
-- [ ] Menus, tooltips, modals, settings, pickers, voice and call
-- [ ] Performance and accessibility options (static wallpaper, reduced motion, glass amount)
+- [x] Menus, tooltips, modals and pickers verified live: solid Mai surfaces, red danger actions kept, lavender selection (no extra CSS needed thanks to the token layer)
+- [x] Lavender keyboard focus rings (v3.1.0)
+- [ ] Voice and call screens (needs a live call to verify)
+- [x] Reduced motion: still wallpaper and no hover motion when the OS asks for it (v3.2.0)
 - [ ] Preview screenshots and community submission
 
 ## Troubleshooting
@@ -151,7 +154,7 @@ The theme is being refined component by component toward a stable release for th
 | Path | Owner | Purpose |
 |---|---|---|
 | `SakurajimaMai.theme.css` | This theme | The Sakurajima Mai theme |
-| `image/maisan*.gif`, `image/bunny-hairpin.*` | This theme | Wallpapers (original, soft, silhouette) and home icon |
+| `image/maisan*.gif`, `image/maisan-soft-static.png`, `image/bunny-hairpin.*` | This theme | Wallpapers (original, soft, silhouette, still) and home icon |
 | `.github/README.md` | This theme | This page |
 | `css/v3/`, `build/v3/` | NotAnotherAnimeTheme | Base stylesheet imported by the theme |
 | `NotAnotherAnimeTheme.theme.css`, `README.md`, `community/`, `css/*csl.css` | NotAnotherAnimeTheme | The original theme, its README and community themes |

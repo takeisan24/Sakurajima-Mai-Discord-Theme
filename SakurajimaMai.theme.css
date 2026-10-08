@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.0.0
+ * @version 3.2.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -22,6 +22,10 @@
        maisan-silhouette.gif  Mai as a dark silhouette, maximum readability */
   --theme-background-image: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan-soft.gif");
   --sm-wallpaper-color: #302e34; /* the GIF's own flat background; shown while it loads */
+  /* Still image used when the OS asks for reduced motion (set it to your own
+     still image if you replace the wallpaper, or to var(--theme-background-image)
+     to keep the animation) */
+  --sm-wallpaper-reduced-motion: url("https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/image/maisan-soft-static.png");
   --sm-wallpaper-position: center;
   --sm-wallpaper-size: cover;
 
@@ -139,6 +143,9 @@
   --border-subtle: rgb(var(--sm-accent-rgb) / 0.16) !important;
   --border-normal: rgb(var(--sm-accent-rgb) / 0.22) !important;
   --border-strong: rgb(var(--sm-accent-rgb) / 0.32) !important;
+  /* Keyboard focus rings (Tab navigation) in lavender instead of blurple */
+  --border-focus: var(--sm-accent) !important;
+  --focus-primary: var(--sm-accent) !important;
 
   /* Text & icons (also keeps Light mode readable on the dark surfaces) */
   --text-default: var(--sm-text) !important;
@@ -848,6 +855,11 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #app-mount,
+  [class*="appMount_"] {
+    background-image: var(--sm-wallpaper-reduced-motion) !important;
+  }
+
   [class*="member_"] [class*="memberInner_"],
   [class*="member_"][class*="clickable_"]:hover [class*="memberInner_"],
   [class*="channelTextArea_"],
