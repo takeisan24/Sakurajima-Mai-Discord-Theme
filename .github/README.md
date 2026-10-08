@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.5.0-a895d6?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-3.7.0-a895d6?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -143,6 +143,7 @@ The theme is being refined component by component toward a stable release for th
 - [x] UX pass: lavender jump highlight, message hover rail, avatar bounce, sliding link underline, button press, lavender switches/checkboxes, reply bar and jump-to-present bar (v3.3.0)
 - [x] UX pass 2: Mai message toolbar, image hover ring, jumbo emoji/sticker pop, embed hover, lavender search highlights, autocomplete rail, panel avatar ring (v3.4.0)
 - [x] UX pass 3: forum cards (glass, lift, lavender edge), Quick Switcher, settings sidebars (old and 2025 layouts), Inbox tabs, lavender text cursor, spoiler hover hint, plum image-viewer backdrop, every notification badge in the mention color (v3.5.0)
+- [x] Accessibility audit: honors Discord's own Reduced Motion, High Contrast and Saturation settings and Windows High Contrast; remaining Discord blurple remapped to lavender (v3.7.0)
 - [x] Reduced motion: still wallpaper and no hover motion when the OS asks for it (v3.2.0)
 - [ ] Preview screenshots and community submission
 

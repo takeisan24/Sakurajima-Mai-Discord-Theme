@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.5.0
+ * @version 3.7.0
  * @description An elegant, modern Sakurajima Mai theme for Discord (Vencord / BetterDiscord) with clean glassmorphism, a single editable palette, Nitro & Onyx overrides, and solid dark popouts.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -167,6 +167,26 @@
   --input-border-hover: rgb(var(--sm-accent-rgb) / 0.35) !important;
   --input-border-focused: rgb(var(--sm-accent-rgb) / 0.6) !important;
   --input-border-active: rgb(var(--sm-accent-rgb) / 0.6) !important;
+
+  /* Discord's raw brand (blurple) scale, used in ~270 places that only show
+     in special states (link buttons, spinners, loading dots, video playhead,
+     file-drop overlay...). Remapped to a lavender scale of matching lightness. */
+  --brand-500-hsl: 256 36% 56% !important;
+  --brand-500: var(--sm-accent-strong) !important;
+  --brand-530: #7663b3 !important;
+  --brand-560: var(--sm-accent-strong-hover) !important;
+  --brand-600: var(--sm-accent-strong-active) !important;
+  --brand-700: #54448a !important;
+  --brand-460: #9483c9 !important;
+  --brand-400: #a08ed2 !important;
+  --brand-360: var(--sm-accent) !important;
+  --brand-330: #b2a1dc !important;
+  --brand-300: #bcace2 !important;
+  --brand-230: #d3c8ee !important;
+  --brand-200: #ddd3f2 !important;
+  --brand-160: #e7e0f6 !important;
+  --brand-15a: rgb(125 104 184 / 0.15) !important;
+  --brand-50a: rgb(125 104 184 / 0.5) !important;
 
   /* Brand: buttons, toggles, checkboxes */
   --background-brand: var(--sm-accent-strong) !important;
@@ -844,6 +864,12 @@ nav[class*="sidebar_"] {
   background-color: rgb(var(--sm-glass-rgb) / 0.7) !important;
 }
 
+/* "PROTIP:" labels (Quick Switcher and other tips) in lavender, not green */
+[class^="pro_"],
+[class*=" pro_"] {
+  color: var(--sm-accent) !important;
+}
+
 /* Text cursor in every input is lavender */
 input,
 textarea,
@@ -1093,6 +1119,12 @@ code.inline {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #app-mount,
+  [class*="appMount_"] {
+    background-image: var(--sm-wallpaper-reduced-motion) !important;
+  }
+
+  /* Everything that moves on hover holds still */
   [class*="card_"] > [class*="mainCard_"],
   [class*="card_"] > [class*="mainCard_"]:hover,
   [class*="itemContainer_"] > [class*="item_"],
@@ -1108,11 +1140,6 @@ code.inline {
   [class*="markup_"] a[class*="anchor_"],
   [class*="lookFilled_"],
   [class*="lookFilled_"]:active:not(:disabled),
-  #app-mount,
-  [class*="appMount_"] {
-    background-image: var(--sm-wallpaper-reduced-motion) !important;
-  }
-
   [class*="member_"] [class*="memberInner_"],
   [class*="member_"][class*="clickable_"]:hover [class*="memberInner_"],
   [class*="channelTextArea_"],
@@ -1124,9 +1151,95 @@ code.inline {
   [class*="listItem_"] [class*="blobContainer_"],
   [class*="listItem_"]:hover [class*="blobContainer_"],
   [class*="searchBar_"],
-  [class*="tutorialContainer_"] [class*="childWrapper_"],
-  [class*="tutorialContainer_"] [class*="childWrapper_"]:hover {
+  [class*="tutorialContainer_"] [class*="childWrapper_"] {
     transition: none;
     transform: none;
   }
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY SETTINGS INSIDE DISCORD
+   ========================================================================== */
+
+/* Discord's own Reduced Motion switch (Settings > Accessibility) behaves like
+   the OS setting: still wallpaper, no hover motion */
+html.reduce-motion #app-mount,
+html.reduce-motion [class*="appMount_"] {
+  background-image: var(--sm-wallpaper-reduced-motion) !important;
+}
+
+html.reduce-motion [class*="card_"] > [class*="mainCard_"],
+html.reduce-motion [class*="card_"] > [class*="mainCard_"]:hover,
+html.reduce-motion [class*="itemContainer_"] > [class*="item_"],
+html.reduce-motion [class*="itemContainer_"] > [class*="item_"]:hover,
+html.reduce-motion [class*="side_"] [class*="item_"][class*="themed_"],
+html.reduce-motion [class*="side_"] [class*="item_"][class*="themed_"]:hover,
+html.reduce-motion [class*="messageListItem_"] img.emoji.jumboable,
+html.reduce-motion [class*="messageListItem_"] img.emoji.jumboable:hover,
+html.reduce-motion [class*="clickableSticker_"],
+html.reduce-motion [class*="clickableSticker_"]:hover,
+html.reduce-motion [class*="messageListItem_"] img[class*="avatar_"],
+html.reduce-motion [class*="messageListItem_"] img[class*="avatar_"]:hover,
+html.reduce-motion [class*="markup_"] a[class*="anchor_"],
+html.reduce-motion [class*="lookFilled_"],
+html.reduce-motion [class*="lookFilled_"]:active:not(:disabled),
+html.reduce-motion [class*="member_"] [class*="memberInner_"],
+html.reduce-motion [class*="member_"][class*="clickable_"]:hover [class*="memberInner_"],
+html.reduce-motion [class*="channelTextArea_"],
+html.reduce-motion [class*="reaction_"],
+html.reduce-motion [class*="reaction_"]:hover,
+html.reduce-motion [class*="reaction_"]:active,
+html.reduce-motion [class*="containerDefault_"] [class*="link_"] [class*="name_"],
+html.reduce-motion [class*="containerDefault_"] [class*="link_"]:hover [class*="name_"],
+html.reduce-motion [class*="listItem_"] [class*="blobContainer_"],
+html.reduce-motion [class*="listItem_"]:hover [class*="blobContainer_"],
+html.reduce-motion [class*="searchBar_"],
+html.reduce-motion [class*="tutorialContainer_"] [class*="childWrapper_"] {
+  transition: none;
+  transform: none;
+}
+
+/* Discord's High Contrast mode: stronger edges, brighter secondary text and
+   darker glass, instead of the theme silently overriding the setting */
+html.high-contrast-mode:is(.theme-dark, .theme-light, .theme-darker, .theme-midnight),
+html.high-contrast-mode :is(.theme-dark, .theme-light, .theme-darker, .theme-midnight) {
+  --theme-transparency: rgb(var(--sm-glass-rgb) / 0.62) !important;
+  --sm-chat-glass: 0.4 !important;
+  --sm-separator-alpha: 0.9 !important;
+  --border-muted: rgb(var(--sm-accent-rgb) / 0.35) !important;
+  --border-subtle: rgb(var(--sm-accent-rgb) / 0.5) !important;
+  --border-normal: rgb(var(--sm-accent-rgb) / 0.6) !important;
+  --border-strong: rgb(var(--sm-accent-rgb) / 0.8) !important;
+  --text-muted: #d0cdd9 !important;
+  --text-subtle: #e6e3ee !important;
+  --channels-default: #d0cdd9 !important;
+  --interactive-text-default: #e6e3ee !important;
+}
+
+/* Discord's Saturation setting: a muted version of the palette */
+html.low-saturation {
+  --sm-accent: #a5a0b5;
+  --sm-accent-rgb: 165 160 181;
+  --sm-accent-strong: #75708a;
+  --sm-accent-strong-hover: #6a6580;
+  --sm-accent-strong-active: #5f5a75;
+  --sm-accent-2: #d6c4b6;
+  --sm-accent-2-rgb: 214 196 182;
+  --sm-mention: #93627a;
+  --sm-mention-rgb: 147 98 122;
+}
+
+/* Windows High Contrast (forced colors): drop the wallpaper so system colors
+   stay readable */
+@media (forced-colors: active) {
+  #app-mount,
+  [class*="appMount_"] {
+    background-image: none !important;
+  }
+}
+
+html.enable-forced-colors #app-mount,
+html.enable-forced-colors [class*="appMount_"] {
+  background-image: none !important;
 }
