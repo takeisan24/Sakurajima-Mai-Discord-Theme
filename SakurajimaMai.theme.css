@@ -8,7 +8,9 @@
  * @updateUrl https://raw.githubusercontent.com/takeisan24/Sakurajima-Mai-Discord-Theme/refs/heads/master/SakurajimaMai.theme.css
  */
 
-@import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@master/build/v3/naat.v3.css");
+/* Base pinned per release: a new URL on every version busts the week-long
+   browser cache, and upstream changes land only after they are verified */
+@import url("https://cdn.jsdelivr.net/gh/takeisan24/Sakurajima-Mai-Discord-Theme@v3.9.1/build/v3/naat.v3.css");
 
 /* ==========================================================================
    USER SETTINGS — edit only this block to customize the theme
