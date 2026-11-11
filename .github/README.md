@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.9.0-a895d6?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-3.9.1-a895d6?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Vencord supported">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="BetterDiscord supported">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
@@ -190,6 +190,7 @@ Found a bug or need help? Open an [issue](https://github.com/takeisan24/Sakuraji
 <details>
 <summary>Version history</summary>
 
+- **3.9.1:** follows Discord's November class rename: server-list unread dots and selected ring work again on top of the updated NotAnotherAnimeTheme base (which also brings the bunny Home icon back)
 - **3.9.0:** BetterDiscord note and Discord DM support contact; plugin switches (`--sm-role-mentions`, `--sm-codeblocks`), preview screenshots, plugin compatibility and performance guides
 - **3.8.2:** Onboarding verified; every translucent blurple tint remapped to lavender
 - **3.8.1:** voice call and Stage views on the Mai surface instead of pure black, lavender "Start the Stage" pulse

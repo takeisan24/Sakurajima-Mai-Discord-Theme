@@ -1,7 +1,7 @@
 /**
  * @name Sakurajima Mai Theme
  * @author takeisan24
- * @version 3.9.0
+ * @version 3.9.1
  * @description A calm lavender Sakurajima Mai theme for Discord (Vencord / BetterDiscord): wallpaper glass, solid popouts, Discord design tokens, Nitro- and plugin-friendly, accessible.
  * @source https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
  * @website https://github.com/takeisan24/Sakurajima-Mai-Discord-Theme
@@ -485,7 +485,7 @@ nav[class*="sidebar_"] {
    ========================================================================== */
 
 /* Unread (not selected, not hovered): small lavender dot at the left edge */
-.wrapper__58105 .item__58105.visible__58105:not(.selected__58105):not(.hovered__58105) {
+.wrapper__o8_Xq .item__o8_Xq.visible__o8_Xq:not(.selected__o8_Xq):not(.hovered__o8_Xq) {
   border: none !important;
   background: var(--sm-accent) !important;
   width: 8px !important;
@@ -497,12 +497,12 @@ nav[class*="sidebar_"] {
 }
 
 /* Read servers: no indicator at all */
-.wrapper__58105 .item__58105:not(.visible__58105):not(.selected__58105):not(.hovered__58105) {
+.wrapper__o8_Xq .item__o8_Xq:not(.visible__o8_Xq):not(.selected__o8_Xq):not(.hovered__o8_Xq) {
   display: none !important;
 }
 
 /* Selected server or folder: full lavender ring with a soft glow */
-.wrapper__58105 .item__58105.selected__58105 {
+.wrapper__o8_Xq .item__o8_Xq.selected__o8_Xq {
   display: block !important;
   border: 2px solid var(--sm-accent) !important;
   box-shadow: 0 0 10px rgb(var(--sm-accent-rgb) / 0.55) !important;
@@ -510,7 +510,7 @@ nav[class*="sidebar_"] {
 
 /* The emoji picker's category rail reuses the same pill component (8px wide);
    there it must stay a solid lavender bar, not the server ring */
-[class*="categoryPill_"] .wrapper__58105 .item__58105[class] {
+[class*="categoryPill_"] .wrapper__o8_Xq .item__o8_Xq[class] {
   display: block !important;
   border: none !important;
   box-shadow: none !important;
@@ -524,7 +524,7 @@ nav[class*="sidebar_"] {
 }
 
 /* Hover: faint ring and a small lift */
-.wrapper__58105 .item__58105.hovered__58105:not(.selected__58105) {
+.wrapper__o8_Xq .item__o8_Xq.hovered__o8_Xq:not(.selected__o8_Xq) {
   display: block !important;
   border: 2px solid rgb(var(--sm-accent-rgb) / 0.45) !important;
   background: transparent !important;

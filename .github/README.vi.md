@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.9.0-a895d6?style=flat-square" alt="Phiên bản">
+  <img src="https://img.shields.io/badge/version-3.9.1-a895d6?style=flat-square" alt="Phiên bản">
   <img src="https://img.shields.io/badge/Vencord-supported-a895d6?style=flat-square" alt="Hỗ trợ Vencord">
   <img src="https://img.shields.io/badge/BetterDiscord-supported-a895d6?style=flat-square" alt="Hỗ trợ BetterDiscord">
   <img src="https://img.shields.io/badge/license-Unlicense-e0b494?style=flat-square" alt="Unlicense">
